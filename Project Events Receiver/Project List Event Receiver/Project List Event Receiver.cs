@@ -35,6 +35,7 @@ namespace Project_Events_Receiver.Project_List_Event_Receiver
 
 		protected void update_related_permission(SPItemEventProperties properties)
 		{
+            //TODO:
 		}
 
 		protected void update_permission(SPItemEventProperties properties)
