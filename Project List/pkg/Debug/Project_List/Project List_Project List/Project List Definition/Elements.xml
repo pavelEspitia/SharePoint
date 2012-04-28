@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+    <!-- 请不要更改下面的 Name 特性的值。如果它与列表定义项目项的文件夹名称不匹配，项目运行时将出错。 -->
+    <ListTemplate
+        Name="Project List Definition"
+        Type="10000"
+        BaseType="0"
+        OnQuickLaunch="TRUE"
+        SecurityBits="11"
+        Sequence="410"
+        DisplayName="$Resources:Projects,ListTitle"
+        Description="Project List Definition"
+        Image="/_layouts/images/itgen.png"/>
+</Elements>

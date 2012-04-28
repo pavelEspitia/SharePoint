@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Feature xmlns="http://schemas.microsoft.com/sharepoint/" ImageUrl="CATLG.GIF" Description="Web Parts that will generate CSS Style statements into pages." Id="7ce15eca-0b57-485b-b9fb-37b7fe504a11" Scope="Site" Title="Style Web Parts">
+  <ElementManifests>
+    <ElementManifest Location="Child List Style\Elements.xml" />
+    <ElementFile Location="Child List Style\Child List Style.webpart" />
+    <ElementManifest Location="Color Line Web Part\Elements.xml" />
+    <ElementFile Location="Color Line Web Part\Color Line Web Part.webpart" />
+  </ElementManifests>
+</Feature>

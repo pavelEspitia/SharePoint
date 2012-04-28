@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Feature xmlns="http://schemas.microsoft.com/sharepoint/" ImageUrl="CATLG.GIF" Title="Project Status Chart Web Part" Description="Render the Project Status Chart on web pages." Id="6c57dba8-80fd-461b-88b9-9c3be8ef8c37" Scope="Site">
+  <ElementManifests>
+    <ElementManifest Location="Project Status Chart Web Part\Elements.xml" />
+    <ElementFile Location="Project Status Chart Web Part\Project Status Chart Web Part.webpart" />
+  </ElementManifests>
+</Feature>

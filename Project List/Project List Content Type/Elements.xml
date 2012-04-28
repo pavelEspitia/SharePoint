@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+	<Field
+    ID="{718a2c7c-fed4-4402-841b-d64c4c3b5aca}"
+    Name="ProjectBudget"
+    DisplayName="$Resources:Projects,Budget"
+    Group="Project Content Type"
+    Type="Currency"
+    DisplaceOnUpgrade="TRUE" />
+
+	<Field
+    ID="{f02e918a-4e10-4871-80ad-81e1afad90ea}"
+    Name="ProjectStartDate"
+    DisplayName="$Resources:Projects,StartDate"
+    Group="Project Content Type"
+    Type="DateTime"
+		Format="DateOnly"
+    DisplaceOnUpgrade="TRUE" />
+
+	<Field
+    ID="{7624625d-8243-47bb-a565-83d7673adf0a}"
+    Name="ProjectDescription"
+    DisplayName="$Resources:Projects,Description"
+    Group="Project Content Type"
+    Type="Note"
+		NumLines="6"
+		RichText="TRUE"
+    DisplaceOnUpgrade="TRUE" />
+
+	<Field
+    ID="{3c3ac491-4910-4ddb-b28f-1e7328ff26d5}"
+    Name="ProjectManager"
+    DisplayName="$Resources:Projects,Manager"
+    Group="Project Content Type"
+    Type="User"
+		UserSelectionMode="0"
+    DisplaceOnUpgrade="TRUE" />
+
+	<Field
+    ID="{7494dd0e-3c92-4556-b1cb-dd9e10b10d7f}"
+    Name="ProjectMembers"
+    DisplayName="$Resources:Projects,Members"
+    Group="Project Content Type"
+    Type="UserMulti"
+		UserSelectionMode="1"
+    DisplaceOnUpgrade="TRUE" />
+
+	<Field
+    ID="{89ae4bfd-6243-4dce-aa79-c980aeff7584}"
+    Name="ProjectSupervisers"
+    DisplayName="$Resources:Projects,ProjectSupervisers"
+    Group="Project Content Type"
+    Type="UserMulti"
+		UserSelectionMode="1"
+    DisplaceOnUpgrade="TRUE" />
+
+	<Field
+    ID="{72bddba3-d5d3-465b-ac1b-331a1c403fe9}"
+    Name="ProjectVisitors"
+    DisplayName="$Resources:Projects,ProjectVisitors"
+    Group="Project Content Type"
+    Type="UserMulti"
+		UserSelectionMode="1"
+    DisplaceOnUpgrade="TRUE" />
+
+	<Field
+			ID="{7c84c46d-6a2e-460f-8fdf-c8e0dbcd78ff}"
+			Name="ProjectDepartment"
+			DisplayName="$Resources:Projects,Department"
+			Group="Project Content Type"
+			Type="User"
+			UserSelectionMode="1"
+			DisplaceOnUpgrade="TRUE" />
+
+	<Field
+    ID="{d7504959-6be1-4a8f-bbce-503cacbecc2a}"
+    Name="ProjectFeedback"
+    DisplayName="$Resources:Projects,Feedback"
+    Group="Project Content Type"
+    Type="Note"
+		NumLines="4"
+		RichText="TRUE"
+		MaxLength="500"
+    DisplaceOnUpgrade="TRUE" />
+
+	<Field
+    ID="{75e73d6b-5b6d-4560-afe8-b885b35c5b38}"
+    Name="ProjectProgress"
+    DisplayName="$Resources:Projects,Progress"
+    Group="Project Content Type"
+    Type="Note"
+		NumLines="10"
+		RichText="TRUE"
+		RichTextMode="FullHtml"
+		ShowInNewForm="FALSE"
+		ShowInEditForm="FALSE"
+    DisplaceOnUpgrade="TRUE" />
+
+
+	<ContentType ID="0x0100c373ea62df094dfcbffd6e4aeb1b40c9"
+               Name="Project List Content Type"
+               Group="Project Content Type"
+               Description="Project Content Type, defines Project List, etc."
+               Inherits="TRUE"
+               Version="0">
+		<FieldRefs>
+			<FieldRef ID="{fa564e0f-0c70-4ab9-b863-0177e6ddd247}" Name="Title" DisplayName="$Resources:Projects,Name" />
+			<FieldRef ID="{718a2c7c-fed4-4402-841b-d64c4c3b5aca}" Name="ProjectBudget" />
+			<FieldRef ID="{f02e918a-4e10-4871-80ad-81e1afad90ea}" Name="ProjectStartDate" />
+			<FieldRef ID="{3c3ac491-4910-4ddb-b28f-1e7328ff26d5}" Name="ProjectManager" />
+			<FieldRef ID="{7494dd0e-3c92-4556-b1cb-dd9e10b10d7f}" Name="ProjectMembers" />
+			<FieldRef ID="{89ae4bfd-6243-4dce-aa79-c980aeff7584}" Name="ProjectSupervisers" />
+			<FieldRef ID="{72bddba3-d5d3-465b-ac1b-331a1c403fe9}" Name="ProjectVisitors" />
+			<FieldRef ID="{7c84c46d-6a2e-460f-8fdf-c8e0dbcd78ff}" Name="ProjectDepartment" />
+			<FieldRef ID="{7624625d-8243-47bb-a565-83d7673adf0a}" Name="ProjectDescription" />
+			<FieldRef ID="{d7504959-6be1-4a8f-bbce-503cacbecc2a}" Name="ProjectFeedback" />
+			<FieldRef ID="{75e73d6b-5b6d-4560-afe8-b885b35c5b38}" Name="ProjectProgress" />
+		</FieldRefs>
+	</ContentType>
+</Elements>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Feature xmlns="http://schemas.microsoft.com/sharepoint/" Id="612dd407-a823-4a9a-921b-a70fae1961b9" Scope="Site" Title="Site Utility Feature1">
+  <ElementManifests>
+    <ElementManifest Location="Security\Elements.xml" />
+    <ElementFile Location="Security\Security.webpart" />
+  </ElementManifests>
+</Feature>

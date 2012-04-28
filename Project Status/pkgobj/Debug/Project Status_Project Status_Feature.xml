@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Feature xmlns="http://schemas.microsoft.com/sharepoint/" ImageUrl="CATLG.GIF" DefaultResourceFile="Projects.zh-CN" Description="Project Status Content Type, defines Project Status List Content Type and it's instance List." Id="9e4ff226-8177-4707-b6fb-f1c0f6ec4885" Scope="Web" Title="Project Status Content Type">
+  <ActivationDependencies>
+    <ActivationDependency FeatureDescription="Project Content Type, defines Project List Content Type and it's instance List." FeatureId="dea3b117-0143-458e-8d6b-3705742dc7aa" FeatureTitle="Project List Content Type" />
+  </ActivationDependencies>
+  <ElementManifests>
+    <ElementManifest Location="Project Status Content Type\Elements.xml" />
+    <ElementManifest Location="Project Status List Instance\Elements.xml" />
+    <ElementManifest Location="Project Status List Definition\Elements.xml" />
+    <ElementFile Location="Project Status List Definition\Schema.xml" />
+  </ElementManifests>
+</Feature>

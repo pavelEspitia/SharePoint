@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Solution xmlns="http://schemas.microsoft.com/sharepoint/" SolutionId="5bdd1381-e735-444e-a0be-79d8df983ea8" SharePointProductVersion="14.0">
+  <Assemblies>
+    <Assembly Location="Project Resources.dll" DeploymentTarget="GlobalAssemblyCache" />
+  </Assemblies>
+  <RootFiles>
+    <RootFile Location="Resources\Projects.zh-CN.resx" />
+    <RootFile Location="Resources\Projects.en-US.resx" />
+  </RootFiles>
+</Solution>

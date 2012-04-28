@@ -1,0 +1,10 @@
+i:\SharePoint\Project Management\Project List\bin\Debug\Project List.dll
+i:\SharePoint\Project Management\Project List\bin\Debug\Project List.pdb
+i:\SharePoint\Project Management\Project List\obj\Debug\ResolveAssemblyReference.cache
+i:\SharePoint\Project Management\Project List\obj\Debug\Project List.dll
+i:\SharePoint\Project Management\Project List\obj\Debug\Project List.pdb
+I:\Works\SharePoint\Project List\bin\Debug\Project List.dll
+I:\Works\SharePoint\Project List\bin\Debug\Project List.pdb
+I:\Works\SharePoint\Project List\obj\Debug\ResolveAssemblyReference.cache
+I:\Works\SharePoint\Project List\obj\Debug\Project List.dll
+I:\Works\SharePoint\Project List\obj\Debug\Project List.pdb

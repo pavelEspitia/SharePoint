@@ -1,0 +1,5 @@
+i:\Works\SharePoint\Site Resources\bin\Debug\Site Resources.dll
+i:\Works\SharePoint\Site Resources\bin\Debug\Site Resources.pdb
+i:\Works\SharePoint\Site Resources\obj\Debug\ResolveAssemblyReference.cache
+i:\Works\SharePoint\Site Resources\obj\Debug\Site Resources.dll
+i:\Works\SharePoint\Site Resources\obj\Debug\Site Resources.pdb

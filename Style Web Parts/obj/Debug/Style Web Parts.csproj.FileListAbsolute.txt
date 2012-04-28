@@ -1,0 +1,10 @@
+i:\SharePoint\Project Management\Style Web Parts\obj\Debug\ResolveAssemblyReference.cache
+i:\SharePoint\Project Management\Style Web Parts\bin\Debug\Style Web Parts.dll
+i:\SharePoint\Project Management\Style Web Parts\bin\Debug\Style Web Parts.pdb
+i:\SharePoint\Project Management\Style Web Parts\obj\Debug\Style Web Parts.dll
+i:\SharePoint\Project Management\Style Web Parts\obj\Debug\Style Web Parts.pdb
+I:\Works\SharePoint\Style Web Parts\bin\Debug\Style Web Parts.dll
+I:\Works\SharePoint\Style Web Parts\bin\Debug\Style Web Parts.pdb
+I:\Works\SharePoint\Style Web Parts\obj\Debug\ResolveAssemblyReference.cache
+I:\Works\SharePoint\Style Web Parts\obj\Debug\Style Web Parts.dll
+I:\Works\SharePoint\Style Web Parts\obj\Debug\Style Web Parts.pdb

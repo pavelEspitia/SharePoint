@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Feature xmlns="http://schemas.microsoft.com/sharepoint/" ImageUrl="CATLG.GIF" DefaultResourceFile="Projects.zh-CN" Description="Project Content Type, defines Project List Content Type and it's instance List." Id="dea3b117-0143-458e-8d6b-3705742dc7aa" Scope="Web" Title="Project List Content Type">
+  <ElementManifests>
+    <ElementManifest Location="Project List Content Type\Elements.xml" />
+    <ElementManifest Location="Project List Instance\Elements.xml" />
+    <ElementManifest Location="Project List Definition\Elements.xml" />
+    <ElementFile Location="Project List Definition\Schema.xml" />
+  </ElementManifests>
+</Feature>

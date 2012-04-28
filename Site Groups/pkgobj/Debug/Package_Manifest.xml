@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Solution xmlns="http://schemas.microsoft.com/sharepoint/" SolutionId="d405d27e-b5ca-49a9-a879-1043977cf68f" SharePointProductVersion="14.0">
+  <Assemblies>
+    <Assembly Location="Site Groups.dll" DeploymentTarget="GlobalAssemblyCache" />
+  </Assemblies>
+  <FeatureManifests>
+    <FeatureManifest Location="Site Groups_Groups\Feature.xml" />
+  </FeatureManifests>
+</Solution>

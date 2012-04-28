@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<webParts>
+  <webPart xmlns="http://schemas.microsoft.com/WebPart/v3">
+    <metaData>
+      <type name="Style_Web_Parts.Color_Line_Web_Part.Color_Line_Web_Part, Style Web Parts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=008ce801996ba3f8" />
+      <importErrorMessage>$Resources:core,ImportErrorMessage;</importErrorMessage>
+    </metaData>
+    <data>
+      <properties>
+        <property name="Title" type="string">Color Line Web Part</property>
+        <property name="Description" type="string">我的 Web 部件</property>
+      </properties>
+    </data>
+  </webPart>
+</webParts>

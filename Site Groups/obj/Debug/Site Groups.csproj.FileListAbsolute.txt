@@ -1,0 +1,5 @@
+i:\Works\SharePoint\Site Groups\bin\Debug\Site Groups.dll
+i:\Works\SharePoint\Site Groups\bin\Debug\Site Groups.pdb
+i:\Works\SharePoint\Site Groups\obj\Debug\ResolveAssemblyReference.cache
+i:\Works\SharePoint\Site Groups\obj\Debug\Site Groups.dll
+i:\Works\SharePoint\Site Groups\obj\Debug\Site Groups.pdb

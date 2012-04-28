@@ -1,0 +1,5 @@
+I:\SharePoint\Project Management\Project Status Chart\bin\Debug\Project Status Chart.dll
+I:\SharePoint\Project Management\Project Status Chart\bin\Debug\Project Status Chart.pdb
+I:\SharePoint\Project Management\Project Status Chart\obj\Debug\ResolveAssemblyReference.cache
+I:\SharePoint\Project Management\Project Status Chart\obj\Debug\Project Status Chart.dll
+I:\SharePoint\Project Management\Project Status Chart\obj\Debug\Project Status Chart.pdb

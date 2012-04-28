@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/" >
+  <Module Name="Color Line Web Part" List="113" Url="_catalogs/wp">
+    <File Path="Color Line Web Part\Color Line Web Part.webpart" Url="Color Line Web Part.webpart" Type="GhostableInLibrary">
+      <Property Name="Group" Value="Custom" />
+    </File>
+  </Module>
+</Elements>

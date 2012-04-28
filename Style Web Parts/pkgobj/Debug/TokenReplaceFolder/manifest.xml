@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Solution xmlns="http://schemas.microsoft.com/sharepoint/" SolutionId="595b7a86-4437-496f-9585-4fe23ec85a6d" SharePointProductVersion="14.0">
+  <Assemblies>
+    <Assembly Location="Style Web Parts.dll" DeploymentTarget="GlobalAssemblyCache">
+      <SafeControls>
+        <SafeControl Assembly="Style Web Parts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=008ce801996ba3f8" Namespace="Style_Web_Parts.Child_List_Style" TypeName="*" />
+        <SafeControl Assembly="Style Web Parts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=008ce801996ba3f8" Namespace="Style_Web_Parts.Color_Line_Web_Part" TypeName="*" />
+      </SafeControls>
+    </Assembly>
+  </Assemblies>
+  <FeatureManifests>
+    <FeatureManifest Location="Style Web Parts_Style\Feature.xml" />
+  </FeatureManifests>
+</Solution>
