@@ -2,5 +2,7 @@
 <Feature xmlns="http://schemas.microsoft.com/sharepoint/" ImageUrl="CATLG.GIF" Description="Handle Project Related Events." Id="d2c9b3f6-7b4d-472b-bbe2-359fe8805ff0" Scope="Web" Title="Project Events Receiver">
   <ElementManifests>
     <ElementManifest Location="Project List Event Receiver\Elements.xml" />
+    <ElementManifest Location="Project Status List Event Receiver\Elements.xml" />
+    <ElementManifest Location="Project Documents Library Event Receiver\Elements.xml" />
   </ElementManifests>
 </Feature>

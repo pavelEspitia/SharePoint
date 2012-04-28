@@ -50,7 +50,9 @@
     <Reference Include="Microsoft.SharePoint.Security" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Project Documents Library Event Receiver\Project Documents Library Event Receiver.cs" />
     <Compile Include="Project List Event Receiver\Project List Event Receiver.cs" />
+    <Compile Include="Project Status List Event Receiver\Project Status List Event Receiver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -64,8 +66,14 @@
     <None Include="Package\Package.Template.xml">
       <DependentUpon>Package.package</DependentUpon>
     </None>
+    <None Include="Project Documents Library Event Receiver\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{a5c93ab8-0525-4a1b-b21c-f38cb4ddba4a}</SharePointProjectItemId>
+    </None>
     <None Include="Project List Event Receiver\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{a5f61c76-eef7-41cc-b024-e86098997086}</SharePointProjectItemId>
+    </None>
+    <None Include="Project Status List Event Receiver\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{5f7eb89d-3c1b-4d41-9fa9-9da4396a2e20}</SharePointProjectItemId>
     </None>
   </ItemGroup>
   <ItemGroup />
@@ -73,7 +81,9 @@
     <Content Include="Features\Feature1\Feature1.Template.xml">
       <DependentUpon>Feature1.feature</DependentUpon>
     </Content>
+    <Content Include="Project Documents Library Event Receiver\Elements.xml" />
     <Content Include="Project List Event Receiver\Elements.xml" />
+    <Content Include="Project Status List Event Receiver\Elements.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\SharePointTools\Microsoft.VisualStudio.SharePoint.targets" />

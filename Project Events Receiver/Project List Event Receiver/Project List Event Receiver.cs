@@ -30,6 +30,11 @@ namespace Project_Events_Receiver.Project_List_Event_Receiver
 			this.EventFiringEnabled = false;
 			base.ItemUpdated(properties);
 			update_permission(properties);
+			update_related_permission(properties);
+		}
+
+		protected void update_related_permission(SPItemEventProperties properties)
+		{
 		}
 
 		protected void update_permission(SPItemEventProperties properties)
