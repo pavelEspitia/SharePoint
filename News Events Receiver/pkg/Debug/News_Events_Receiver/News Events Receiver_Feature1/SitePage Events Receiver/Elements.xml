@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Receivers ListTemplateId="119">
+      <Receiver>
+        <Name>SitePage_Events_ReceiverItemAdded</Name>
+        <Type>ItemAdded</Type>
+        <Assembly>News Events Receiver, Version=1.0.0.0, Culture=neutral, PublicKeyToken=98560e060ea09fd1</Assembly>
+        <Class>News_Events_Receiver.SitePage_Events_Receiver.SitePage_Events_Receiver</Class>
+        <SequenceNumber>10000</SequenceNumber>
+      </Receiver>
+      <Receiver>
+        <Name>SitePage_Events_ReceiverItemUpdated</Name>
+        <Type>ItemUpdated</Type>
+        <Assembly>News Events Receiver, Version=1.0.0.0, Culture=neutral, PublicKeyToken=98560e060ea09fd1</Assembly>
+        <Class>News_Events_Receiver.SitePage_Events_Receiver.SitePage_Events_Receiver</Class>
+        <SequenceNumber>10000</SequenceNumber>
+      </Receiver>
+      <Receiver>
+        <Name>SitePage_Events_ReceiverItemDeleted</Name>
+        <Type>ItemDeleted</Type>
+        <Assembly>News Events Receiver, Version=1.0.0.0, Culture=neutral, PublicKeyToken=98560e060ea09fd1</Assembly>
+        <Class>News_Events_Receiver.SitePage_Events_Receiver.SitePage_Events_Receiver</Class>
+        <SequenceNumber>10000</SequenceNumber>
+      </Receiver>
+
+  </Receivers>
+</Elements>

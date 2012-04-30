@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Solution xmlns="http://schemas.microsoft.com/sharepoint/" SolutionId="31f0cd87-6a94-4122-ac54-a6c677681909" SharePointProductVersion="14.0">
+  <Assemblies>
+    <Assembly Location="News Events Receiver.dll" DeploymentTarget="GlobalAssemblyCache" />
+  </Assemblies>
+  <FeatureManifests>
+    <FeatureManifest Location="News Events Receiver_Feature1\Feature.xml" />
+  </FeatureManifests>
+</Solution>

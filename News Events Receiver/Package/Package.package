@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="31f0cd87-6a94-4122-ac54-a6c677681909" solutionId="31f0cd87-6a94-4122-ac54-a6c677681909" resetWebServer="false" name="News_Events_Receiver" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+  <features>
+    <featureReference itemId="0a1c7a71-d834-41a4-8140-e58964c0970f" />
+  </features>
+</package>
