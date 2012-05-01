@@ -18,7 +18,7 @@ namespace News_Carousel.News_Carousel_Web_Part
             SPWeb web = SPContext.Current.Web;
             SPList summary_list = web.Lists["新闻摘要"];
             SPQuery query = new SPQuery();
-            query.Query = "<OrderBy><FieldRef Name='Created' Ascending='FALSE' /><FieldRef Name='Modified' Ascending='FALSE' /></OrderBy>";
+			query.Query = "<OrderBy><FieldRef Name='Created' Ascending='FALSE' /><FieldRef Name='Modified' Ascending='FALSE' /></OrderBy>";
             query.RowLimit = 5;
             SPListItemCollection summary_items = summary_list.GetItems(query);
 

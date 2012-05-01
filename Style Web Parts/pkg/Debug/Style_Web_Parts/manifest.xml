@@ -6,6 +6,7 @@
         <SafeControl Assembly="Style Web Parts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=008ce801996ba3f8" Namespace="Style_Web_Parts.Child_List_Style" TypeName="*" />
         <SafeControl Assembly="Style Web Parts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=008ce801996ba3f8" Namespace="Style_Web_Parts.Color_Line_Web_Part" TypeName="*" />
         <SafeControl Assembly="Style Web Parts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=008ce801996ba3f8" Namespace="Style_Web_Parts.List_Image_Web_Part" TypeName="*" />
+        <SafeControl Assembly="Style Web Parts, Version=1.0.0.0, Culture=neutral, PublicKeyToken=008ce801996ba3f8" Namespace="Style_Web_Parts.Hide_Quick_Launch_Web_Part" TypeName="*" />
       </SafeControls>
     </Assembly>
   </Assemblies>
