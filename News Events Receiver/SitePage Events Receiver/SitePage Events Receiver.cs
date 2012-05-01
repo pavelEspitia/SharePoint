@@ -117,6 +117,7 @@ namespace News_Events_Receiver.SitePage_Events_Receiver
                                summary_item["图片"] = image_url;
                                summary_item["摘要"] = summary;
                                summary_item["分类"] = type;
+							   summary_item["新闻链接"] = properties.ListItem.Url;
                                summary_item["新闻ID"] = properties.ListItemId;
                                summary_item.Update();
                                log(site, "Wiki Page ID:" + properties.ListItemId + " 【"+title+"】摘要已经更新。", "消息", "新闻中心");

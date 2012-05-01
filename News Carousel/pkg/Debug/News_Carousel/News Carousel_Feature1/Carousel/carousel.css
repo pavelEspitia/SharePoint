@@ -1,0 +1,59 @@
+﻿    #container
+    {
+        width: 620px;
+        position: relative;
+    }
+    
+    #carousel
+    {
+        margin: 0 auto;
+    }
+    
+    #carousel img
+    {
+        border: 0;
+    }
+    
+    #ui-carousel-next, #ui-carousel-prev
+    {
+        width: 60px;
+        height: 300px;
+        background: url(/DocLib/rcarousel/arrow-left.png) #fff center center no-repeat;
+        display: block;
+        position: absolute;
+        top: 0;
+        z-index: 100;
+    }
+    
+    #ui-carousel-next
+    {
+        right: 0;
+        background-image: url(/DocLib/rcarousel/arrow-right.png);
+    }
+    #ui-carousel-prev
+    {
+        left: 0;
+    }
+    
+    #ui-carousel-next > span, #ui-carousel-prev > span
+    {
+        display: none;
+    }
+    
+    #pages
+    {
+        width: 121px;
+        height: 18px;
+        margin: 5px auto 0 auto;
+    }
+    
+    .bullet
+    {
+        background: url(/DocLib/rcarousel/page-off.png) center center no-repeat;
+        display: block;
+        width: 18px;
+        height: 18px;
+        margin: 0;
+        margin-right: 5px;
+        float: left;
+    }

@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ProjectItem Type="Microsoft.VisualStudio.SharePoint.Module" DefaultFile="Elements.xml" SupportedTrustLevels="All" SupportedDeploymentScopes="Web, Site" xmlns="http://schemas.microsoft.com/VisualStudio/2010/SharePointTools/SharePointProjectItemModel">
+  <Files>
+    <ProjectItemFile Source="Elements.xml" Target="Carousel\" Type="ElementManifest" />
+    <ProjectItemFile Source="carousel.html" Target="Carousel\" Type="ElementFile" />
+    <ProjectItemFile Source="init.js" Target="Carousel\" Type="ElementFile" />
+    <ProjectItemFile Source="carousel.css" Target="Carousel\" Type="ElementFile" />
+  </Files>
+</ProjectItem>

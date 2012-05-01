@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="50822d58-aa09-4b32-b5ce-98a531faacd1" solutionId="50822d58-aa09-4b32-b5ce-98a531faacd1" resetWebServer="false" name="News_Carousel" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+  <features>
+    <featureReference itemId="38b7d4ce-91b7-4659-9785-8927c77f088a" />
+  </features>
+</package>

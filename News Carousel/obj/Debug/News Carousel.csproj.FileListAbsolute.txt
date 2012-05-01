@@ -1,0 +1,5 @@
+F:\Works\SharePoint\News Carousel\bin\Debug\News Carousel.dll
+F:\Works\SharePoint\News Carousel\bin\Debug\News Carousel.pdb
+F:\Works\SharePoint\News Carousel\obj\Debug\ResolveAssemblyReference.cache
+F:\Works\SharePoint\News Carousel\obj\Debug\News Carousel.dll
+F:\Works\SharePoint\News Carousel\obj\Debug\News Carousel.pdb

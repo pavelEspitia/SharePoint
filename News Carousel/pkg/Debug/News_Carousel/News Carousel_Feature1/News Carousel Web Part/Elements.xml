@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/" >
+  <Module Name="News Carousel Web Part" List="113" Url="_catalogs/wp">
+    <File Path="News Carousel Web Part\News Carousel Web Part.webpart" Url="News Carousel Web Part.webpart" Type="GhostableInLibrary">
+      <Property Name="Group" Value="Custom" />
+    </File>
+  </Module>
+</Elements>

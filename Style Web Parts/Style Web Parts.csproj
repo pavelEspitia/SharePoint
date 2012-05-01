@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Child List Style\Child List Style.cs" />
     <Compile Include="Color Line Web Part\Color Line Web Part.cs" />
+    <Compile Include="List Image Web Part\List Image Web Part.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -68,6 +69,10 @@
       <FeatureId>{77bc9751-36aa-40c3-82ba-90e806924578}</FeatureId>
     </None>
     <None Include="key.snk" />
+    <None Include="List Image Web Part\List Image Web Part.webpart" />
+    <None Include="List Image Web Part\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{983e7336-5464-4f68-ab18-5cbbc4548185}</SharePointProjectItemId>
+    </None>
     <None Include="Package\Package.package">
       <PackageId>{595b7a86-4437-496f-9585-4fe23ec85a6d}</PackageId>
     </None>
@@ -82,6 +87,7 @@
     <Content Include="Features\Style\Style.Template.xml">
       <DependentUpon>Style.feature</DependentUpon>
     </Content>
+    <Content Include="List Image Web Part\Elements.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\SharePointTools\Microsoft.VisualStudio.SharePoint.targets" />

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="Carousel">
+    <File Path="Carousel\carousel.html" Url="Carousel/carousel.html" />
+  <File Path="Carousel\init.js" Url="Carousel/init.js" />
+<File Path="Carousel\carousel.css" Url="Carousel/carousel.css" />
+</Module>
+</Elements>

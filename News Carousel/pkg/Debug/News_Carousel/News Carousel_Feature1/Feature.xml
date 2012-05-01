@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Feature xmlns="http://schemas.microsoft.com/sharepoint/" Id="2f4fcfca-de2d-4bcb-bd06-1c430c5ea1b3" Scope="Site" Title="News Carousel Feature1">
+  <ElementManifests>
+    <ElementManifest Location="News Carousel Web Part\Elements.xml" />
+    <ElementFile Location="News Carousel Web Part\News Carousel Web Part.webpart" />
+    <ElementManifest Location="Carousel\Elements.xml" />
+    <ElementFile Location="Carousel\carousel.html" />
+    <ElementFile Location="Carousel\init.js" />
+    <ElementFile Location="Carousel\carousel.css" />
+  </ElementManifests>
+</Feature>
