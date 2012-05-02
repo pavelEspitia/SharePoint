@@ -4,6 +4,7 @@ using Microsoft.SharePoint;
 using Microsoft.SharePoint.Security;
 using Microsoft.SharePoint.Utilities;
 using Microsoft.SharePoint.Workflow;
+using System.Text;
 
 namespace Project_Events_Receiver.Project_List_Event_Receiver
 {
@@ -20,6 +21,7 @@ namespace Project_Events_Receiver.Project_List_Event_Receiver
 			this.EventFiringEnabled = false;
 			base.ItemAdded(properties);
 			update_permission(properties);
+			update_progress(properties);
 		}
 
 		/// <summary>
@@ -31,6 +33,7 @@ namespace Project_Events_Receiver.Project_List_Event_Receiver
 			base.ItemUpdated(properties);
 			update_permission(properties);
 			update_related_permission(properties);
+			update_progress(properties);
 		}
 
 		protected void update_related_permission(SPItemEventProperties properties)
@@ -148,5 +151,50 @@ namespace Project_Events_Receiver.Project_List_Event_Receiver
 			}
 		}
 
+		protected void update_progress(SPItemEventProperties properties)
+		{
+			try
+			{
+				if (properties.List.Title.ToLower().Equals("项目列表"))
+				{
+					SPListItem item = properties.ListItem;
+					if (item["反馈"] != null)
+					{
+						string modified_by = item["Modified By"].ToString().Split('#')[1];
+						string modified = item["Modified"].ToString();
+						string feedback = item["反馈"].ToString();
+						if (item["反馈汇总"] == null) item["反馈汇总"] = "";
+						item["反馈汇总"] += format_feedback(modified_by, modified, feedback);
+						item["反馈"] = "";
+					}
+					item.Update();
+				}
+				else
+				{
+					base.ItemUpdated(properties);
+				}
+			}
+			catch (Exception ex)
+			{
+				SPListItem item = properties.ListItem;
+				if (item["Progress"] == null) item["Progress"] = "";
+				item["Progress"] += ex.ToString();
+				item.Update();
+			}
+		}
+
+		protected string format_feedback(string modified_by, string modified, string feedback)
+		{
+			StringBuilder ret = new StringBuilder();
+			ret.Append("<table border='0' cellpadding='1' cellspacing='1' class='feedback_table'>");
+			ret.Append("<tr><th>");
+			ret.Append(modified_by);
+			ret.Append("</th><td>(");
+			ret.Append(modified);
+			ret.Append(")</td></tr><tr><td colspan='2'>");
+			ret.Append(feedback);
+			ret.Append("</td></tr></table>");
+			return ret.ToString();
+		}
 	}
 }

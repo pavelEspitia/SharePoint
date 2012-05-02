@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="5f5cc772-9780-4f75-85d8-88c5d177e29f" solutionId="5f5cc772-9780-4f75-85d8-88c5d177e29f" resetWebServer="false" name="Project_Workload" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+  <features>
+    <featureReference itemId="27ca3c71-b0ee-4654-8a55-f29c7b2d1626" />
+    <featureReference itemId="50c82d4f-7c43-4b7f-9e21-ce14d102ceaf" />
+  </features>
+</package>

@@ -1,0 +1,7 @@
+I:\Works\SharePoint\Site Users Web Application\bin\Site Users Web Application.dll
+I:\Works\SharePoint\Site Users Web Application\bin\Site Users Web Application.pdb
+I:\Works\SharePoint\Site Users Web Application\bin\EntityFramework.dll
+I:\Works\SharePoint\Site Users Web Application\bin\EntityFramework.xml
+I:\Works\SharePoint\Site Users Web Application\obj\Debug\ResolveAssemblyReference.cache
+I:\Works\SharePoint\Site Users Web Application\obj\Debug\Site Users Web Application.dll
+I:\Works\SharePoint\Site Users Web Application\obj\Debug\Site Users Web Application.pdb

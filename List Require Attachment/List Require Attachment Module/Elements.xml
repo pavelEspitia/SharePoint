@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="List Require Attachment Module">
+  <File Path="List Require Attachment Module\message.html" Url="List Require Attachment Module/message.html" />
+</Module>
+</Elements>

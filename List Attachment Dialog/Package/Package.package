@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="e5fb0687-11f2-47bd-8296-366285ecc994" solutionId="e5fb0687-11f2-47bd-8296-366285ecc994" resetWebServer="false" name="List_Attachment_Dialog" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+  <features>
+    <featureReference itemId="443cc57c-225a-4979-859d-a53d924cbc24" />
+  </features>
+</package>

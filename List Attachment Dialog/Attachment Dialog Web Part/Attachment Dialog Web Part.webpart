@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<webParts>
+  <webPart xmlns="http://schemas.microsoft.com/WebPart/v3">
+    <metaData>
+      <type name="List_Attachment_Dialog.Attachment_Dialog_Web_Part.Attachment_Dialog_Web_Part, $SharePoint.Project.AssemblyFullName$" />
+      <importErrorMessage>$Resources:core,ImportErrorMessage;</importErrorMessage>
+    </metaData>
+    <data>
+      <properties>
+        <property name="Title" type="string">Attachment Dialog Web Part</property>
+        <property name="Description" type="string">我的 Web 部件</property>
+      </properties>
+    </data>
+  </webPart>
+</webParts>

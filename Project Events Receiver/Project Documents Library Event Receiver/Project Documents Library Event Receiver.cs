@@ -20,6 +20,7 @@ namespace Project_Events_Receiver.Project_Documents_Library_Event_Receiver
 		   this.EventFiringEnabled = false;
 		   base.ItemAdded(properties);
 		   update_permission(properties);
+		   update_folders_time(properties);
        }
 
        /// <summary>
@@ -30,6 +31,7 @@ namespace Project_Events_Receiver.Project_Documents_Library_Event_Receiver
 		   this.EventFiringEnabled = false;
 		   base.ItemAdded(properties);
 		   update_permission(properties);
+		   update_folders_time(properties);
        }
 		protected void update_permission(SPItemEventProperties properties)
 	   {
@@ -146,6 +148,28 @@ namespace Project_Events_Receiver.Project_Documents_Library_Event_Receiver
 		   }
 	   }
 
+	   protected void update_folders_time(SPItemEventProperties properties)
+	   {
+		   if (properties.ListItem.Url.Contains("/"))
+		   {
+			   string url = properties.ListItem.Url.Substring(0, properties.ListItem.Url.LastIndexOf('/'));
+			   foreach (SPListItem item in properties.List.Folders)
+			   {
+				   if (item.Folder.Url.Equals(url))
+				   {
+					   update_folder_time(item.Folder);
+					   break;
+				   }
+			   }
+		   }
+	   }
+	   protected void update_folder_time(SPFolder current_folder)
+	   {
+		   if (current_folder == null || !current_folder.Url.Contains("/")) return;
+		   current_folder.SetProperty("Name", current_folder.Name);
+		   current_folder.Update();
+		   update_folder_time(current_folder.ParentFolder);
+	   }
 	}
 
 }

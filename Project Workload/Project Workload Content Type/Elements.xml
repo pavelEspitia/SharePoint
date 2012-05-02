@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+	<Field ID="{b76eb50d-3bb3-4277-901c-98cb60cdbd0b}" DisplayName="Written Year" StaticName="Written Year" Name="Written Year" Type="Integer" Group="Project Workload"></Field>
+	<Field ID="{713c49e0-2838-4dd1-abca-6eb1e3654a2f}" DisplayName="Written Month" StaticName="Written Month" Name="Written Month" Type="Integer" Group="Project Workload"></Field>
+	<Field ID="{31418957-4162-4347-9dcf-a1359ec6973b}" DisplayName="Document Type" StaticName="Document Type" Name="Document Type" Type="Text" Group="Project Workload"></Field>
+	<Field ID="{781ec848-4ebe-4cc3-b6cd-9533d2a3aba4}" DisplayName="Document Count" StaticName="Document Count" Name="Document Count" Type="Integer" Group="Project Workload"></Field>
+  <!-- 父内容类型: 项目 (0x01) -->
+  <ContentType ID="0x01005ee61d17f3c3421789dca5e87c2d214d"
+               Name="Project Workload Content Type"
+               Group="Project Workload"
+               Description="Project Workload Content Type"
+               Inherits="TRUE"
+               Version="0">
+    <FieldRefs>
+			<FieldRef ID="{b76eb50d-3bb3-4277-901c-98cb60cdbd0b}" Name="Written Year"/>
+			<FieldRef ID="{713c49e0-2838-4dd1-abca-6eb1e3654a2f}" Name="Written Month"/>
+			<FieldRef ID="{31418957-4162-4347-9dcf-a1359ec6973b}" Name="Document Type"/>
+			<FieldRef ID="{781ec848-4ebe-4cc3-b6cd-9533d2a3aba4}" Name="Document Count"/>
+		</FieldRefs>
+  </ContentType>
+</Elements>

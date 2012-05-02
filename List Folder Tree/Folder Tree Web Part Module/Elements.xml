@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="Folder Tree Web Part Module">
+  <File Path="Folder Tree Web Part Module\init.js" Url="Folder Tree Web Part Module/init.js" />
+</Module>
+</Elements>

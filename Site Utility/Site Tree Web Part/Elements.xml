@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/" >
+  <Module Name="Site Tree Web Part" List="113" Url="_catalogs/wp">
+    <File Path="Site Tree Web Part\Site Tree Web Part.webpart" Url="Site Tree Web Part.webpart" Type="GhostableInLibrary">
+      <Property Name="Group" Value="Custom" />
+    </File>
+  </Module>
+</Elements>

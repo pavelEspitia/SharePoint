@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/" >
+  <Module Name="Document Dialog Web Part" List="113" Url="_catalogs/wp">
+    <File Path="Document Dialog Web Part\Document Dialog Web Part.webpart" Url="Document Dialog Web Part.webpart" Type="GhostableInLibrary">
+      <Property Name="Group" Value="Custom" />
+    </File>
+  </Module>
+</Elements>

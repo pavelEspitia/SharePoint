@@ -1,0 +1,5 @@
+I:\SharePoint\Sandbox\Project Workload\obj\Debug\ResolveAssemblyReference.cache
+I:\SharePoint\Sandbox\Project Workload\bin\Debug\Project Workload.dll
+I:\SharePoint\Sandbox\Project Workload\bin\Debug\Project Workload.pdb
+I:\SharePoint\Sandbox\Project Workload\obj\Debug\Project Workload.dll
+I:\SharePoint\Sandbox\Project Workload\obj\Debug\Project Workload.pdb

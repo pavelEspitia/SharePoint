@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Solution xmlns="http://schemas.microsoft.com/sharepoint/" SolutionId="5f5cc772-9780-4f75-85d8-88c5d177e29f" SharePointProductVersion="14.0">
+  <Assemblies>
+    <Assembly Location="Project Workload.dll" DeploymentTarget="GlobalAssemblyCache">
+      <SafeControls>
+        <SafeControl Assembly="Project Workload, Version=1.0.0.0, Culture=neutral, PublicKeyToken=228cecfd65aa0d42" Namespace="Project_Workload.Project_Workload_Chart" TypeName="*" />
+      </SafeControls>
+    </Assembly>
+  </Assemblies>
+  <FeatureManifests>
+    <FeatureManifest Location="Project Workload_Charts\Feature.xml" />
+    <FeatureManifest Location="Project Workload_List\Feature.xml" />
+  </FeatureManifests>
+</Solution>
