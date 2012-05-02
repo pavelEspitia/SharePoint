@@ -74,35 +74,35 @@
 * 使用下面的 SQL 命令创建用户。
 
 
-	declare @now datetime  
-	set @now= GETDATE()  
-	
-	exec aspnet_Membership_CreateUser 'SharePoint - www.works.com80','jony','pass@word1','','jony@works.com','','',1,@now,@now,0,0,null
-	
-	EXEC aspnet_Roles_CreateRole 'SharePoint - www.works.com80', 'Admin'
-	EXEC aspnet_UsersInRoles_AddUsersToRoles 'SharePoint - www.works.com80', 'jony', 'Admin', 8 
+    declare @now datetime  
+    set @now= GETDATE()  
+    
+    exec aspnet_Membership_CreateUser 'SharePoint - www.works.com80','jony','pass@word1','','jony@works.com','','',1,@now,@now,0,0,null
+    
+    EXEC aspnet_Roles_CreateRole 'SharePoint - www.works.com80', 'Admin'
+    EXEC aspnet_UsersInRoles_AddUsersToRoles 'SharePoint - www.works.com80', 'jony', 'Admin', 8 
 
 
 * 要激活 FBA，需要在 Web 应用程序、SharePoint 管理中心、STS 服务的 Web.Config 中加入以下设置。  
 
 
-	<connectionStrings>
-		<add name="MyLocalSQLServer" connectionString="data source=.\SQLEXPRESS;Integrated Security=SSPI;Database=SharePointUsers;" />
-	</connectionStrings>
-	<system.web>
-		<membership defaultProvider="i">
-			<providers>
-				<add name="i" type="Microsoft.SharePoint.Administration.Claims.SPClaimsAuthMembershipProvider, Microsoft.SharePoint, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
-				<add name="aspnetmembership" connectionStringName="MyLocalSQLServer" applicationName="SharePoint - www.works.com80" type="System.Web.Security.SqlMembershipProvider, System.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />		
-			</providers>
-		</membership>
-		<roleManager defaultProvider="c" enabled="true">
-			<providers>
-				<add name="c" type="Microsoft.SharePoint.Administration.Claims.SPClaimsAuthRoleProvider, Microsoft.SharePoint, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
-				<add name="aspnetrolemanager" connectionStringName="MyLocalSQLServer" applicationName="SharePoint - www.works.com80" type="System.Web.Security.SqlRoleProvider, System.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />		
-			</providers>
-		</roleManager>
-	</system.web>
+    <connectionStrings>
+        <add name="MyLocalSQLServer" connectionString="data source=.\SQLEXPRESS;Integrated Security=SSPI;Database=SharePointUsers;" />
+    </connectionStrings>
+    <system.web>
+        <membership defaultProvider="i">
+            <providers>
+                <add name="i" type="Microsoft.SharePoint.Administration.Claims.SPClaimsAuthMembershipProvider, Microsoft.SharePoint, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
+                <add name="aspnetmembership" connectionStringName="MyLocalSQLServer" applicationName="SharePoint - www.works.com80" type="System.Web.Security.SqlMembershipProvider, System.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />        
+            </providers>
+        </membership>
+        <roleManager defaultProvider="c" enabled="true">
+            <providers>
+                <add name="c" type="Microsoft.SharePoint.Administration.Claims.SPClaimsAuthRoleProvider, Microsoft.SharePoint, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
+                <add name="aspnetrolemanager" connectionStringName="MyLocalSQLServer" applicationName="SharePoint - www.works.com80" type="System.Web.Security.SqlRoleProvider, System.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />        
+            </providers>
+        </roleManager>
+    </system.web>
 
 
 ###从现有备份还原
