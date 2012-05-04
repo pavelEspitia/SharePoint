@@ -48,6 +48,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "List Require Attachment", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Project Workload", "Project Workload\Project Workload.csproj", "{75B4C127-63D3-400B-AD6A-6762C4AB54C6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Claim Providers", "Claim Providers\Claim Providers.csproj", "{C00EBC59-3CA4-4EED-B171-9DB3D23D00ED}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -142,6 +144,12 @@ Global
 		{75B4C127-63D3-400B-AD6A-6762C4AB54C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{75B4C127-63D3-400B-AD6A-6762C4AB54C6}.Release|Any CPU.Build.0 = Release|Any CPU
 		{75B4C127-63D3-400B-AD6A-6762C4AB54C6}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{C00EBC59-3CA4-4EED-B171-9DB3D23D00ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C00EBC59-3CA4-4EED-B171-9DB3D23D00ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C00EBC59-3CA4-4EED-B171-9DB3D23D00ED}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{C00EBC59-3CA4-4EED-B171-9DB3D23D00ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C00EBC59-3CA4-4EED-B171-9DB3D23D00ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C00EBC59-3CA4-4EED-B171-9DB3D23D00ED}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

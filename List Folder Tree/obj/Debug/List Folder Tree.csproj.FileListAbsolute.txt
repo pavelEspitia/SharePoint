@@ -1,0 +1,5 @@
+I:\Works\SharePoint\List Folder Tree\bin\Debug\List Folder Tree.dll
+I:\Works\SharePoint\List Folder Tree\bin\Debug\List Folder Tree.pdb
+I:\Works\SharePoint\List Folder Tree\obj\Debug\ResolveAssemblyReference.cache
+I:\Works\SharePoint\List Folder Tree\obj\Debug\List Folder Tree.dll
+I:\Works\SharePoint\List Folder Tree\obj\Debug\List Folder Tree.pdb

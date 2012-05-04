@@ -54,6 +54,7 @@
     <Compile Include="Child List Style\Child List Style.cs" />
     <Compile Include="Color Line Web Part\Color Line Web Part.cs" />
     <Compile Include="Hide Quick Launch Web Part\Hide Quick Launch Web Part.cs" />
+    <Compile Include="Lightbox Web Part\Lightbox Web Part.cs" />
     <Compile Include="List Image Web Part\List Image Web Part.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -74,6 +75,10 @@
       <SharePointProjectItemId>{10704909-60ae-4c27-ba9f-242c592f3b99}</SharePointProjectItemId>
     </None>
     <None Include="key.snk" />
+    <None Include="Lightbox Web Part\Lightbox Web Part.webpart" />
+    <None Include="Lightbox Web Part\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{334ec605-5215-4994-80bb-0aa8287c6dee}</SharePointProjectItemId>
+    </None>
     <None Include="List Image Web Part\List Image Web Part.webpart" />
     <None Include="List Image Web Part\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{983e7336-5464-4f68-ab18-5cbbc4548185}</SharePointProjectItemId>
@@ -93,6 +98,7 @@
       <DependentUpon>Style.feature</DependentUpon>
     </Content>
     <Content Include="Hide Quick Launch Web Part\Elements.xml" />
+    <Content Include="Lightbox Web Part\Elements.xml" />
     <Content Include="List Image Web Part\Elements.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
