@@ -1,0 +1,12 @@
+Name	Type	Description	
+Administrate	Organizational Unit		
+CEO Office	Organizational Unit		
+Finance	Organizational Unit		
+Human Resource	Organizational Unit		
+Information Technology	Organizational Unit		
+Marketing & Sales	Organizational Unit		
+Purchase	Organizational Unit		
+Warehouse	Organizational Unit		
+China Managers	Security Group - Global	Works Group (China) Managers	
+Jimmy Wales	User	Works Group (China) CEO	
+Works Group (China)	Security Group - Global		
