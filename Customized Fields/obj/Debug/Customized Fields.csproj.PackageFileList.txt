@@ -1,0 +1,1 @@
+bin\Debug\Customized_Fields.wsp

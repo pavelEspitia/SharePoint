@@ -1,0 +1,13 @@
+﻿<FieldTypes>
+	<FieldType>
+		<Field Name="TypeName">Managers_Field</Field>
+		<Field Name="ParentType">User</Field>
+		<Field Name="TypeDisplayName">经理</Field>
+		<Field Name="TypeShortDescription">相关经理</Field>
+		<Field Name="UserCreatable">TRUE</Field>
+		<Field Name="FieldTypeClass">
+			Customized_Fields.Managers_Field,
+			$SharePoint.Project.AssemblyFullName$
+		</Field>
+	</FieldType>
+</FieldTypes>
