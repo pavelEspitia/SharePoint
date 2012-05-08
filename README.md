@@ -19,6 +19,7 @@
 
 
 > 可选在 AllItems.aspx 页面加入 List Image Web Part。  
+> https://www.works.com/_catalogs/lt/Forms/AllItems.aspx
 
 
 * News Events Receiver
