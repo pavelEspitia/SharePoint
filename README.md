@@ -7,8 +7,8 @@
 ##介绍站点结构
 
 > FBA 设置：  
-> aspnetmembership  
-> aspnetrolemanager 
+> aspnetmembership (WorksMembership)  
+> aspnetrolemanager (WorksRole)  
 
 ###http://www.works.com 
 是 Works 公司的公共网站，为互联网匿名用户提供各种信息。匿名 + Windows。  
@@ -72,8 +72,15 @@
 > 更新项目文档库目录的日期
 
 
-####admin 子站（管理中心）
+####admin 子站（行政管理）
 * zTemplates\system log.stp。系统日志。可选在 AllItems.aspx 页面加入 Color Line Web Part。
+* zTemplates\annual leave.stp。年假汇总。记录每个人在每年的总可用年假天数和剩余年假天数。
+* 部署 Customized Fields 解决方案。需要其“相关经理”字段。
+* zTemplates\ask leave.stp。请假单。
+
+> 需要断开权限继承，让组织中所有人都可以提交请假申请。  
+> 需要添加“相关经理”字段。  
+> 请假先找项目经理，找不到才给职能经理。
 
 
 ###https://personal.work.com 
@@ -123,4 +130,4 @@
 
 
 ###从现有备份还原
-
+> 暂不支持。

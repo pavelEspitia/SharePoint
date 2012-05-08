@@ -11,12 +11,13 @@ namespace Claim_Providers
 		public static List<Claim> GetClaimsForUser(string username)
 		{
 			List<Claim> userClaims = new List<Claim>();
+			string[] userDB = new string[1];
 			foreach (string userInfo in userDB)
 			{
 				string[] claims = userInfo.Split(new string[] { ":" }, StringSplitOptions.RemoveEmptyEntries);
 				if (username == claims[0])
 				{
-					userClaims.Add(new Claim(GetClaimTypeForRole(claims[1]), claims[2], Microsoft.IdentityModel.Claims.ClaimValueTypes.String));
+					//userClaims.Add(new Claim(GetClaimTypeForRole(claims[1]), claims[2], Microsoft.IdentityModel.Claims.ClaimValueTypes.String));
 				}
 			}
 
