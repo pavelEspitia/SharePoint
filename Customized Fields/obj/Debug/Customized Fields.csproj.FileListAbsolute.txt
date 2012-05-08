@@ -1,5 +1,5 @@
-i:\Works\SharePoint\Customized Fields\obj\Debug\ResolveAssemblyReference.cache
-i:\Works\SharePoint\Customized Fields\bin\Debug\Customized Fields.dll
-i:\Works\SharePoint\Customized Fields\bin\Debug\Customized Fields.pdb
-i:\Works\SharePoint\Customized Fields\obj\Debug\Customized Fields.dll
-i:\Works\SharePoint\Customized Fields\obj\Debug\Customized Fields.pdb
+I:\Works\SharePoint\Customized Fields\bin\Debug\Customized Fields.dll
+I:\Works\SharePoint\Customized Fields\bin\Debug\Customized Fields.pdb
+I:\Works\SharePoint\Customized Fields\obj\Debug\ResolveAssemblyReference.cache
+I:\Works\SharePoint\Customized Fields\obj\Debug\Customized Fields.dll
+I:\Works\SharePoint\Customized Fields\obj\Debug\Customized Fields.pdb
