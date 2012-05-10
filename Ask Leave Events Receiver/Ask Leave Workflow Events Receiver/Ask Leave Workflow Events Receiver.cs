@@ -19,6 +19,7 @@ namespace Ask_Leave_Events_Receiver.Ask_Leave_Workflow_Events_Receiver
        public override void WorkflowCompleted(SPWorkflowEventProperties properties)
        {
 		   base.WorkflowCompleted(properties);
+		   if (properties.CompletionType != SPWorkflowEventCompletionType.Completed) return;
 		   SPSecurity.RunWithElevatedPrivileges(delegate
 		   {
 			   using (SPSite site = new SPSite(properties.WebUrl))
