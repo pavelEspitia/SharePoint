@@ -1,5 +1,0 @@
-I:\Works\SharePoint\Site Users Admin\bin\Site Users Admin.dll
-I:\Works\SharePoint\Site Users Admin\bin\Site Users Admin.pdb
-I:\Works\SharePoint\Site Users Admin\obj\Debug\ResolveAssemblyReference.cache
-I:\Works\SharePoint\Site Users Admin\obj\Debug\Site Users Admin.dll
-I:\Works\SharePoint\Site Users Admin\obj\Debug\Site Users Admin.pdb

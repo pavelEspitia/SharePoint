@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Receivers ListTemplateId="100">
+      <Receiver>
+        <Name>Ask_Leave_Workflow_Events_ReceiverWorkflowCompleted</Name>
+        <Type>WorkflowCompleted</Type>
+        <Assembly>$SharePoint.Project.AssemblyFullName$</Assembly>
+        <Class>Ask_Leave_Events_Receiver.Ask_Leave_Workflow_Events_Receiver.Ask_Leave_Workflow_Events_Receiver</Class>
+        <SequenceNumber>10000</SequenceNumber>
+      </Receiver>
+
+  </Receivers>
+</Elements>

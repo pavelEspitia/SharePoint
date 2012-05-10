@@ -1,0 +1,133 @@
+﻿<webParts>
+  <webPart xmlns="http://schemas.microsoft.com/WebPart/v3">
+    <metaData>
+      <type name="Microsoft.SharePoint.Publishing.WebControls.ContentByQueryWebPart, Microsoft.SharePoint.Publishing, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c" />
+      <importErrorMessage>Cannot import this Web Part.</importErrorMessage>
+    </metaData>
+    <data>
+      <properties>
+        <property name="GroupBy" type="string">Topic_x0020_Category</property>
+        <property name="FilterValue2" type="string" />
+        <property name="BaseType" type="string" />
+        <property name="AllowConnect" type="bool">True</property>
+        <property name="ShowUntargetedItems" type="bool">False</property>
+        <property name="DisplayName" type="string" />
+        <property name="Title" type="string">For Power Users</property>
+        <property name="ContentTypeName" type="string" />
+        <property name="ViewFlag" type="string">0</property>
+        <property name="MediaPlayerStyleSource" type="string" null="true" />
+        <property name="AdditionalGroupAndSortFields" type="string" />
+        <property name="GroupByDirection" type="Microsoft.SharePoint.Publishing.WebControls.ContentByQueryWebPart+SortDirection, Microsoft.SharePoint.Publishing, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">Asc</property>
+        <property name="GroupByFieldType" type="string">Choice</property>
+        <property name="FilterOperator1" type="Microsoft.SharePoint.Publishing.WebControls.ContentByQueryWebPart+FilterFieldQueryOperator, Microsoft.SharePoint.Publishing, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">Eq</property>
+        <property name="FeedTitle" type="string" />
+        <property name="FilterOperator3" type="Microsoft.SharePoint.Publishing.WebControls.ContentByQueryWebPart+FilterFieldQueryOperator, Microsoft.SharePoint.Publishing, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">Eq</property>
+        <property name="SortByDirection" type="Microsoft.SharePoint.Publishing.WebControls.ContentByQueryWebPart+SortDirection, Microsoft.SharePoint.Publishing, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">Desc</property>
+        <property name="FilterDisplayValue3" type="string" />
+        <property name="FilterDisplayValue2" type="string" />
+        <property name="FilterDisplayValue1" type="string">Power Users</property>
+        <property name="FilterValue3" type="string" />
+        <property name="DataMappings" type="string">URL:|LinkUrl:{c29e077d-f466-4d8e-8bbe-72b66c5f205c},URL,URL;|Description:|ImageUrl:{98a85f2a-b719-48e4-808c-7b6299d638ab},ImageURL0,Calculated;|Title:{9da97a8a-1da5-4a77-98d3-4bc10456e700},Comments,Note;|</property>
+        <property name="ListGuid" type="string">bb6da3b0-f392-4802-8d26-36d413584dfa</property>
+        <property name="ListUrl" type="string" />
+        <property name="FilterValue1" type="string">Power Users</property>
+        <property name="CacheXslStorage" type="bool">True</property>
+        <property name="MissingAssembly" type="string">Cannot import this Web Part.</property>
+        <property name="ItemLimit" type="int">-1</property>
+        <property name="DataMappingViewFields" type="string">{c29e077d-f466-4d8e-8bbe-72b66c5f205c},URL;{98a85f2a-b719-48e4-808c-7b6299d638ab},Calculated;{9da97a8a-1da5-4a77-98d3-4bc10456e700},Note;</property>
+        <property name="XslLink" type="string" null="true" />
+        <property name="DataColumnRenames" type="string" />
+        <property name="AllowMinimize" type="bool">True</property>
+        <property name="ContentTypeBeginsWithId" type="string" />
+        <property name="ListDisplayName" type="string" />
+        <property name="ListsOverride" type="string" />
+        <property name="ItemXslLink" type="string" />
+        <property name="Height" type="string" />
+        <property name="SortBy" type="string">Created</property>
+        <property name="CatalogIconImageUrl" type="string" />
+        <property name="Default" type="string" />
+        <property name="FilterType1" type="string">Choice</property>
+        <property name="FireInitialRow" type="bool">True</property>
+        <property name="AsyncRefresh" type="bool">False</property>
+        <property name="ItemStyle" type="string">Default</property>
+        <property name="AdditionalFilterFields" type="string" />
+        <property name="WebUrl" type="string">~sitecollection</property>
+        <property name="ViewFlags" type="Microsoft.SharePoint.SPViewFlags, Microsoft.SharePoint, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">None</property>
+        <property name="Width" type="string">280px</property>
+        <property name="DataSourceID" type="string" />
+        <property name="HelpUrl" type="string" />
+        <property name="ManualRefresh" type="bool">False</property>
+        <property name="PlayMediaInBrowser" type="bool">True</property>
+        <property name="QueryOverride" type="string" />
+        <property name="CacheXslTimeOut" type="int">86400</property>
+        <property name="PageSize" type="int">-1</property>
+        <property name="UseSQLDataSourcePaging" type="bool">True</property>
+        <property name="FeedEnabled" type="bool">False</property>
+        <property name="CommonViewFields" type="string" />
+        <property name="FilterField3" type="string" />
+        <property name="Hidden" type="bool">False</property>
+        <property name="MainXslLink" type="string" />
+        <property name="ExportMode" type="exportmode">All</property>
+        <property name="FilterType3" type="string" />
+        <property name="FilterType2" type="string" />
+        <property name="ViewFieldsOverride" type="string" />
+        <property name="DisplayColumns" type="int">2</property>
+        <property name="FilterIncludeChildren2" type="bool">False</property>
+        <property name="ParameterBindings" type="string" />
+        <property name="FilterByAudience" type="bool">False</property>
+        <property name="DataSourcesString" type="string" />
+        <property name="AllowHide" type="bool">True</property>
+        <property name="Filter2ChainingOperator" type="Microsoft.SharePoint.Publishing.WebControls.ContentByQueryWebPart+FilterChainingOperator, Microsoft.SharePoint.Publishing, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">Or</property>
+        <property name="ListId" type="System.Guid, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">00000000-0000-0000-0000-000000000000</property>
+        <property name="XmlDefinitionLink" type="string" />
+        <property name="DataFields" type="string" />
+        <property name="FilterIncludeChildren1" type="bool">False</property>
+        <property name="SortByFieldType" type="string">DateTime</property>
+        <property name="InitialAsyncDataFetch" type="bool">False</property>
+        <property name="ChromeType" type="chrometype">TitleOnly</property>
+        <property name="SystemViewFields" type="string" />
+        <property name="XmlDefinition" type="string" />
+        <property name="ChromeState" type="chromestate">Normal</property>
+        <property name="Filter2IsCustomValue" type="bool">False</property>
+        <property name="PageType" type="Microsoft.SharePoint.PAGETYPE, Microsoft.SharePoint, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">PAGE_NORMALVIEW</property>
+        <property name="FeedDescription" type="string" />
+        <property name="Filter3IsCustomValue" type="bool">False</property>
+        <property name="SampleData" type="string">
+&lt;dsQueryResponse&gt;
+                    &lt;Rows&gt;
+                        &lt;Row Title="Item 1" LinkUrl="http://Item1" Group="Group Header" __begincolumn="True" __begingroup="True" /&gt;
+                        &lt;Row Title="Item 2" LinkUrl="http://Item2" __begincolumn="False" __begingroup="False" /&gt;
+                        &lt;Row Title="Item 3" LinkUrl="http://Item3" __begincolumn="False" __begingroup="False" /&gt;
+                    &lt;/Rows&gt;
+                    &lt;/dsQueryResponse&gt;</property>
+        <property name="FilterOperator2" type="Microsoft.SharePoint.Publishing.WebControls.ContentByQueryWebPart+FilterFieldQueryOperator, Microsoft.SharePoint.Publishing, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">Eq</property>
+        <property name="GroupStyle" type="string">DefaultHeader</property>
+        <property name="WebsOverride" type="string" />
+        <property name="AutoRefreshInterval" type="int">60</property>
+        <property name="UseCopyUtil" type="bool">False</property>
+        <property name="TitleUrl" type="string" />
+        <property name="Filter1ChainingOperator" type="Microsoft.SharePoint.Publishing.WebControls.ContentByQueryWebPart+FilterChainingOperator, Microsoft.SharePoint.Publishing, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c">And</property>
+        <property name="ViewContentTypeId" type="string" />
+        <property name="HeaderXslLink" type="string" />
+        <property name="Xsl" type="string">&lt;xsl:stylesheet xmlns:x="http://www.w3.org/2001/XMLSchema" version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:cmswrt="http://schemas.microsoft.com/WebPart/v3/Publishing/runtime" exclude-result-prefixes="xsl cmswrt x" &gt; &lt;xsl:import href="/Style Library/XSL Style Sheets/Header.xsl" /&gt; &lt;xsl:import href="/Style Library/XSL Style Sheets/ItemStyle.xsl" /&gt; &lt;xsl:import href="/Style Library/XSL Style Sheets/ContentQueryMain.xsl" /&gt; &lt;/xsl:stylesheet&gt;</property>
+        <property name="TitleIconImageUrl" type="string" />
+        <property name="HelpMode" type="helpmode">Modeless</property>
+        <property name="Direction" type="direction">NotSet</property>
+        <property name="FilterField2" type="string" />
+        <property name="ListName" type="string">Training Links</property>
+        <property name="ShowWithSampleData" type="bool">False</property>
+        <property name="AllowClose" type="bool">True</property>
+        <property name="Filter1IsCustomValue" type="bool">False</property>
+        <property name="Description" type="string">Displays a dynamic view of content from your site.</property>
+        <property name="UseCache" type="bool">True</property>
+        <property name="FilterField1" type="string">Target_x0020_Audiences</property>
+        <property name="AutoRefresh" type="bool">False</property>
+        <property name="AllowZoneChange" type="bool">True</property>
+        <property name="ServerTemplate" type="string">103</property>
+        <property name="NoDefaultStyle" type="string" null="true" />
+        <property name="AllowEdit" type="bool">True</property>
+        <property name="FilterIncludeChildren3" type="bool">False</property>
+      </properties>
+    </data>
+  </webPart>
+</webParts>

@@ -35,9 +35,13 @@ namespace Customized_Fields
 				SPListItemCollection projects = project_list.GetItems(query);
 				foreach (SPListItem project in projects)
 				{
-					//SPFieldUserValue field_user_value = (SPFieldUserValue)project.Fields["项目经理"].GetFieldValue(project["ProjectManager"].ToString());
-					//defaultValue += string.Format("{0};#{1}", field_user_value.User.ID.ToString(), field_user_value.User.Name);
-					defaultValue += project["ProjectManager"].ToString()+";#";
+					SPFieldUserValue field_user_value = (SPFieldUserValue)project.Fields["项目经理"].GetFieldValue(project["ProjectManager"].ToString());
+					// 不能自己给自己审批。
+					if (field_user_value.User.ID != user.ID)
+					{
+						//defaultValue += string.Format("{0};#{1}", field_user_value.User.ID.ToString(), field_user_value.User.Name);
+						defaultValue += project["ProjectManager"].ToString() + ";#";
+					}
 				}
 
 				// 如果当前用户没有参加任何项目，则找其直接的主管经理。
@@ -53,7 +57,11 @@ namespace Customized_Fields
 						{
 							foreach(UserProfile manager in managers){
 								SPUser u_manager = web.SiteUsers[manager[PropertyConstants.AccountName].Value.ToString()];
-								defaultValue += string.Format("{0};#{1}", u_manager.ID.ToString(), u_manager.Name)+";#";
+								// 不能自己给自己审批。
+								if (u_manager.ID != user.ID)
+								{
+									defaultValue += string.Format("{0};#{1}", u_manager.ID.ToString(), u_manager.Name) + ";#";
+								}
 							}
 						}
 					}
