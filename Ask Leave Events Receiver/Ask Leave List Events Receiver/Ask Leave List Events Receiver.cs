@@ -4,6 +4,7 @@ using Microsoft.SharePoint;
 using Microsoft.SharePoint.Security;
 using Microsoft.SharePoint.Utilities;
 using Microsoft.SharePoint.Workflow;
+using Microsoft.Office.RecordsManagement.RecordsRepository;
 
 namespace Ask_Leave_Events_Receiver.Ask_Leave_List_Events_Receiver
 {
@@ -20,7 +21,11 @@ namespace Ask_Leave_Events_Receiver.Ask_Leave_List_Events_Receiver
 			this.EventFiringEnabled = false;
 
 			base.ItemAdded(properties);
-			update_permission(properties, properties.Web.SiteUsers.GetByID(properties.CurrentUserId));
+
+			if (properties.ListTitle == "请假单")
+			{
+				update_permission(properties, properties.Web.SiteUsers.GetByID(properties.CurrentUserId));
+			}
 		}
 
 		/// <summary>
@@ -31,7 +36,10 @@ namespace Ask_Leave_Events_Receiver.Ask_Leave_List_Events_Receiver
 			this.EventFiringEnabled = false;
 
 			base.ItemUpdated(properties);
-			update_permission(properties,  properties.Web.SiteUsers.GetByID(properties.CurrentUserId));
+			if (properties.ListTitle == "请假单")
+			{
+				update_permission(properties, properties.Web.SiteUsers.GetByID(properties.CurrentUserId));
+			}
 		}
 
 
@@ -62,14 +70,26 @@ namespace Ask_Leave_Events_Receiver.Ask_Leave_List_Events_Receiver
 									item.RoleAssignments.Remove(role_index);
 								}
 							}
+
 						}
 						catch (Exception ex)
 						{
 							log(site, "自动删除项目旧权限", "错误", ex.ToString());
 						}
 						// 分别为各个角色赋予此项目的独特权限：。
-						assign_role(site, item, user, "", web.RoleDefinitions["参与讨论"]);
-						assign_roles(web, item, "相关经理", "", web.RoleDefinitions["批准"]);
+						//if (item["_x8bf7__x5047__x5355__x5ba1__x62"]!=null)
+						//{
+						//    string workflow_status = item["_x8bf7__x5047__x5355__x5ba1__x62"].ToString();
+						//    if (workflow_status == "16"||workflow_status=="17")
+						//    {
+						//        Records.DeclareItemAsRecord(item);
+						//    }
+						//}
+						//else
+						//{
+							assign_role(site, item, user, "", web.RoleDefinitions["参与讨论"]);
+							assign_roles(web, item, "相关经理", "", web.RoleDefinitions["批准"]);
+						//}
 						log(web.Site, "更新项目权限", "消息", "为项目【" + item["Title"] + "】更新权限完成。");
 					}
 				}

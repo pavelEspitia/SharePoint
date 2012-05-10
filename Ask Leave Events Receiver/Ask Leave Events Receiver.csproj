@@ -40,6 +40,7 @@
     <AssemblyOriginatorKeyFile>key.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Office.Policy, Version=14.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
@@ -51,11 +52,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Ask Leave List Events Receiver\Ask Leave List Events Receiver.cs" />
+    <Compile Include="Ask Leave Task Events Receiver\Ask Leave Task Events Receiver.cs" />
+    <Compile Include="Ask Leave Workflow Events Receiver\Ask Leave Workflow Events Receiver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Ask Leave List Events Receiver\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{2fb36ed7-fb2b-456a-bd6e-24b668d4973f}</SharePointProjectItemId>
+    </None>
+    <None Include="Ask Leave Task Events Receiver\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{2a901650-57e8-47a4-b34b-092d8f507441}</SharePointProjectItemId>
+    </None>
+    <None Include="Ask Leave Workflow Events Receiver\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{33073502-7297-4836-a5cb-35688cb9e9cc}</SharePointProjectItemId>
     </None>
     <None Include="Features\Feature1\Feature1.feature">
       <FeatureId>{61ae6326-a83a-4044-919f-dde34dec1258}</FeatureId>
@@ -71,6 +80,8 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="Ask Leave List Events Receiver\Elements.xml" />
+    <Content Include="Ask Leave Task Events Receiver\Elements.xml" />
+    <Content Include="Ask Leave Workflow Events Receiver\Elements.xml" />
     <Content Include="Features\Feature1\Feature1.Template.xml">
       <DependentUpon>Feature1.feature</DependentUpon>
     </Content>

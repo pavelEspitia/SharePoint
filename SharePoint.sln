@@ -33,8 +33,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "News Carousel", "News Carou
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Site Groups", "Site Groups\Site Groups.csproj", "{116FFFD0-8625-4C51-89F7-87F3844A4980}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Site Users Web Application", "Site Users Web Application\Site Users Web Application.csproj", "{43C6C3C0-94BA-447E-BBAB-06CBCEB11585}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C4D900A7-56FF-4858-9A04-C18C44AAE77F}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
@@ -51,6 +49,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Claim Providers", "Claim Providers\Claim Providers.csproj", "{C00EBC59-3CA4-4EED-B171-9DB3D23D00ED}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customized Fields", "Customized Fields\Customized Fields.csproj", "{68D820A1-0680-4F63-859D-93D2C96BDBD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ask Leave Events Receiver", "Ask Leave Events Receiver\Ask Leave Events Receiver.csproj", "{2686E912-1A18-41C8-8CAD-5B177D7FEBDD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -118,10 +118,6 @@ Global
 		{116FFFD0-8625-4C51-89F7-87F3844A4980}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{116FFFD0-8625-4C51-89F7-87F3844A4980}.Release|Any CPU.Build.0 = Release|Any CPU
 		{116FFFD0-8625-4C51-89F7-87F3844A4980}.Release|Any CPU.Deploy.0 = Release|Any CPU
-		{43C6C3C0-94BA-447E-BBAB-06CBCEB11585}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{43C6C3C0-94BA-447E-BBAB-06CBCEB11585}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{43C6C3C0-94BA-447E-BBAB-06CBCEB11585}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{43C6C3C0-94BA-447E-BBAB-06CBCEB11585}.Release|Any CPU.Build.0 = Release|Any CPU
 		{28AEDF1D-5381-4B2A-8795-AE203BE1F108}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{28AEDF1D-5381-4B2A-8795-AE203BE1F108}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28AEDF1D-5381-4B2A-8795-AE203BE1F108}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
@@ -158,6 +154,12 @@ Global
 		{68D820A1-0680-4F63-859D-93D2C96BDBD9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{68D820A1-0680-4F63-859D-93D2C96BDBD9}.Release|Any CPU.Build.0 = Release|Any CPU
 		{68D820A1-0680-4F63-859D-93D2C96BDBD9}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{2686E912-1A18-41C8-8CAD-5B177D7FEBDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2686E912-1A18-41C8-8CAD-5B177D7FEBDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2686E912-1A18-41C8-8CAD-5B177D7FEBDD}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{2686E912-1A18-41C8-8CAD-5B177D7FEBDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2686E912-1A18-41C8-8CAD-5B177D7FEBDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2686E912-1A18-41C8-8CAD-5B177D7FEBDD}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
