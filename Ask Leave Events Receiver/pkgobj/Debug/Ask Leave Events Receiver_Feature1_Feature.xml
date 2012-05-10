@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Feature xmlns="http://schemas.microsoft.com/sharepoint/" Title="Ask Leave Events Receiver Feature1" Id="0dc80097-7195-4d6a-b263-00337cccffee" Scope="Web">
+  <ElementManifests>
+    <ElementManifest Location="Ask Leave List Events Receiver\Elements.xml" />
+  </ElementManifests>
+</Feature>

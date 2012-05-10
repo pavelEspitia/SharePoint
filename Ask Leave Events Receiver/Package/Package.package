@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="0380ba41-f5fc-4f3c-ad6a-a22b8f13228b" solutionId="0380ba41-f5fc-4f3c-ad6a-a22b8f13228b" resetWebServer="false" name="Ask_Leave_Events_Receiver" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+  <features>
+    <featureReference itemId="61ae6326-a83a-4044-919f-dde34dec1258" />
+  </features>
+</package>

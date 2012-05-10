@@ -1,0 +1,5 @@
+I:\Works\SharePoint\Ask Leave Events Receiver\bin\Debug\Ask Leave Events Receiver.dll
+I:\Works\SharePoint\Ask Leave Events Receiver\bin\Debug\Ask Leave Events Receiver.pdb
+I:\Works\SharePoint\Ask Leave Events Receiver\obj\Debug\ResolveAssemblyReference.cache
+I:\Works\SharePoint\Ask Leave Events Receiver\obj\Debug\Ask Leave Events Receiver.dll
+I:\Works\SharePoint\Ask Leave Events Receiver\obj\Debug\Ask Leave Events Receiver.pdb
