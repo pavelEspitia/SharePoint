@@ -273,6 +273,14 @@
 						<table>
 							<tr><th nowrap>名称</th><td>年假汇总</td></tr>
 							<tr><th nowrap>说明</th><td>记录每个人在每年的总可用年假天数和剩余年假天数。</td></tr>
+							<tr>
+								<th nowrap>权限</th>
+								<td>
+									<ul>
+										<li>断开继承。仅“行政”、“HR”有关人员有“参与讨论”权限，个人自己有“读取”权限。</li>
+									</ul>
+								</td>
+							</tr>
 						</table>
 						<table>
 							<tr><th nowrap>名称</th><td>请假单</td></tr>
@@ -288,6 +296,9 @@
 									</ul>
 								</td>
 							</tr>
+						</table>
+						<table>
+							<tr><th nowrap>名称</th><td>请假单审批任务</td></tr>
 						</table>
 					</td>
 				</tr>
