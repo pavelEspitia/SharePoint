@@ -1,4 +1,4 @@
-﻿#SharePoint 项目及安装部署说明：
+﻿﻿#SharePoint 项目及安装部署说明：
 
 
 欢迎访问 [JonyZhu's Blog](http://www.cnblogs.com/jonyzhu)。
@@ -6,43 +6,6 @@
 
 ##介绍站点结构
 
-<<<<<<< HEAD
-> FBA 设置：  
-> aspnetmembership (WorksMembership)  
-> aspnetrolemanager (WorksRole)  
-
-###http://www.works.com 
-是 Works 公司的公共网站，为互联网匿名用户提供各种信息。匿名 + Windows。  
-该站点将部署以下解决方案：
-####根站点
-* zTemplates\components.stp。组件库
-* zTemplates\news summary.stp。新闻摘要  
-
-
-> 可选在 AllItems.aspx 页面加入 List Image Web Part。  
-> https://www.works.com/_catalogs/lt/Forms/AllItems.aspx
-
-
-* News Events Receiver
-* News Carousel  
-
-
-> 在需要使用的页面，添加 News Carousel Web Part
-
-
-* Style Web Parts（可选）
-
-
-> Hide Quick Launch Web Part，可以隐藏“快速启动”栏。  
-> Lightbox Web Part，可以指定引入 LightBox2 图片浏览工具
-
-
-####admin 子站（管理中心）
-* zTemplates\system log.stp。系统日志   
-
-> 可选在 AllItems.aspx 页面加入 Color Line Web Part。  
-=======
->>>>>>> 7d52dc37304d9943474913e0cea5deefa69989fc
 
 ###Works 公网 
 

@@ -19,19 +19,19 @@
             $("a:eq(0)", "#pages")
 						.removeClass("off")
 						.addClass("on")
-						.css("background-image", "url(/DocLib/rcarousel/page-on.png)");
+						.css("background-image", "url(/DocLib2/rcarousel/page-on.png)");
 
         }
 
         function pageLoaded(event, data) {
             $("a.on", "#pages")
 						.removeClass("on")
-						.css("background-image", "url(/DocLib/rcarousel/page-off.png)");
+						.css("background-image", "url(/DocLib2/rcarousel/page-off.png)");
 
             $("a", "#pages")
 						.eq(data.page)
 						.addClass("on")
-						.css("background-image", "url(/DocLib/rcarousel/page-on.png)");
+						.css("background-image", "url(/DocLib2/rcarousel/page-on.png)");
         }
 
         $("#carousel").rcarousel({

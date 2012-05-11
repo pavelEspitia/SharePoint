@@ -3,3 +3,8 @@ I:\Works\SharePoint\Project Documents\bin\Debug\Project Documents.pdb
 I:\Works\SharePoint\Project Documents\obj\Debug\ResolveAssemblyReference.cache
 I:\Works\SharePoint\Project Documents\obj\Debug\Project Documents.dll
 I:\Works\SharePoint\Project Documents\obj\Debug\Project Documents.pdb
+F:\Works\SharePoint\Project Documents\bin\Debug\Project Documents.dll
+F:\Works\SharePoint\Project Documents\bin\Debug\Project Documents.pdb
+F:\Works\SharePoint\Project Documents\obj\Debug\ResolveAssemblyReference.cache
+F:\Works\SharePoint\Project Documents\obj\Debug\Project Documents.dll
+F:\Works\SharePoint\Project Documents\obj\Debug\Project Documents.pdb

@@ -8,3 +8,8 @@ I:\Works\SharePoint\Project Status\bin\Debug\Project Status.pdb
 I:\Works\SharePoint\Project Status\obj\Debug\ResolveAssemblyReference.cache
 I:\Works\SharePoint\Project Status\obj\Debug\Project Status.dll
 I:\Works\SharePoint\Project Status\obj\Debug\Project Status.pdb
+F:\Works\SharePoint\Project Status\bin\Debug\Project Status.dll
+F:\Works\SharePoint\Project Status\bin\Debug\Project Status.pdb
+F:\Works\SharePoint\Project Status\obj\Debug\ResolveAssemblyReference.cache
+F:\Works\SharePoint\Project Status\obj\Debug\Project Status.dll
+F:\Works\SharePoint\Project Status\obj\Debug\Project Status.pdb

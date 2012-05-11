@@ -5,7 +5,6 @@ I:\Works\SharePoint\Project Events Receiver\obj\Debug\Project Events Receiver.dl
 I:\Works\SharePoint\Project Events Receiver\obj\Debug\Project Events Receiver.pdb
 F:\Works\SharePoint\Project Events Receiver\bin\Debug\Project Events Receiver.dll
 F:\Works\SharePoint\Project Events Receiver\bin\Debug\Project Events Receiver.pdb
-F:\Works\SharePoint\Project Events Receiver\bin\Debug\Microsoft.Sharepoint.Sandbox.dll
 F:\Works\SharePoint\Project Events Receiver\obj\Debug\ResolveAssemblyReference.cache
 F:\Works\SharePoint\Project Events Receiver\obj\Debug\Project Events Receiver.dll
 F:\Works\SharePoint\Project Events Receiver\obj\Debug\Project Events Receiver.pdb

@@ -15,6 +15,7 @@ namespace News_Carousel.News_Carousel_Web_Part
     {
         protected override void CreateChildControls()
         {
+			// TODO: 这里是不是可以搞个缓存什么的？
             SPWeb web = SPContext.Current.Web;
             SPList summary_list = web.Lists["新闻摘要"];
             SPQuery query = new SPQuery();
@@ -23,11 +24,10 @@ namespace News_Carousel.News_Carousel_Web_Part
             SPListItemCollection summary_items = summary_list.GetItems(query);
 
             StringBuilder sb = new StringBuilder();
-            sb.Append("<link type='text/css' rel='stylesheet' href='/DocLib/rcarousel/rcarousel.css' />");
-            sb.Append("<script type='text/javascript' src='/DocLib/jquery/jquery-1.7.1.min.js'></script>");
-            sb.Append("<script type='text/javascript' src='/DocLib/jquery/jquery.ui.core.min.js'></script>");
-            sb.Append("<script type='text/javascript' src='/DocLib/jquery/jquery.ui.widget.min.js'></script>");
-            sb.Append("<script type='text/javascript' src='/DocLib/rcarousel/jquery.ui.rcarousel.min.js'></script>");
+            sb.Append("<link type='text/css' rel='stylesheet' href='/DocLib2/rcarousel/rcarousel.css' />");
+            sb.Append("<script type='text/javascript' src='/DocLib2/jquery/jquery.ui.core.min.js'></script>");
+            sb.Append("<script type='text/javascript' src='/DocLib2/jquery/jquery.ui.widget.min.js'></script>");
+            sb.Append("<script type='text/javascript' src='/DocLib2/rcarousel/jquery.ui.rcarousel.min.js'></script>");
             sb.Append("<link type='text/css' rel='stylesheet' href='/carousel/carousel.css' />");
             sb.Append("<script type='text/javascript' src='/carousel/init.js'></script>");
             sb.Append("<div id='container'>");
