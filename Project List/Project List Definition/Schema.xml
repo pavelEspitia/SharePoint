@@ -131,7 +131,7 @@
 					<FieldRef Name="ProjectBudget" />
 					<FieldRef Name="ProjectStartDate" />
 					<FieldRef Name="ProjectManager" />
-					<FieldRef Name="ProjectDepartment" />
+					<FieldRef Name="ProjectMembers" />
 				</ViewFields>
 				<Query>
 					<OrderBy>
@@ -155,7 +155,7 @@
 					<FieldRef Name="ProjectBudget" />
 					<FieldRef Name="ProjectStartDate" />
 					<FieldRef Name="ProjectManager" />
-					<FieldRef Name="ProjectDepartment" />
+					<FieldRef Name="ProjectMembers" />
 				</ViewFields>
 				<Query>
 					<OrderBy>

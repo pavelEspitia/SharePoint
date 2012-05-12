@@ -16,6 +16,7 @@ namespace News_Carousel.News_Carousel_Web_Part
         protected override void CreateChildControls()
         {
 			// TODO: 这里是不是可以搞个缓存什么的？
+			string component_lib = "/DocLib2";
             SPWeb web = SPContext.Current.Web;
             SPList summary_list = web.Lists["新闻摘要"];
             SPQuery query = new SPQuery();
@@ -24,10 +25,10 @@ namespace News_Carousel.News_Carousel_Web_Part
             SPListItemCollection summary_items = summary_list.GetItems(query);
 
             StringBuilder sb = new StringBuilder();
-            sb.Append("<link type='text/css' rel='stylesheet' href='/DocLib2/rcarousel/rcarousel.css' />");
-            sb.Append("<script type='text/javascript' src='/DocLib2/jquery/jquery.ui.core.min.js'></script>");
-            sb.Append("<script type='text/javascript' src='/DocLib2/jquery/jquery.ui.widget.min.js'></script>");
-            sb.Append("<script type='text/javascript' src='/DocLib2/rcarousel/jquery.ui.rcarousel.min.js'></script>");
+            sb.Append("<link type='text/css' rel='stylesheet' href='"+component_lib+"/rcarousel/rcarousel.css' />");
+			sb.Append("<script type='text/javascript' src='" + component_lib + "/jquery/jquery.ui.core.min.js'></script>");
+			sb.Append("<script type='text/javascript' src='" + component_lib + "/jquery/jquery.ui.widget.min.js'></script>");
+			sb.Append("<script type='text/javascript' src='" + component_lib + "/rcarousel/jquery.ui.rcarousel.min.js'></script>");
             sb.Append("<link type='text/css' rel='stylesheet' href='/carousel/carousel.css' />");
             sb.Append("<script type='text/javascript' src='/carousel/init.js'></script>");
             sb.Append("<div id='container'>");
@@ -35,10 +36,10 @@ namespace News_Carousel.News_Carousel_Web_Part
 
             foreach (SPListItem summary in summary_items)
             {
-                sb.Append("        <div>");
-				sb.Append("            <a href='"); sb.Append(summary["新闻链接"]); sb.Append("'><h3>"); sb.Append(summary["Title"]); sb.Append("</h3></a>");
-                sb.Append("            <img style='float: left;' height='200px' width='240px' src='"); sb.Append(summary["图片"].ToString().Split(',')[0]); sb.Append("' />");
-                sb.Append("            <p style='float: right; width:240px;'>"); sb.Append(summary["摘要"]); sb.Append(".</p>");
+                sb.Append("        <div class='news-summary-div'>");
+				sb.Append("            <a class='news-summary-link' href='"); sb.Append(summary["新闻链接"]); sb.Append("'><h3>"); sb.Append(summary["Title"]); sb.Append("</h3></a>");
+                sb.Append("            <img class='news-summary-image' src='"); sb.Append(summary["图片"].ToString().Split(',')[0]); sb.Append("' />");
+                sb.Append("            <p class='news-summary-phase'>"); sb.Append(summary["摘要"]); sb.Append(".</p>");
                 sb.Append("        </div>");
             }
 

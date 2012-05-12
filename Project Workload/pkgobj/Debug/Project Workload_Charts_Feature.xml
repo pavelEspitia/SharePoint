@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Feature xmlns="http://schemas.microsoft.com/sharepoint/" ImageUrl="CATLG.GIF" Title="Project Workload Charts" Id="cc674740-f633-44bc-ac51-d38144ca8526" ReceiverAssembly="Project Workload, Version=1.0.0.0, Culture=neutral, PublicKeyToken=228cecfd65aa0d42" ReceiverClass="Project_Workload.Features.Feature1.Feature1EventReceiver" Scope="Site">
+<Feature xmlns="http://schemas.microsoft.com/sharepoint/" ImageUrl="CATLG.GIF" Id="cc674740-f633-44bc-ac51-d38144ca8526" ReceiverAssembly="Project Workload, Version=1.0.0.0, Culture=neutral, PublicKeyToken=228cecfd65aa0d42" ReceiverClass="Project_Workload.Features.Feature1.Feature1EventReceiver" Scope="Site" Title="Project Workload Charts">
   <ElementManifests>
     <ElementManifest Location="Project Workload Chart\Elements.xml" />
     <ElementFile Location="Project Workload Chart\Project Workload Chart.webpart" />

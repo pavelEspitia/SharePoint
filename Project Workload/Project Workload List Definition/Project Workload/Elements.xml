@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Elements xmlns="http://schemas.microsoft.com/sharepoint/">
-  <ListInstance Title="Project Workload"
+  <ListInstance Title="项目工作量"
                 OnQuickLaunch="TRUE"
                 TemplateType="10001"
                 Url="Lists/Project Workload"
