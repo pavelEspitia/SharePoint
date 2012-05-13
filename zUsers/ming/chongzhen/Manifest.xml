@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ContentPack>
+	<Title>People Pack - User Profile &amp; My Site Provisioning</Title>
+	<Version>4.0.0</Version>
+	<Description>This version 4 package will create User Profiles &amp; My Sites for Contoso Employees, and import user data and images for each user profile. It will also load pictures into Active Directory so contact cards will work.</Description>
+	<InstallPSPath>Install.ps1</InstallPSPath>
+	<UninstallPSPath>Uninstall.ps1</UninstallPSPath>
+	<DefaultURL>http://intranet.contoso.com/</DefaultURL>
+	<Categories>
+		<Category Level="1">SharePoint</Category>
+		<Category Level="2">Contoso</Category>
+		<Category Level="3">User Profile Provisioning</Category>
+	</Categories>
+</ContentPack>
