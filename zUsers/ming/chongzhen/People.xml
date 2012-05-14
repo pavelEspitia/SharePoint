@@ -1,37 +1,8 @@
-<Employees>
-  <Employee>
-    <Name>朱由检</Name>
-    <FirstName>由检</FirstName>
-    <LastName>朱</LastName>
-    <WorkEmail>youjian.zhu@works.com</WorkEmail>
-    <AccountName>works\youjian.zhu</AccountName>
-    <Department>皇宫</Department>
-    <Title>明思宗</Title>
-    <Responsibilities>皇帝</Responsibilities>
-    <Manager></Manager>
-    <Organization>明朝</Organization>
-    <City>北京</City>
-    <Country>中国</Country>
-    <AboutMe>朱由检（1611年2月7日－1644年4月25日），光宗第五子，熹宗异母弟，明朝第十六位皇帝，母为淑女刘氏，年号崇祯。</AboutMe>
-    <Interests></Interests>
-    <Picture>images\youjian.zhu.jpg</Picture>
-    <CreateMySite>false</CreateMySite>
-  </Employee>
-  <Employee>
-    <Name>洪承畴</Name>
-    <FirstName>承畴</FirstName>
-    <LastName>洪</LastName>
-    <WorkEmail>chengchou.hong@works.com</WorkEmail>
-    <AccountName>works\chengchou.hong</AccountName>
-    <Department>兵部</Department>
-    <Title>尚书</Title>
-    <Manager>works\youjian.zhu</Manager>
-    <Organization>明朝</Organization>
-    <City>北京</City>
-    <Country>中国</Country>
-    <AboutMe>字彦演，号亨九，福建泉州南安英都人（今英都镇良山村霞美）[1]。为明神宗万历四十四年（1616年）进士，累官至陕西布政使参政，崇祯时官至兵部尚书、蓟辽总督，后降清，成为清朝首位汉人大学士。</AboutMe>
-    <Interests></Interests>
-    <Picture>images\chengchou.hong.jpg</Picture>
-    <CreateMySite>false</CreateMySite>
-  </Employee>
-</Employees>
+<Es>
+  <E>
+    <FN>�ɼ�</FN><LN>��</LN><AN>works\youjian.zhu</AN><D>�ʵ�</D><T>��˼��</T><M>works\biao.zhu</M><O>����</O><C>����</C><AM>���ɼ죨1611��2��7�գ�1644��4��25�գ������ڵ����ӣ�������ĸ�ܣ�������ʮ��λ�ʵۣ�ĸΪ��Ů���ϣ���ų�����</AM>
+  </E>
+  <E>
+    <FN>�г�</FN><LN>��</LN><AN>works\chengchou.hong</AN><D>����</D><T>����</T><M>works\youjian.zhu</M><O>����</O><C>����</C><AM>�����ݣ��ź�ţ�����Ȫ���ϰ�Ӣ���ˣ���Ӣ������ɽ��ϼ����[1]��Ϊ������������ʮ���꣨1616�꣩��ʿ���۹�����������ʹ����������ʱ�����������顢�����ܶ������壬��Ϊ�峯��λ���˴�ѧʿ��</AM>
+  </E>
+</Es>
