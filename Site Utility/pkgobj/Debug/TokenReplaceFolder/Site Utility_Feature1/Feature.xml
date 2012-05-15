@@ -3,5 +3,13 @@
   <ElementManifests>
     <ElementManifest Location="Security\Elements.xml" />
     <ElementFile Location="Security\Security.webpart" />
+    <ElementManifest Location="Utilities\Elements.xml" />
+    <ElementFile Location="Utilities\Related Attachments.js" />
+    <ElementManifest Location="Generate Test Data Web Part\Elements.xml" />
+    <ElementFile Location="Generate Test Data Web Part\Generate Test Data Web Part.webpart" />
+    <ElementManifest Location="SPQuery Test Web Part\Elements.xml" />
+    <ElementFile Location="SPQuery Test Web Part\SPQuery Test Web Part.webpart" />
+    <ElementManifest Location="MapProvider Test Web Part\Elements.xml" />
+    <ElementFile Location="MapProvider Test Web Part\MapProvider Test Web Part.webpart" />
   </ElementManifests>
 </Feature>
