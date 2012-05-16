@@ -19,7 +19,8 @@ namespace Site_Utility.SPQuery_Test_Web_Part
 			SPWeb web = SPContext.Current.Web;
 			SPList list = web.Lists["人物列表"];
 			SPQuery query = new SPQuery();
-			query.Query = "<Where><Eq><FieldRef Name='_x804c__x4f4d_'/><Value Type='Text'>J</Value></Eq></Where>";
+			// query.Query = "<Where><Eq><FieldRef Name='_x804c__x4f4d_'/><Value Type='Text'>J</Value></Eq></Where>";
+			query.Query = "<Where><And><Eq><FieldRef Name='_x6027__x522b_'/><Value Type='Text'>男</Value></Eq><Eq><FieldRef Name='_x804c__x4f4d_'/><Value Type='Text'>J</Value></Eq></And></Where>";
 
 			Stopwatch timer = new Stopwatch();
 			timer.Start();

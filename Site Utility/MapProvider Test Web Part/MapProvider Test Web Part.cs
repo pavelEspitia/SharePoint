@@ -17,8 +17,11 @@ namespace Site_Utility.MapProvider_Test_Web_Part
 	{
 		protected override void CreateChildControls()
 		{
+			return;
 			SPQuery query = new SPQuery();
-			query.Query = "<Where><Eq><FieldRef Name='_x804c__x4f4d_'/><Value Type='Text'>J</Value></Eq></Where>";
+			// supports less than 130,000 records
+			// query.Query = "<Where><Eq><FieldRef Name='_x804c__x4f4d_'/><Value Type='Text'>J</Value></Eq></Where>";
+			query.Query = "<Where><And><Eq><FieldRef Name='_x6027__x522b_'/><Value Type='Text'>男</Value></Eq><Eq><FieldRef Name='_x804c__x4f4d_'/><Value Type='Text'>J</Value></Eq></And></Where>";
 			SPWeb web = SPContext.Current.Web;
 			PortalSiteMapProvider ps = PortalSiteMapProvider.WebSiteMapProvider;
 			PortalWebSiteMapNode psNode = (PortalWebSiteMapNode)ps.FindSiteMapNode(web.ServerRelativeUrl);

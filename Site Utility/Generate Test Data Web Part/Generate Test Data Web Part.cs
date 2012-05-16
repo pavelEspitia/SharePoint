@@ -13,7 +13,7 @@ namespace Site_Utility.Generate_Test_Data_Web_Part
 	[ToolboxItemAttribute(false)]
 	public class Generate_Test_Data_Web_Part : WebPart
 	{
-		protected int _count = 2000;
+		protected int _count = 10000;
 		protected string _names = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		protected string[] _sex = {"-","男","女"};
 		protected override void CreateChildControls()
