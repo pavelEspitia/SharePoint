@@ -60,6 +60,9 @@
     <None Include="Ask Leave List Events Receiver\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{2fb36ed7-fb2b-456a-bd6e-24b668d4973f}</SharePointProjectItemId>
     </None>
+    <None Include="Ask Leave Module\SharePointProjectItem.spdata">
+      <SharePointProjectItemId>{1090bca3-660f-48fe-a88c-cf34300cfa1b}</SharePointProjectItemId>
+    </None>
     <None Include="Ask Leave Task Events Receiver\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{2a901650-57e8-47a4-b34b-092d8f507441}</SharePointProjectItemId>
     </None>
@@ -80,6 +83,8 @@
   <ItemGroup />
   <ItemGroup>
     <Content Include="Ask Leave List Events Receiver\Elements.xml" />
+    <Content Include="Ask Leave Module\Elements.xml" />
+    <Content Include="Ask Leave Module\newItem.html" />
     <Content Include="Ask Leave Task Events Receiver\Elements.xml" />
     <Content Include="Ask Leave Workflow Events Receiver\Elements.xml" />
     <Content Include="Features\Feature1\Feature1.Template.xml">

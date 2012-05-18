@@ -1,10 +1,10 @@
-I:\Works\SharePoint\Site Utility\bin\Debug\Site Utility.dll
-I:\Works\SharePoint\Site Utility\bin\Debug\Site Utility.pdb
-I:\Works\SharePoint\Site Utility\obj\Debug\ResolveAssemblyReference.cache
-I:\Works\SharePoint\Site Utility\obj\Debug\Site Utility.dll
-I:\Works\SharePoint\Site Utility\obj\Debug\Site Utility.pdb
 F:\Works\SharePoint\Site Utility\bin\Debug\Site Utility.dll
 F:\Works\SharePoint\Site Utility\bin\Debug\Site Utility.pdb
 F:\Works\SharePoint\Site Utility\obj\Debug\ResolveAssemblyReference.cache
 F:\Works\SharePoint\Site Utility\obj\Debug\Site Utility.dll
 F:\Works\SharePoint\Site Utility\obj\Debug\Site Utility.pdb
+I:\Works\SharePoint\Site Utility\bin\Debug\Site Utility.dll
+I:\Works\SharePoint\Site Utility\bin\Debug\Site Utility.pdb
+I:\Works\SharePoint\Site Utility\obj\Debug\Site Utility.dll
+I:\Works\SharePoint\Site Utility\obj\Debug\Site Utility.pdb
+I:\Works\SharePoint\Site Utility\obj\Debug\Site Utility.csprojResolveAssemblyReference.cache

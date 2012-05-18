@@ -1,3 +1,5 @@
+# Set-ExecutionPolicy Unrestricted
+# Set-ExecutionPolicy RemoteSigned
 
 param(
 	[string]$userFilePath = $(throw "请指定用户XML文件。"),
@@ -51,16 +53,21 @@ if($domainName){
 				[ADSI]$server="LDAP://ou="+$user.O+",DC="+$domainName+",DC=com"
 				if(!$server.Guid){
 					[ADSI]$server="LDAP://DC="+$domainName+",DC=com"
-					$server = createOU $server $user.O
-					$server = createOU $server $user.R
-					$server = createOU $server $user.D
+					createOU $server $user.O
+					[ADSI]$server="LDAP://ou="+$user.O+",DC="+$domainName+",DC=com"
+					createOU $server $user.R
+					[ADSI]$server="LDAP://ou="+$user.R+",ou="+$user.O+",DC="+$domainName+",DC=com"
+					createOU $server $user.D
+					
 				}else{
-					$server = createOU $server $user.R
-					$server = createOU $server $user.D
+					createOU $server $user.R
+					[ADSI]$server="LDAP://ou="+$user.R+",ou="+$user.O+",DC="+$domainName+",DC=com"
+					createOU $server $user.D
 				}
 			}else{
-				$server = createOU $server $user.D
+				createOU $server $user.D
 			}
+			[ADSI]$server="LDAP://ou="+$user.D+",ou="+$user.R+",ou="+$user.O+",DC="+$domainName+",DC=com"
 		}
 		$wUser = createADUser $server $user.Fn $user.LN $user.AN $user.AM
 		if($user.M){
