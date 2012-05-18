@@ -52,6 +52,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customized Fields", "Custom
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ask Leave Events Receiver", "Ask Leave Events Receiver\Ask Leave Events Receiver.csproj", "{2686E912-1A18-41C8-8CAD-5B177D7FEBDD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Site Toolbar", "Site Toolbar\Site Toolbar.csproj", "{6AFD5574-2D16-420F-A8DA-7972F6255DD5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -160,6 +162,12 @@ Global
 		{2686E912-1A18-41C8-8CAD-5B177D7FEBDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2686E912-1A18-41C8-8CAD-5B177D7FEBDD}.Release|Any CPU.Build.0 = Release|Any CPU
 		{2686E912-1A18-41C8-8CAD-5B177D7FEBDD}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{6AFD5574-2D16-420F-A8DA-7972F6255DD5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AFD5574-2D16-420F-A8DA-7972F6255DD5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AFD5574-2D16-420F-A8DA-7972F6255DD5}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{6AFD5574-2D16-420F-A8DA-7972F6255DD5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AFD5574-2D16-420F-A8DA-7972F6255DD5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AFD5574-2D16-420F-A8DA-7972F6255DD5}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

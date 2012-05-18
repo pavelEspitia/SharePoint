@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<webParts>
+  <webPart xmlns="http://schemas.microsoft.com/WebPart/v3">
+    <metaData>
+      <type name="Site_Toolbar.Support_Toolbar_Web_Part.Support_Toolbar_Web_Part, Site Toolbar, Version=1.0.0.0, Culture=neutral, PublicKeyToken=ae50413e7af798a5" />
+      <importErrorMessage>$Resources:core,ImportErrorMessage;</importErrorMessage>
+    </metaData>
+    <data>
+      <properties>
+        <property name="Title" type="string">Support Toolbar Web Part</property>
+        <property name="Description" type="string">我的 Web 部件</property>
+      </properties>
+    </data>
+  </webPart>
+</webParts>

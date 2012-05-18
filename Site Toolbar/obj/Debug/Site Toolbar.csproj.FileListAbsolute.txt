@@ -1,0 +1,5 @@
+F:\Works\SharePoint\Site Toolbar\bin\Debug\Site Toolbar.dll
+F:\Works\SharePoint\Site Toolbar\bin\Debug\Site Toolbar.pdb
+F:\Works\SharePoint\Site Toolbar\obj\Debug\Site Toolbar.csprojResolveAssemblyReference.cache
+F:\Works\SharePoint\Site Toolbar\obj\Debug\Site Toolbar.dll
+F:\Works\SharePoint\Site Toolbar\obj\Debug\Site Toolbar.pdb

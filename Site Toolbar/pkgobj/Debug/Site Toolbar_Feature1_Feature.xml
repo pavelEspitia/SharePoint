@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Feature xmlns="http://schemas.microsoft.com/sharepoint/" ImageUrl="CATLG.GIF" Description="Site Toolbars" Id="ed2817cd-dd3a-4c6a-9a19-c59281876c78" Scope="Site" Title="Site Toolbar Feature">
+  <ElementManifests>
+    <ElementManifest Location="Support Toolbar Web Part\Elements.xml" />
+    <ElementFile Location="Support Toolbar Web Part\Support Toolbar Web Part.webpart" />
+  </ElementManifests>
+</Feature>

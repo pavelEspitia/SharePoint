@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/" >
+	<CustomAction Id="SupportToolbar.Help"
+				  Location="Works.SupportToolbar"
+				  GroupId="SupportToolbar"
+				  Title="帮助"
+					Description="查看使用帮助信息"
+				  ImageUrl="/_layouts/Images/lg_ICHLP.gif"
+				  Sequence="100">
+		<UrlAction Url="javascript:openHelpDialog();"/>
+	</CustomAction>
+  <Module Name="Support Toolbar Web Part" List="113" Url="_catalogs/wp">
+    <File Path="Support Toolbar Web Part\Support Toolbar Web Part.webpart" Url="Support Toolbar Web Part.webpart" Type="GhostableInLibrary">
+      <Property Name="Group" Value="Custom" />
+    </File>
+  </Module>
+</Elements>
