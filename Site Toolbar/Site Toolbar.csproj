@@ -76,6 +76,7 @@
     <Content Include="Features\Feature1\Feature1.Template.xml">
       <DependentUpon>Feature1.feature</DependentUpon>
     </Content>
+    <Content Include="masterpage.html" />
     <Content Include="masterpage.js" />
     <Content Include="Support Toolbar Web Part\Elements.xml" />
   </ItemGroup>
