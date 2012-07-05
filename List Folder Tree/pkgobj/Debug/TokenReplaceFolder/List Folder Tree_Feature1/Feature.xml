@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Feature xmlns="http://schemas.microsoft.com/sharepoint/" ImageUrl="CATLG.GIF" Description="List Folder Tree Feature" Id="70b4ce86-6188-4611-81b3-e669f19809a7" Scope="Site" Title="List Folder Tree Feature">
+  <ElementManifests>
+    <ElementManifest Location="Folder Tree Web Part\Elements.xml" />
+    <ElementFile Location="Folder Tree Web Part\Folder Tree Web Part.webpart" />
+    <ElementManifest Location="Folder Tree Web Part Module\Elements.xml" />
+    <ElementFile Location="Folder Tree Web Part Module\init.js" />
+  </ElementManifests>
+</Feature>

@@ -5,7 +5,6 @@ I:\SharePoint\Project Management\Project Resources\obj\Debug\Project Resources.d
 I:\SharePoint\Project Management\Project Resources\obj\Debug\Project Resources.pdb
 I:\Works\SharePoint\Project Resources\bin\Debug\Project Resources.dll
 I:\Works\SharePoint\Project Resources\bin\Debug\Project Resources.pdb
-I:\Works\SharePoint\Project Resources\obj\Debug\ResolveAssemblyReference.cache
 I:\Works\SharePoint\Project Resources\obj\Debug\Project Resources.dll
 I:\Works\SharePoint\Project Resources\obj\Debug\Project Resources.pdb
 F:\Works\SharePoint\Project Resources\bin\Debug\Project Resources.dll
@@ -13,3 +12,4 @@ F:\Works\SharePoint\Project Resources\bin\Debug\Project Resources.pdb
 F:\Works\SharePoint\Project Resources\obj\Debug\ResolveAssemblyReference.cache
 F:\Works\SharePoint\Project Resources\obj\Debug\Project Resources.dll
 F:\Works\SharePoint\Project Resources\obj\Debug\Project Resources.pdb
+I:\Works\SharePoint\Project Resources\obj\Debug\Project Resources.csprojResolveAssemblyReference.cache

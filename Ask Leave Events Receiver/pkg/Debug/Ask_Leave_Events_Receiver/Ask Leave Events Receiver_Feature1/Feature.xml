@@ -4,5 +4,7 @@
     <ElementManifest Location="Ask Leave List Events Receiver\Elements.xml" />
     <ElementManifest Location="Ask Leave Task Events Receiver\Elements.xml" />
     <ElementManifest Location="Ask Leave Workflow Events Receiver\Elements.xml" />
+    <ElementManifest Location="Ask Leave Module\Elements.xml" />
+    <ElementFile Location="Ask Leave Module\newItem.html" />
   </ElementManifests>
 </Feature>

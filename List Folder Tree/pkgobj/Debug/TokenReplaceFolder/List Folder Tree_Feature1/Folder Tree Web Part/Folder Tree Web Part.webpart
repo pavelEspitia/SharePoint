@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<webParts>
+  <webPart xmlns="http://schemas.microsoft.com/WebPart/v3">
+    <metaData>
+      <type name="List_Folder_Tree.Folder_Tree_Web_Part.Folder_Tree_Web_Part, List Folder Tree, Version=1.0.0.0, Culture=neutral, PublicKeyToken=df2dc00ea282458a" />
+      <importErrorMessage>$Resources:core,ImportErrorMessage;</importErrorMessage>
+    </metaData>
+    <data>
+      <properties>
+        <property name="Title" type="string">Folder Tree Web Part</property>
+        <property name="Description" type="string">我的 Web 部件</property>
+      </properties>
+    </data>
+  </webPart>
+</webParts>

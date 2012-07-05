@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <SharePointSiteUrl>https://intranet.works.com/</SharePointSiteUrl>
+  </PropertyGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{BB1F664B-9266-4fd6-B973-E1E44974B511}">
+        <ProjectItemStore Id="{6e01eb53-80e2-4925-bd38-45883e092c15}">
+          <DisplayName>Workflow - SeqWorkflow</DisplayName>
+          <HistoryList>Workflow History</HistoryList>
+          <HistoryListGuid>{82279eee-b509-4d21-9d15-25fabe79170e}</HistoryListGuid>
+          <TaskList>工作流任务</TaskList>
+          <TaskListGuid>{42629029-1640-4d46-8436-eff1ff9237ac}</TaskListGuid>
+          <AutoAssociate>true</AutoAssociate>
+          <ManualStart>true</ManualStart>
+          <ListURL>https://intranet.works.com/SiteCollectionImages/Forms/Thumbnails.aspx</ListURL>
+          <TargetList>网站集图像</TargetList>
+          <TargetListGuid>{77c36eec-f2f5-4144-ad86-e0659ec6cc63}</TargetListGuid>
+          <StartOnCreate>false</StartOnCreate>
+          <StartOnChange>false</StartOnChange>
+        </ProjectItemStore>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

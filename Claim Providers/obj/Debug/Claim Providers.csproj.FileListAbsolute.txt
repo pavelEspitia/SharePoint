@@ -1,4 +1,3 @@
-I:\Works\SharePoint\Claim Providers\obj\Debug\ResolveAssemblyReference.cache
 I:\Works\SharePoint\Claim Providers\bin\Debug\Claim Providers.dll
 I:\Works\SharePoint\Claim Providers\bin\Debug\Claim Providers.pdb
 I:\Works\SharePoint\Claim Providers\obj\Debug\Claim Providers.dll

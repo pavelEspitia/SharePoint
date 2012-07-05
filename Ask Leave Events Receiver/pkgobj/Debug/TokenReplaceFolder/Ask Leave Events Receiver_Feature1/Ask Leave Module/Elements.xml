@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <Module Name="Ask Leave Module">
+    <File Path="Ask Leave Module\newItem.html" Url="Ask Leave Module/newItem.html" />
+  </Module>
+</Elements>

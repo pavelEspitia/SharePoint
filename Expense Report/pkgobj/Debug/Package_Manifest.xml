@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Solution xmlns="http://schemas.microsoft.com/sharepoint/" SolutionId="50027936-e3cc-414e-a90b-0466e39a6f2f" SharePointProductVersion="14.0">
+  <Assemblies>
+    <Assembly Location="Expense Report.dll" DeploymentTarget="GlobalAssemblyCache" />
+  </Assemblies>
+  <FeatureManifests>
+    <FeatureManifest Location="Expense Report_Feature1\Feature.xml" />
+  </FeatureManifests>
+</Solution>

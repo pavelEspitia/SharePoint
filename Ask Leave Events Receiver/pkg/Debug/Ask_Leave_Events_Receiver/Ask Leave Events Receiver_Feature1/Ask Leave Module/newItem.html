@@ -1,0 +1,77 @@
+﻿<SharePoint:ScriptLink Name="SP.js" runat="server" OnDemand="true" Localizable="false" />
+<script src="../../DocLib/spservices/jquery.SPServices-0.7.1a.min.js" type="text/javascript"></script>
+<script>
+$(document).ready(function(){
+	var gj = $('select[title="假别"]').val();
+	if(gj=='年假'){
+		ExecuteOrDelayUntilScriptLoaded(get_annual_leave_days, "sp.js");	}
+	else{
+		$("nobr:contains('请假天数')").children().each(function(){
+			$(this).html("*");
+		});
+	}
+	$('select[title="假别"]').change(function(){
+		var lj=$(this).val();
+		if(lj=='年假'){
+			ExecuteOrDelayUntilScriptLoaded(get_annual_leave_days, "sp.js");		}
+		else{
+			$("nobr:contains('请假天数')").children().each(function(){
+				$(this).html("*");
+			});
+		}
+	});
+});
+
+var _ctx = null;
+var _items = null;
+function get_annual_leave_days(){
+	_ctx = new SP.ClientContext.get_current();
+	var web = _ctx.get_web();
+	var lists = web.get_lists();
+	var list_annual_leave = lists.getByTitle("年假汇总");
+
+	var currentDate = new Date();
+	var year = currentDate.getFullYear();
+	var currentUserID = $().SPServices.SPGetCurrentUser({
+		fieldName: "ID",
+		debug: false
+	});
+	
+
+	var camlQuery = new SP.CamlQuery();
+	var strCaml = "<View>" +
+		"<Query>" +
+			"<Where>"+
+				"<And>"+
+					"<Eq>"+
+						"<FieldRef Name='_x4eba__x5458_' LookupId='TRUE' />"+
+						"<Value Type='Lookup'>"+currentUserID+"</Value>"+
+					"</Eq>"+
+					"<Eq>"+
+						"<FieldRef Name='_x5e74__x4efd_' />"+
+						"<Value Type='Integer'>"+year+"</Value>"+
+					"</Eq>"+
+				"</And>"+
+			"</Where>"+
+		"</Query>" +
+	"</View>";
+	camlQuery.set_viewXml(strCaml);
+	this._items = list_annual_leave.getItems(camlQuery);
+	_ctx.load(_items);
+
+	_ctx.executeQueryAsync(Function.createDelegate(this, this.onSuccess), Function.createDelegate(this, this.onFail));
+}
+function onSuccess(sender, args) {
+	var listItemEnumerator = this._items.getEnumerator();
+	while(listItemEnumerator.moveNext()) {
+		var oListItem = listItemEnumerator.get_current();
+		var days = oListItem.get_item("_x5269__x4f59__x5e74__x5047__x59");
+		$("nobr:contains('请假天数')").children().each(function(){
+			$(this).html("（剩余 "+days+" 天）*");
+		});
+	}
+}
+function onFail(sender, args) {
+	alert('获取年假天数时出错：' + args.get_message());
+}
+</script>

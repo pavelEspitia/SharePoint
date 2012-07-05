@@ -1,0 +1,5 @@
+I:\Works\SharePoint\Workflow\bin\Debug\Workflow.dll
+I:\Works\SharePoint\Workflow\bin\Debug\Workflow.pdb
+I:\Works\SharePoint\Workflow\obj\Debug\Workflow.csprojResolveAssemblyReference.cache
+I:\Works\SharePoint\Workflow\obj\Debug\Workflow.dll
+I:\Works\SharePoint\Workflow\obj\Debug\Workflow.pdb

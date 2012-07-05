@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="50027936-e3cc-414e-a90b-0466e39a6f2f" solutionId="50027936-e3cc-414e-a90b-0466e39a6f2f" resetWebServer="false" name="Expense_Report" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+  <features>
+    <featureReference itemId="957e55ac-510f-4350-bd1b-d49324d530c8" />
+  </features>
+</package>
