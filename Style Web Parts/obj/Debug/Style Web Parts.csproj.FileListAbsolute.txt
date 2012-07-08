@@ -9,6 +9,5 @@ I:\Works\SharePoint\Style Web Parts\obj\Debug\Style Web Parts.dll
 I:\Works\SharePoint\Style Web Parts\obj\Debug\Style Web Parts.pdb
 F:\Works\SharePoint\Style Web Parts\bin\Debug\Style Web Parts.dll
 F:\Works\SharePoint\Style Web Parts\bin\Debug\Style Web Parts.pdb
-F:\Works\SharePoint\Style Web Parts\obj\Debug\ResolveAssemblyReference.cache
 F:\Works\SharePoint\Style Web Parts\obj\Debug\Style Web Parts.dll
 F:\Works\SharePoint\Style Web Parts\obj\Debug\Style Web Parts.pdb

@@ -4,6 +4,5 @@ I:\Works\SharePoint\List Require Attachment\obj\Debug\List Require Attachment.dl
 I:\Works\SharePoint\List Require Attachment\obj\Debug\List Require Attachment.pdb
 F:\Works\SharePoint\List Require Attachment\bin\Debug\List Require Attachment.dll
 F:\Works\SharePoint\List Require Attachment\bin\Debug\List Require Attachment.pdb
-F:\Works\SharePoint\List Require Attachment\obj\Debug\ResolveAssemblyReference.cache
 F:\Works\SharePoint\List Require Attachment\obj\Debug\List Require Attachment.dll
 F:\Works\SharePoint\List Require Attachment\obj\Debug\List Require Attachment.pdb

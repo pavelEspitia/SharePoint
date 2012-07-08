@@ -5,7 +5,6 @@ I:\SharePoint\Sandbox\Project Workload\obj\Debug\Project Workload.dll
 I:\SharePoint\Sandbox\Project Workload\obj\Debug\Project Workload.pdb
 F:\Works\SharePoint\Project Workload\bin\Debug\Project Workload.dll
 F:\Works\SharePoint\Project Workload\bin\Debug\Project Workload.pdb
-F:\Works\SharePoint\Project Workload\obj\Debug\ResolveAssemblyReference.cache
 F:\Works\SharePoint\Project Workload\obj\Debug\Project Workload.dll
 F:\Works\SharePoint\Project Workload\obj\Debug\Project Workload.pdb
 I:\Works\SharePoint\Project Workload\bin\Debug\Project Workload.dll
