@@ -3,3 +3,8 @@ I:\Works\SharePoint\Workflow\bin\Debug\Workflow.pdb
 I:\Works\SharePoint\Workflow\obj\Debug\Workflow.csprojResolveAssemblyReference.cache
 I:\Works\SharePoint\Workflow\obj\Debug\Workflow.dll
 I:\Works\SharePoint\Workflow\obj\Debug\Workflow.pdb
+F:\Works\SharePoint\Workflow\bin\Debug\Workflow.dll
+F:\Works\SharePoint\Workflow\bin\Debug\Workflow.pdb
+F:\Works\SharePoint\Workflow\obj\Debug\Workflow.csprojResolveAssemblyReference.cache
+F:\Works\SharePoint\Workflow\obj\Debug\Workflow.dll
+F:\Works\SharePoint\Workflow\obj\Debug\Workflow.pdb

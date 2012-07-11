@@ -143,7 +143,10 @@ namespace List_Folder_Tree.Folder_Tree_Web_Part
 			// format the JSON string for each folder
 			foreach (SPFolder child_folder in folder_array)
 			{
-				if (child_folder.Name.ToLower() == "forms") continue; // exclude the built-in Forms folder.
+				string child_folder_name = child_folder.Name.ToLower();
+				if (child_folder_name == "forms"||
+					child_folder_name=="attachments"||
+					child_folder_name=="item") continue; // exclude the built-in Forms folder.
 				format_json(ref sb, child_folder);
 			}
 

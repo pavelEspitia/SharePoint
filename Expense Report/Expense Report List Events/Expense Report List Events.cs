@@ -52,17 +52,28 @@ namespace Expense_Report.Expense_Report_List_Events
 				}
 
 				try {
-					string newFolder = string.Format("{0}/{1}/{2}/{3}", properties.Web.ServerRelativeUrl, item.ParentList.RootFolder.Url, country, user_name);
-					//SPListItem item_new = list.AddItem(newFolder, SPFileSystemObjectType.File);
-					//item_new["Title"] = item["Title"];
-					//item_new["Amount"] = item["Amount"];
-					//item_new["Country"] = item["Country"];
-					//item_new["Created"] = item["Created"];
-					//item_new["Created By"] = item["Created By"];
-					//item_new["Attachments"] = item["Attachments"];
-					//item_new.Update();
-					item.CopyTo(properties.WebUrl+"/"+newFolder);
+					string newFolder = string.Format("{0}/{1}/{2}",  item.ParentList.RootFolder.Url, country, user_name);
+					SPListItem item_new = list.AddItem(newFolder, SPFileSystemObjectType.File);
+					item_new["Title"] = item["Title"];
+					item_new["Amount"] = item["Amount"];
+					item_new["Country"] = item["Country"];
+					item_new["Approvers"] = item["Approvers"];
+					item_new["Created"] = item["Created"];
+					item_new["Created By"] = item["Created By"];
+					foreach (string file_name in item.Attachments) {
+						SPFile file = item.ParentList.ParentWeb.GetFile(
+							item.Attachments.UrlPrefix + file_name);
+						byte[] data = file.OpenBinary();
+						item_new.Attachments.Add(file_name, data);
+					}
+					item_new.Update();
+					//item.CopyTo(properties.WebUrl+"/"+newFolder);
 					item.Delete();
+
+					// Start the workflow
+					SPWorkflowAssociationCollection workflows = list.WorkflowAssociations;
+					SPWorkflowAssociation workflow = workflows.GetAssociationByName("Expense Report Approval Workflow", System.Globalization.CultureInfo.CurrentCulture);
+					properties.Web.Site.WorkflowManager.StartWorkflow(item_new, workflow, workflow.AssociationData, true);
 				}
 				catch (Exception ex) {
 					item["Error"] = ex.ToString();

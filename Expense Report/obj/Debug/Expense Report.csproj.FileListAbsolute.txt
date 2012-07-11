@@ -2,3 +2,8 @@ I:\Works\SharePoint\Expense Report\bin\Debug\Expense Report.dll
 I:\Works\SharePoint\Expense Report\bin\Debug\Expense Report.pdb
 I:\Works\SharePoint\Expense Report\obj\Debug\Expense Report.dll
 I:\Works\SharePoint\Expense Report\obj\Debug\Expense Report.pdb
+F:\Works\SharePoint\Expense Report\bin\Debug\Expense Report.dll
+F:\Works\SharePoint\Expense Report\bin\Debug\Expense Report.pdb
+F:\Works\SharePoint\Expense Report\obj\Debug\Expense Report.dll
+F:\Works\SharePoint\Expense Report\obj\Debug\Expense Report.pdb
+I:\Works\SharePoint\Expense Report\obj\Debug\Expense Report.csprojResolveAssemblyReference.cache
