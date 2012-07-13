@@ -5,3 +5,4 @@ i:\Works\SharePoint\Excel Importer\obj\x86\Debug\Excel_Importer.Properties.Resou
 i:\Works\SharePoint\Excel Importer\obj\x86\Debug\Excel Importer.csproj.GenerateResource.Cache
 i:\Works\SharePoint\Excel Importer\obj\x86\Debug\Excel Importer.exe
 i:\Works\SharePoint\Excel Importer\obj\x86\Debug\Excel Importer.pdb
+i:\Works\SharePoint\Excel Importer\obj\x86\Debug\Excel Importer.csprojResolveAssemblyReference.cache

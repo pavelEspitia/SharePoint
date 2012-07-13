@@ -9,54 +9,111 @@ using System.Windows.Forms;
 using System.Data.OleDb;
 using Microsoft.SharePoint.Client;
 using MSDN.Samples.ClaimsAuth;
+using System.Threading;
+using System.Web.UI.WebControls;
+using System.IO;
+using System.Web.UI;
 
 namespace Excel_Importer {
 	public partial class Form1 : System.Windows.Forms.Form {
 		public Form1() {
 			InitializeComponent();
 		}
+		private delegate void ui_call_back(string value);
+		private void update_record_count(string value) {
+				lbCounter.Text = value;
+		}
 		Web site = null;
 		ClientContext clientContext = null;
+		bool is_running = false;
 		private void cmdImport_Click(object sender, EventArgs e) {
-
-			//ClientContext clientContext = new ClientContext(get_site_url());
-			//if (chkUseClaims.Checked) {
-			//    clientContext.ExecutingWebRequest +=
-			//        new EventHandler<WebRequestEventArgs>(ctx_MixedAuthRequest);
-			//    clientContext.AuthenticationMode = ClientAuthenticationMode.Default;
-			//    clientContext.Credentials = System.Net.CredentialCache.DefaultCredentials;
-			//}
-			List list = site.Lists.GetByTitle(cmbLists.SelectedItem.ToString());
+			if (cmdImport.Text == "Import") {
+				lbCounter.Text = "0 / 0";
+				is_running = true;
+				cmdImport.Text = "Stop";
+				string list_items = cmbLists.SelectedItem.ToString() + ";" + cmbSheets.SelectedItem.ToString();
+				ThreadPool.QueueUserWorkItem(new WaitCallback(import),list_items);
+			} else {
+				is_running = false;
+				cmdImport.Text = "Import";
+			}
+		}
+		private void import(Object stateInfo) {
+			string [] list_items = stateInfo.ToString().Split(';');
+			List list = site.Lists.GetByTitle(list_items[0]);
 			clientContext.ExecuteQuery();
 
-			lbCounter.Text = "0 / 0";
-			string commandStr = "select * from [" + cmbSheets.SelectedItem.ToString() + "]";
+			string commandStr = "select * from [" + list_items[1] + "]";
 			OleDbDataAdapter command = new OleDbDataAdapter(commandStr, get_conn_string());
 			DataTable data = new DataTable();
 			command.Fill(data);
-			lbCounter.Text = "0 / " + data.Rows.Count;
+			this.Invoke(
+				new ui_call_back(update_record_count),
+				new object[]{"0 / " + data.Rows.Count}
+			);
 
 			int count = 0;
+			DataTable table=new DataTable();
+			Microsoft.SharePoint.Client.ListItem old_ListItem = null;
 			ListItemCreationInformation itemCreateInfo = new ListItemCreationInformation();
 			foreach (DataRow row in data.Rows) {
-				ListItem listItem = list.AddItem(itemCreateInfo);
+				if (!is_running) return; 
+				Microsoft.SharePoint.Client.ListItem listItem = list.AddItem(itemCreateInfo);
 
 				foreach (DataGridViewRow mapping_row in dgMapping.Rows) {
 					if (mapping_row.Cells[1].Value!=null) {
-						listItem[mapping_row.Cells[1].Value.ToString()] = row[mapping_row.Cells[0].Value.ToString()].ToString();
+						if (mapping_row.Cells[2].Value != null) {
+							if (string.IsNullOrEmpty(table.TableName)) {
+								table.TableName = mapping_row.Cells[2].Value.ToString();
+							}
+							else {
+								if (table.TableName != mapping_row.Cells[2].Value.ToString()) {
+									listItem[table.TableName] = this.ToHtmlTable(table);
+									table.TableName = null;
+									table.Clear();
+									table.Columns.Clear();
+									table.TableName = mapping_row.Cells[2].Value.ToString();
+								}
+							}
+							DataColumn tcol = new DataColumn(mapping_row.Cells[0].Value.ToString());
+							table.Columns.Add(tcol);
+							string[] values = row[mapping_row.Cells[0].Value.ToString()].ToString().Split(',');
+							if (table.Rows.Count == 0) {
+								for (int i = 0; i < values.Length; i++) {
+									table.Rows.Add(new object[] { values[i] });
+								}
+							} else {
+								for(int i=0;i<Math.Min(values.Length,table.Rows.Count);i++){
+									table.Rows[i][tcol] = values[i];
+								}
+							}
+						} else {
+							if (table.Rows.Count>0) {
+								old_ListItem[table.TableName] = this.ToHtmlTable(table);
+								old_ListItem.Update();
+								table.TableName = null;
+								table.Clear();
+								table.Columns.Clear();
+							} 
+							listItem[mapping_row.Cells[1].Value.ToString()] = row[mapping_row.Cells[0].Value.ToString()].ToString();
+						}
 					}
 				}
 				listItem.Update();
+				old_ListItem = listItem;
 				count++;
-				lbCounter.Text = count + " / " + data.Rows.Count;
-				if (count % 500 == 0) {
+				this.Invoke(
+					new ui_call_back(update_record_count),
+					new object[]{count+" / " + data.Rows.Count}
+				);
+				if (count % 20 == 0) {
 					clientContext.ExecuteQuery();
 				}
 			}
 			clientContext.ExecuteQuery();
 		}
 
-		private void button2_Click(object sender, EventArgs e) {
+		private void cmdCheckExcelFile_Click(object sender, EventArgs e) {
 			OleDbConnection conn = new OleDbConnection(get_conn_string());
 			conn.Open();
 			DataTable sheet_names = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, new object[] { null, null, null, "TABLE" });
@@ -78,7 +135,7 @@ namespace Excel_Importer {
 			else
 				return txtSiteUrl.Text;
 		}
-		private void button1_Click(object sender, EventArgs e) {
+		private void cmdValidateSharePointSite_Click(object sender, EventArgs e) {
 			clientContext = new ClientContext(get_site_url());
 			if (chkUseClaims.Checked) {
 				clientContext = ClaimClientContext.GetAuthenticatedContext(get_site_url());
@@ -156,5 +213,25 @@ namespace Excel_Importer {
 		//        MessageBox.Show("Error setting authentication header: " + ex.Message);
 		//    }
 		//}
+
+		/// <summary>
+		/// Convert DataTable to Html Table.
+		/// </summary>
+		/// <param name="dt">DataTable</param>
+		/// <returns>Html string</returns>
+		private string ToHtmlTable(DataTable dt) {
+			GridView gridView = new GridView();
+			gridView.AutoGenerateColumns = true;
+			gridView.DataSource = dt;
+			gridView.DataBind();
+
+			StringBuilder sb = new StringBuilder();
+			StringWriter sw = new StringWriter(sb);
+			HtmlTextWriter htw = new HtmlTextWriter(sw);
+
+			gridView.RenderControl(htw);
+
+			return sb.ToString();
+		}
 	}
 }
