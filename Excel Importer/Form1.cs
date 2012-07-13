@@ -25,6 +25,7 @@ namespace Excel_Importer {
 		}
 		Web site = null;
 		ClientContext clientContext = null;
+		List list = null;
 		bool is_running = false;
 		private void cmdImport_Click(object sender, EventArgs e) {
 			if (cmdImport.Text == "Import") {
@@ -38,9 +39,50 @@ namespace Excel_Importer {
 				cmdImport.Text = "Import";
 			}
 		}
+		private string GetFolderCI(ClientContext clientContext, string list_name,string site_url, String folderName) {
+			Folder existingFolder = null;
+
+			//List list = site.Lists.GetByTitle(list_name);
+			//clientContext.ExecuteQuery();
+
+
+			if (list != null) {
+				FolderCollection folders = list.RootFolder.Folders;
+				String folderUrl = String.Format("{0}/Lists/{1}/{2}", site_url, list_name, folderName);
+				IEnumerable<Folder> existingFolders = clientContext.LoadQuery(
+					folders.Include(
+					folder => folder.ServerRelativeUrl)
+					);
+				clientContext.ExecuteQuery();
+				foreach (Folder f in existingFolders) {
+					if (f.ServerRelativeUrl.ToLower().Equals(folderUrl.ToLower())) {
+						existingFolder = f;
+						break;
+					}
+				}
+
+				if (existingFolder == null) {
+					ListItemCreationInformation itemCreateInfo = new ListItemCreationInformation();
+					itemCreateInfo.UnderlyingObjectType = FileSystemObjectType.Folder;
+					Microsoft.SharePoint.Client.ListItem olistItem = list.AddItem(itemCreateInfo);
+					olistItem["Title"] = folderName;
+					olistItem.Update();
+					clientContext.ExecuteQuery();
+					return folderUrl;
+				}
+				else {
+					return existingFolder.ServerRelativeUrl;
+				}
+			}
+			else {
+				return null;
+			}
+
+		}
 		private void import(Object stateInfo) {
 			string [] list_items = stateInfo.ToString().Split(';');
-			List list = site.Lists.GetByTitle(list_items[0]);
+			clientContext.Load(site);
+			list = site.Lists.GetByTitle(list_items[0]);
 			clientContext.ExecuteQuery();
 
 			string commandStr = "select * from [" + list_items[1] + "]";
@@ -57,9 +99,26 @@ namespace Excel_Importer {
 			Microsoft.SharePoint.Client.ListItem old_ListItem = null;
 			ListItemCreationInformation itemCreateInfo = new ListItemCreationInformation();
 			foreach (DataRow row in data.Rows) {
-				if (!is_running) return; 
+				if (!is_running) return;
+
+				// Folder
+				string newFolder = null;
+				foreach (DataGridViewRow mapping_row in dgMapping.Rows) {
+					if (mapping_row.Cells[3].Value != null) {
+						string folder_name = row[mapping_row.Cells[0].Value.ToString()].ToString().Replace('&','-');
+						string folder = GetFolderCI(clientContext, list_items[0], site.ServerRelativeUrl, folder_name);
+						if (folder != null) {
+							newFolder = folder;
+							break; // TODO: support 1 folder only
+						}
+					}
+				}
+				if (newFolder != null) {
+					itemCreateInfo.FolderUrl = newFolder;
+				} 
 				Microsoft.SharePoint.Client.ListItem listItem = list.AddItem(itemCreateInfo);
 
+				// Item Value
 				foreach (DataGridViewRow mapping_row in dgMapping.Rows) {
 					if (mapping_row.Cells[1].Value!=null) {
 						if (mapping_row.Cells[2].Value != null) {
@@ -131,7 +190,7 @@ namespace Excel_Importer {
 		}
 		private string get_site_url() {
 			if (chkIsDevelop.Checked)
-				return "http://dev:8100";
+				return "https://intranet.works.com/finance";
 			else
 				return txtSiteUrl.Text;
 		}
