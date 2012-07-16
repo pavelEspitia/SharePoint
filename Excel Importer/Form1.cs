@@ -38,6 +38,39 @@ namespace Excel_Importer {
 				cmdImport.Text = "Import";
 			}
 		}
+		private Folder GetFolderCI(ClientContext clientContext, string list_name, String folderName) {
+			Folder existingFolder = null;
+
+			List list = site.Lists.GetByTitle(list_name);
+			clientContext.ExecuteQuery();
+
+			if (list != null) {
+				FolderCollection folders = list.RootFolder.Folders;
+				String folderUrl = String.Format("/Lists/{0}/{1}", list_name, folderName);
+				IEnumerable<Folder> existingFolders = clientContext.LoadQuery(
+					folders.Include(
+					folder => folder.ServerRelativeUrl)
+					);
+				clientContext.ExecuteQuery();
+				foreach (Folder f in existingFolders) {
+					if (f.ServerRelativeUrl.ToLower().Equals(folderUrl.ToLower())) {
+						existingFolder = f;
+						break;
+					}
+				}
+
+				if (existingFolder == null) {
+					ListItemCreationInformation itemCreateInfo = new ListItemCreationInformation();
+					itemCreateInfo.UnderlyingObjectType = FileSystemObjectType.Folder;
+					Microsoft.SharePoint.Client.ListItem olistItem = list.AddItem(itemCreateInfo);
+					olistItem["Title"] = folderName;
+					olistItem.Update();
+					clientContext.ExecuteQuery();
+				}
+			}
+
+			return existingFolder;
+		}
 		private void import(Object stateInfo) {
 			string [] list_items = stateInfo.ToString().Split(';');
 			List list = site.Lists.GetByTitle(list_items[0]);
@@ -57,9 +90,25 @@ namespace Excel_Importer {
 			Microsoft.SharePoint.Client.ListItem old_ListItem = null;
 			ListItemCreationInformation itemCreateInfo = new ListItemCreationInformation();
 			foreach (DataRow row in data.Rows) {
-				if (!is_running) return; 
+				if (!is_running) return;
+
+				// Folder
+				string newFolder = null;
+				foreach (DataGridViewRow mapping_row in dgMapping.Rows) {
+					if (mapping_row.Cells[3].Value != null) {
+						Folder folder = GetFolderCI(clientContext, list_items[0], row[mapping_row.Cells[0].Value.ToString()].ToString());
+						if (folder != null) {
+							newFolder = String.Format("{0}/{1}", list_items[0], row[mapping_row.Cells[0].Value.ToString()].ToString());
+							break; // TODO: support 1 folder only
+						}
+					}
+				}
+				if (newFolder != null) {
+					itemCreateInfo.FolderUrl = newFolder;
+				} 
 				Microsoft.SharePoint.Client.ListItem listItem = list.AddItem(itemCreateInfo);
 
+				// Item Value
 				foreach (DataGridViewRow mapping_row in dgMapping.Rows) {
 					if (mapping_row.Cells[1].Value!=null) {
 						if (mapping_row.Cells[2].Value != null) {

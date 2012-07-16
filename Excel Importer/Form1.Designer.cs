@@ -43,12 +43,12 @@
 			this.txtSiteUrl = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.dgMapping = new System.Windows.Forms.DataGridView();
+			this.cmdMap = new System.Windows.Forms.Button();
+			this.lbCounter = new System.Windows.Forms.Label();
 			this.ExcelColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ListColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
 			this.TableName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Sequence = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.cmdMap = new System.Windows.Forms.Button();
-			this.lbCounter = new System.Windows.Forms.Label();
+			this.FolderLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgMapping)).BeginInit();
@@ -257,38 +257,13 @@
             this.ExcelColumn,
             this.ListColumn,
             this.TableName,
-            this.Sequence});
+            this.FolderLevel});
 			this.dgMapping.Location = new System.Drawing.Point(12, 239);
 			this.dgMapping.Name = "dgMapping";
 			this.dgMapping.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
 			this.dgMapping.RowTemplate.Height = 23;
 			this.dgMapping.Size = new System.Drawing.Size(744, 216);
 			this.dgMapping.TabIndex = 6;
-			// 
-			// ExcelColumn
-			// 
-			this.ExcelColumn.HeaderText = "Excel Column";
-			this.ExcelColumn.Name = "ExcelColumn";
-			this.ExcelColumn.Width = 200;
-			// 
-			// ListColumn
-			// 
-			this.ListColumn.HeaderText = "List Column";
-			this.ListColumn.Name = "ListColumn";
-			this.ListColumn.Sorted = true;
-			this.ListColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-			this.ListColumn.Width = 240;
-			// 
-			// TableName
-			// 
-			this.TableName.HeaderText = "Table Name";
-			this.TableName.Name = "TableName";
-			this.TableName.Width = 150;
-			// 
-			// Sequence
-			// 
-			this.Sequence.HeaderText = "Sequence";
-			this.Sequence.Name = "Sequence";
 			// 
 			// cmdMap
 			// 
@@ -309,6 +284,32 @@
 			this.lbCounter.TabIndex = 8;
 			this.lbCounter.Text = "0 / 0";
 			this.lbCounter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// ExcelColumn
+			// 
+			this.ExcelColumn.HeaderText = "Excel Column";
+			this.ExcelColumn.Name = "ExcelColumn";
+			this.ExcelColumn.Width = 200;
+			// 
+			// ListColumn
+			// 
+			this.ListColumn.HeaderText = "List Column";
+			this.ListColumn.Name = "ListColumn";
+			this.ListColumn.Sorted = true;
+			this.ListColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+			this.ListColumn.Width = 240;
+			// 
+			// TableName
+			// 
+			this.TableName.HeaderText = "Table Name";
+			this.TableName.Name = "TableName";
+			this.TableName.Width = 120;
+			// 
+			// FolderLevel
+			// 
+			this.FolderLevel.HeaderText = "Folder Level";
+			this.FolderLevel.Name = "FolderLevel";
+			this.FolderLevel.Width = 110;
 			// 
 			// Form1
 			// 
@@ -357,11 +358,11 @@
 		private System.Windows.Forms.Label label6;
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.Button cmdMap;
+		private System.Windows.Forms.Label lbCounter;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ExcelColumn;
 		private System.Windows.Forms.DataGridViewComboBoxColumn ListColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn TableName;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Sequence;
-		private System.Windows.Forms.Label lbCounter;
+		private System.Windows.Forms.DataGridViewTextBoxColumn FolderLevel;
 	}
 }
 
