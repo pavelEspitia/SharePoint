@@ -7,8 +7,10 @@
 *.exe
 *.o
 *.so
+*.suo
 obj
 bin
+pkgobj
 
 # Packages #
 ############

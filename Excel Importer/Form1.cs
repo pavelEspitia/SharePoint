@@ -39,7 +39,23 @@ namespace Excel_Importer {
 				cmdImport.Text = "Import";
 			}
 		}
-		private string GetFolderCI(ClientContext clientContext, string list_name,string site_url, String folderName) {
+		private bool get_sub_folder(Folder parent_folder, string folderUrl, ref Folder existingFolder) {
+			FolderCollection folders = parent_folder.Folders;
+			IEnumerable<Folder> existingFolders = clientContext.LoadQuery(
+				folders.Include(
+				folder => folder.ServerRelativeUrl)
+				);
+			clientContext.ExecuteQuery();
+			foreach (Folder f in existingFolders) {
+				if (f.ServerRelativeUrl.ToLower().Equals(folderUrl.ToLower())) {
+					existingFolder = f;
+					return true;
+				}
+				if (get_sub_folder(f, folderUrl, ref existingFolder)) { return true; }
+			}
+			return false;
+		}
+		private string GetFolderCI(string folderUrl,String folderName) {
 			Folder existingFolder = null;
 
 			//List list = site.Lists.GetByTitle(list_name);
@@ -48,7 +64,6 @@ namespace Excel_Importer {
 
 			if (list != null) {
 				FolderCollection folders = list.RootFolder.Folders;
-				String folderUrl = String.Format("{0}/Lists/{1}/{2}", site_url, list_name, folderName);
 				IEnumerable<Folder> existingFolders = clientContext.LoadQuery(
 					folders.Include(
 					folder => folder.ServerRelativeUrl)
@@ -59,11 +74,13 @@ namespace Excel_Importer {
 						existingFolder = f;
 						break;
 					}
+					if(get_sub_folder(f,folderUrl,ref existingFolder)){break;}
 				}
 
 				if (existingFolder == null) {
 					ListItemCreationInformation itemCreateInfo = new ListItemCreationInformation();
 					itemCreateInfo.UnderlyingObjectType = FileSystemObjectType.Folder;
+					itemCreateInfo.FolderUrl = folderUrl.Replace("/" + folderName, "");
 					Microsoft.SharePoint.Client.ListItem olistItem = list.AddItem(itemCreateInfo);
 					olistItem["Title"] = folderName;
 					olistItem.Update();
@@ -101,19 +118,18 @@ namespace Excel_Importer {
 				if (!is_running) return;
 
 				// Folder
-				string newFolder = null;
+				string newFolder = "";
+				string new_folder_url = "";
 				foreach (DataGridViewRow mapping_row in dgMapping.Rows) {
 					if (mapping_row.Cells[3].Value != null) {
 						string folder_name = row[mapping_row.Cells[0].Value.ToString()].ToString().Replace('&','-');
-						string folder = GetFolderCI(clientContext, list_items[0], site.ServerRelativeUrl, folder_name);
-						if (folder != null) {
-							newFolder = folder;
-							break; // TODO: support 1 folder only
-						}
+						String folder_url = String.Format("{0}/Lists/{1}/{2}{3}", site.ServerRelativeUrl=="/"?"":site.ServerRelativeUrl,list_items[0],newFolder,folder_name);
+						new_folder_url = GetFolderCI(folder_url, folder_name);
+						newFolder += folder_name+"/";
 					}
 				}
-				if (newFolder != null) {
-					itemCreateInfo.FolderUrl = newFolder;
+				if (!string.IsNullOrEmpty(newFolder)) {
+					itemCreateInfo.FolderUrl = new_folder_url;
 				} 
 				Microsoft.SharePoint.Client.ListItem listItem = list.AddItem(itemCreateInfo);
 
