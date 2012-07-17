@@ -19,33 +19,46 @@ namespace Excel_Importer {
 		public Form1() {
 			InitializeComponent();
 		}
+
+		// define delegate function for UI updating.
 		private delegate void ui_call_back(string value);
 		private void update_record_count(string value) {
 				lbCounter.Text = value;
 		}
-		Web site = null;
-		ClientContext clientContext = null;
-		List list = null;
-		bool is_running = false;
+
+		// Define global variables.
+		Web _site = null;
+		ClientContext _clientContext = null;
+		List _list = null;
+		bool _is_running = false;
+
+		/// <summary>
+		/// Trigle the Import action.
+		/// </summary>
+		/// <param name="sender"></param>
+		/// <param name="e"></param>
 		private void cmdImport_Click(object sender, EventArgs e) {
 			if (cmdImport.Text == "Import") {
 				lbCounter.Text = "0 / 0";
-				is_running = true;
+				_is_running = true;
 				cmdImport.Text = "Stop";
-				string list_items = cmbLists.SelectedItem.ToString() + ";" + cmbSheets.SelectedItem.ToString();
-				ThreadPool.QueueUserWorkItem(new WaitCallback(import),list_items);
+				string ui_selections = cmbLists.SelectedItem.ToString() + ";" + cmbSheets.SelectedItem.ToString();
+				ThreadPool.QueueUserWorkItem(new WaitCallback(import),ui_selections);
 			} else {
-				is_running = false;
+				_is_running = false;
 				cmdImport.Text = "Import";
 			}
 		}
+
+		List<List<string>> _folder_tree = null; // this is a local copy of the SharePoint List folder tree. to improve performance.
+
 		private bool get_sub_folder(Folder parent_folder, string folderUrl, ref Folder existingFolder) {
 			FolderCollection folders = parent_folder.Folders;
-			IEnumerable<Folder> existingFolders = clientContext.LoadQuery(
+			IEnumerable<Folder> existingFolders = _clientContext.LoadQuery(
 				folders.Include(
 				folder => folder.ServerRelativeUrl)
 				);
-			clientContext.ExecuteQuery();
+			_clientContext.ExecuteQuery();
 			foreach (Folder f in existingFolders) {
 				if (f.ServerRelativeUrl.ToLower().Equals(folderUrl.ToLower())) {
 					existingFolder = f;
@@ -62,13 +75,13 @@ namespace Excel_Importer {
 			//clientContext.ExecuteQuery();
 
 
-			if (list != null) {
-				FolderCollection folders = list.RootFolder.Folders;
-				IEnumerable<Folder> existingFolders = clientContext.LoadQuery(
+			if (_list != null) {
+				FolderCollection folders = _list.RootFolder.Folders;
+				IEnumerable<Folder> existingFolders = _clientContext.LoadQuery(
 					folders.Include(
 					folder => folder.ServerRelativeUrl)
 					);
-				clientContext.ExecuteQuery();
+				_clientContext.ExecuteQuery();
 				foreach (Folder f in existingFolders) {
 					if (f.ServerRelativeUrl.ToLower().Equals(folderUrl.ToLower())) {
 						existingFolder = f;
@@ -81,10 +94,10 @@ namespace Excel_Importer {
 					ListItemCreationInformation itemCreateInfo = new ListItemCreationInformation();
 					itemCreateInfo.UnderlyingObjectType = FileSystemObjectType.Folder;
 					itemCreateInfo.FolderUrl = folderUrl.Replace("/" + folderName, "");
-					Microsoft.SharePoint.Client.ListItem olistItem = list.AddItem(itemCreateInfo);
+					Microsoft.SharePoint.Client.ListItem olistItem = _list.AddItem(itemCreateInfo);
 					olistItem["Title"] = folderName;
 					olistItem.Update();
-					clientContext.ExecuteQuery();
+					_clientContext.ExecuteQuery();
 					return folderUrl;
 				}
 				else {
@@ -97,9 +110,9 @@ namespace Excel_Importer {
 		}
 		private void import(Object stateInfo) {
 			string [] list_items = stateInfo.ToString().Split(';');
-			clientContext.Load(site);
-			list = site.Lists.GetByTitle(list_items[0]);
-			clientContext.ExecuteQuery();
+			_clientContext.Load(_site);
+			_list = _site.Lists.GetByTitle(list_items[0]);
+			_clientContext.ExecuteQuery();
 
 			string commandStr = "select * from [" + list_items[1] + "]";
 			OleDbDataAdapter command = new OleDbDataAdapter(commandStr, get_conn_string());
@@ -115,7 +128,7 @@ namespace Excel_Importer {
 			Microsoft.SharePoint.Client.ListItem old_ListItem = null;
 			ListItemCreationInformation itemCreateInfo = new ListItemCreationInformation();
 			foreach (DataRow row in data.Rows) {
-				if (!is_running) return;
+				if (!_is_running) return;
 
 				// Folder
 				string newFolder = "";
@@ -123,7 +136,7 @@ namespace Excel_Importer {
 				foreach (DataGridViewRow mapping_row in dgMapping.Rows) {
 					if (mapping_row.Cells[3].Value != null) {
 						string folder_name = row[mapping_row.Cells[0].Value.ToString()].ToString().Replace('&','-');
-						String folder_url = String.Format("{0}/Lists/{1}/{2}{3}", site.ServerRelativeUrl=="/"?"":site.ServerRelativeUrl,list_items[0],newFolder,folder_name);
+						String folder_url = String.Format("{0}/Lists/{1}/{2}{3}", _site.ServerRelativeUrl=="/"?"":_site.ServerRelativeUrl,list_items[0],newFolder,folder_name);
 						new_folder_url = GetFolderCI(folder_url, folder_name);
 						newFolder += folder_name+"/";
 					}
@@ -131,7 +144,7 @@ namespace Excel_Importer {
 				if (!string.IsNullOrEmpty(newFolder)) {
 					itemCreateInfo.FolderUrl = new_folder_url;
 				} 
-				Microsoft.SharePoint.Client.ListItem listItem = list.AddItem(itemCreateInfo);
+				Microsoft.SharePoint.Client.ListItem listItem = _list.AddItem(itemCreateInfo);
 
 				// Item Value
 				foreach (DataGridViewRow mapping_row in dgMapping.Rows) {
@@ -157,8 +170,15 @@ namespace Excel_Importer {
 									table.Rows.Add(new object[] { values[i] });
 								}
 							} else {
-								for(int i=0;i<Math.Min(values.Length,table.Rows.Count);i++){
+								int i = 0;
+								for(i=0;i<Math.Min(values.Length,table.Rows.Count);i++){
 									table.Rows[i][tcol] = values[i];
+								}
+								if (values.Length > table.Rows.Count) {
+									for(int j=i;j<values.Length;j++){
+										DataRow new_row = table.Rows.Add();
+										new_row[tcol] = values[j];
+									}
 								}
 							}
 						} else {
@@ -180,11 +200,11 @@ namespace Excel_Importer {
 					new ui_call_back(update_record_count),
 					new object[]{count+" / " + data.Rows.Count}
 				);
-				if (count % 20 == 0) {
-					clientContext.ExecuteQuery();
-				}
+				//if (count % 20 == 0) {
+				//    clientContext.ExecuteQuery();
+				//}
 			}
-			clientContext.ExecuteQuery();
+			_clientContext.ExecuteQuery(); // for the last item
 		}
 
 		private void cmdCheckExcelFile_Click(object sender, EventArgs e) {
@@ -210,18 +230,18 @@ namespace Excel_Importer {
 				return txtSiteUrl.Text;
 		}
 		private void cmdValidateSharePointSite_Click(object sender, EventArgs e) {
-			clientContext = new ClientContext(get_site_url());
+			_clientContext = new ClientContext(get_site_url());
 			if (chkUseClaims.Checked) {
-				clientContext = ClaimClientContext.GetAuthenticatedContext(get_site_url());
+				_clientContext = ClaimClientContext.GetAuthenticatedContext(get_site_url());
 				//clientContext.ExecutingWebRequest +=
 				//    new EventHandler<WebRequestEventArgs>(ctx_MixedAuthRequest);
 				//clientContext.AuthenticationMode = ClientAuthenticationMode.Default;
 				//clientContext.Credentials = System.Net.CredentialCache.DefaultCredentials;
 			}
-			site = clientContext.Web;
-			ListCollection lists = site.Lists;
-			clientContext.Load(lists);
-			clientContext.ExecuteQuery();
+			_site = _clientContext.Web;
+			ListCollection lists = _site.Lists;
+			_clientContext.Load(lists);
+			_clientContext.ExecuteQuery();
 			cmbLists.Items.Clear();
 			foreach (List list in lists) {
 				cmbLists.Items.Add(list.Title);
@@ -253,10 +273,10 @@ namespace Excel_Importer {
 			}
 
 
-			List list = site.Lists.GetByTitle(cmbLists.SelectedItem.ToString());
+			List list = _site.Lists.GetByTitle(cmbLists.SelectedItem.ToString());
 			FieldCollection fields = list.Fields;
-			clientContext.Load(fields);
-			clientContext.ExecuteQuery();
+			_clientContext.Load(fields);
+			_clientContext.ExecuteQuery();
 
 			foreach (DataGridViewRow row in dgMapping.Rows) {
 				DataGridViewComboBoxCell col = new DataGridViewComboBoxCell();
