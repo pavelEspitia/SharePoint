@@ -1,3 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<package dslVersion="1.0.0.0" Id="2bc0686f-b99d-42a7-8808-e0581530c20f" solutionId="2bc0686f-b99d-42a7-8808-e0581530c20f" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel" name="List_Update_Folder_Time">
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="2bc0686f-b99d-42a7-8808-e0581530c20f" solutionId="2bc0686f-b99d-42a7-8808-e0581530c20f" resetWebServer="false" name="List_Update_Folder_Time" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+  <features>
+    <featureReference itemId="19b961d1-deeb-4f04-86a4-4908e8d9e8f3" />
+  </features>
 </package>
