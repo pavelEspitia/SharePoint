@@ -25,12 +25,18 @@ namespace Excel_Importer {
 		private void update_record_count(string value) {
 				lbCounter.Text = value;
 		}
+		private void update_message(string value) {
+				lbMessage.Text = value;
+		}
 
 		// Define global variables.
 		Web _site = null;
 		ClientContext _clientContext = null;
 		List _list = null;
 		bool _is_running = false;
+		private ui_call_back _update_message = null;
+		private ui_call_back _update_counter = null;
+		int count = 0;
 
 		/// <summary>
 		/// Trigle the Import action.
@@ -41,111 +47,124 @@ namespace Excel_Importer {
 			if (cmdImport.Text == "Import") {
 				lbCounter.Text = "0 / 0";
 				_is_running = true;
-				cmdImport.Text = "Stop";
+				cmdImport.Text = "Pause";
 				string ui_selections = cmbLists.SelectedItem.ToString() + ";" + cmbSheets.SelectedItem.ToString();
-				ThreadPool.QueueUserWorkItem(new WaitCallback(import),ui_selections);
+				_update_message = new ui_call_back(update_message);
+				_update_counter = new ui_call_back(update_record_count);
+				ThreadPool.QueueUserWorkItem(new WaitCallback(import_excel_to_sharepoint_list),ui_selections);
 			} else {
 				_is_running = false;
 				cmdImport.Text = "Import";
 			}
 		}
 
-		List<List<string>> _folder_tree = null; // this is a local copy of the SharePoint List folder tree. to improve performance.
-
-		private bool get_sub_folder(Folder parent_folder, string folderUrl, ref Folder existingFolder) {
-			FolderCollection folders = parent_folder.Folders;
-			IEnumerable<Folder> existingFolders = _clientContext.LoadQuery(
-				folders.Include(
-				folder => folder.ServerRelativeUrl)
-				);
-			_clientContext.ExecuteQuery();
-			foreach (Folder f in existingFolders) {
-				if (f.ServerRelativeUrl.ToLower().Equals(folderUrl.ToLower())) {
-					existingFolder = f;
-					return true;
-				}
-				if (get_sub_folder(f, folderUrl, ref existingFolder)) { return true; }
-			}
-			return false;
+		/// <summary>
+		/// Simulate the Folder Tree Structure of the SharePoint List.
+		/// </summary>
+		class Tree {
+			public string Name;
+			public string URL;
+			public Tree Parent;
+			public List<Tree> Children;
 		}
-		private string GetFolderCI(string folderUrl,String folderName) {
-			Folder existingFolder = null;
+		Tree _folder_tree = null; // this is a local copy of the SharePoint List folder tree. to improve performance.
 
-			//List list = site.Lists.GetByTitle(list_name);
-			//clientContext.ExecuteQuery();
+		/// <summary>
+		/// Create folder for items, if it's not exists.
+		/// </summary>
+		/// <param name="parent_folder">The parent folder. Tree object.</param>
+		/// <param name="target_folder_name">The name of the target folder under current parent folder.</param>
+		/// <returns>The reference to the target folder. Tree object.</returns>
+		private Tree create_folder_if_not_exists(Tree parent_folder,string target_folder_name) {
+			this.Invoke( _update_message,
+				new object[]{"S: "+target_folder_name+" "+DateTime.Now.ToLongTimeString()}
+			);
+			string target_folder_url = parent_folder.URL + "/" + target_folder_name;
+			foreach(Tree child_folder in parent_folder.Children){
+				if (child_folder.URL.ToLower().Equals(target_folder_url.ToLower())) {
+					return child_folder;
+				}
+			}
 
-
-			if (_list != null) {
-				FolderCollection folders = _list.RootFolder.Folders;
-				IEnumerable<Folder> existingFolders = _clientContext.LoadQuery(
-					folders.Include(
-					folder => folder.ServerRelativeUrl)
-					);
+			try {
+				// TODO: I should try to catch exceptions here.
+				ListItemCreationInformation itemCreateInfo = new ListItemCreationInformation();
+				itemCreateInfo.UnderlyingObjectType = FileSystemObjectType.Folder;
+				itemCreateInfo.FolderUrl = parent_folder.URL;
+				Microsoft.SharePoint.Client.ListItem olistItem = _list.AddItem(itemCreateInfo);
+				olistItem["Title"] = target_folder_name;
+				olistItem.Update();
 				_clientContext.ExecuteQuery();
-				foreach (Folder f in existingFolders) {
-					if (f.ServerRelativeUrl.ToLower().Equals(folderUrl.ToLower())) {
-						existingFolder = f;
-						break;
-					}
-					if(get_sub_folder(f,folderUrl,ref existingFolder)){break;}
+			}
+			catch (Exception ex) {
+				if(ex.Message.Contains("exist")){
+					//nothing to do with it.
+				}else{
+					throw ex;
 				}
+			}
 
-				if (existingFolder == null) {
-					ListItemCreationInformation itemCreateInfo = new ListItemCreationInformation();
-					itemCreateInfo.UnderlyingObjectType = FileSystemObjectType.Folder;
-					itemCreateInfo.FolderUrl = folderUrl.Replace("/" + folderName, "");
-					Microsoft.SharePoint.Client.ListItem olistItem = _list.AddItem(itemCreateInfo);
-					olistItem["Title"] = folderName;
-					olistItem.Update();
-					_clientContext.ExecuteQuery();
-					return folderUrl;
-				}
-				else {
-					return existingFolder.ServerRelativeUrl;
-				}
-			}
-			else {
-				return null;
-			}
+			Tree target_folder = new Tree();
+			target_folder.Name = target_folder_name;
+			target_folder.URL = target_folder_url;
+			target_folder.Parent = parent_folder;
+			target_folder.Children = new List<Tree>();
+			parent_folder.Children.Add(target_folder);
+
+			return target_folder;
 		}
-		private void import(Object stateInfo) {
-			string [] list_items = stateInfo.ToString().Split(';');
+
+		private void import_excel_to_sharepoint_list(Object stateInfo) {
+			string [] ui_selections = stateInfo.ToString().Split(';');
+
 			_clientContext.Load(_site);
-			_list = _site.Lists.GetByTitle(list_items[0]);
+			_list = _site.Lists.GetByTitle(ui_selections[0]);
 			_clientContext.ExecuteQuery();
 
-			string commandStr = "select * from [" + list_items[1] + "]";
+			string commandStr = "select * from [" + ui_selections[1] + "]";
 			OleDbDataAdapter command = new OleDbDataAdapter(commandStr, get_conn_string());
 			DataTable data = new DataTable();
 			command.Fill(data);
 			this.Invoke(
-				new ui_call_back(update_record_count),
-				new object[]{"0 / " + data.Rows.Count}
+				_update_counter,
+				new object[]{count+ " / " + data.Rows.Count}
 			);
 
-			int count = 0;
+			// prepar for the loop
 			DataTable table=new DataTable();
 			Microsoft.SharePoint.Client.ListItem old_ListItem = null;
 			ListItemCreationInformation itemCreateInfo = new ListItemCreationInformation();
+
+			if (_folder_tree == null) {
+				_folder_tree = new Tree();
+				_folder_tree.URL = String.Format("{0}/Lists/{1}", _site.ServerRelativeUrl=="/"?"":_site.ServerRelativeUrl,ui_selections[0]);
+				_folder_tree.Name = "ROOT";
+				_folder_tree.Children = new List<Tree>();
+			}
+			int record_number = 0;
 			foreach (DataRow row in data.Rows) {
 				if (!_is_running) return;
-
-				// Folder
-				string newFolder = "";
-				string new_folder_url = "";
+				record_number++;
+				if (record_number <= count) continue;
+				// check if need to created Folders for imported items
+				string new_folder_relative_url = "";
+				Tree new_folder=null;
+				Tree parent_folder = _folder_tree;
 				foreach (DataGridViewRow mapping_row in dgMapping.Rows) {
+					// if the Folder Level column is not null, then, put item into this folder
+					// the folder level will depends on the sequence of the folder columns apprea in the Mapping GridView. TODO: maybe improved in the future.
 					if (mapping_row.Cells[3].Value != null) {
-						string folder_name = row[mapping_row.Cells[0].Value.ToString()].ToString().Replace('&','-');
-						String folder_url = String.Format("{0}/Lists/{1}/{2}{3}", _site.ServerRelativeUrl=="/"?"":_site.ServerRelativeUrl,list_items[0],newFolder,folder_name);
-						new_folder_url = GetFolderCI(folder_url, folder_name);
-						newFolder += folder_name+"/";
+						string folder_name = row[mapping_row.Cells[0].Value.ToString()].ToString().Replace('&','-').Replace('\'',' '); // SharePoint doesn't accept '&', so, replace it with '-'
+						new_folder = create_folder_if_not_exists(parent_folder, folder_name);
+						new_folder_relative_url += folder_name+"/";
+						parent_folder = new_folder;
 					}
 				}
-				if (!string.IsNullOrEmpty(newFolder)) {
-					itemCreateInfo.FolderUrl = new_folder_url;
+				if (new_folder!=null) {
+					itemCreateInfo.FolderUrl = new_folder.URL;
 				} 
-				Microsoft.SharePoint.Client.ListItem listItem = _list.AddItem(itemCreateInfo);
 
+				Microsoft.SharePoint.Client.ListItem listItem = _list.AddItem(itemCreateInfo);
 				// Item Value
 				foreach (DataGridViewRow mapping_row in dgMapping.Rows) {
 					if (mapping_row.Cells[1].Value!=null) {
@@ -197,7 +216,7 @@ namespace Excel_Importer {
 				old_ListItem = listItem;
 				count++;
 				this.Invoke(
-					new ui_call_back(update_record_count),
+					_update_counter,
 					new object[]{count+" / " + data.Rows.Count}
 				);
 				//if (count % 20 == 0) {

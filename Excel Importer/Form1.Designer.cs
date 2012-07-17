@@ -45,6 +45,7 @@
 			this.dgMapping = new System.Windows.Forms.DataGridView();
 			this.cmdMap = new System.Windows.Forms.Button();
 			this.lbCounter = new System.Windows.Forms.Label();
+			this.lbMessage = new System.Windows.Forms.Label();
 			this.ExcelColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ListColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
 			this.TableName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -285,6 +286,15 @@
 			this.lbCounter.Text = "0 / 0";
 			this.lbCounter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
+			// lbMessage
+			// 
+			this.lbMessage.AutoSize = true;
+			this.lbMessage.Location = new System.Drawing.Point(12, 469);
+			this.lbMessage.Name = "lbMessage";
+			this.lbMessage.Size = new System.Drawing.Size(53, 12);
+			this.lbMessage.TabIndex = 9;
+			this.lbMessage.Text = "Message.";
+			// 
 			// ExcelColumn
 			// 
 			this.ExcelColumn.HeaderText = "Excel Column";
@@ -297,13 +307,13 @@
 			this.ListColumn.Name = "ListColumn";
 			this.ListColumn.Sorted = true;
 			this.ListColumn.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-			this.ListColumn.Width = 240;
+			this.ListColumn.Width = 220;
 			// 
 			// TableName
 			// 
 			this.TableName.HeaderText = "Table Name";
 			this.TableName.Name = "TableName";
-			this.TableName.Width = 120;
+			this.TableName.Width = 150;
 			// 
 			// FolderLevel
 			// 
@@ -316,15 +326,17 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(768, 504);
+			this.Controls.Add(this.lbMessage);
 			this.Controls.Add(this.lbCounter);
 			this.Controls.Add(this.cmdMap);
 			this.Controls.Add(this.dgMapping);
 			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.cmdImport);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
 			this.Name = "Form1";
-			this.Text = "Excel Importer";
+			this.Text = "Excel Importer  - created by Jony Zhu";
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
 			this.groupBox2.ResumeLayout(false);
@@ -359,6 +371,7 @@
 		private System.Windows.Forms.Label label7;
 		private System.Windows.Forms.Button cmdMap;
 		private System.Windows.Forms.Label lbCounter;
+		private System.Windows.Forms.Label lbMessage;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ExcelColumn;
 		private System.Windows.Forms.DataGridViewComboBoxColumn ListColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn TableName;
