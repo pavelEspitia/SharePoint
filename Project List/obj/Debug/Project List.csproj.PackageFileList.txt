@@ -1,1 +1,0 @@
-bin\Debug\Project_List.wsp

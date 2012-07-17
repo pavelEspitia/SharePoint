@@ -1,9 +1,0 @@
-F:\Works\SharePoint\News Events Receiver\bin\Debug\News Events Receiver.dll
-F:\Works\SharePoint\News Events Receiver\bin\Debug\News Events Receiver.pdb
-F:\Works\SharePoint\News Events Receiver\obj\Debug\News Events Receiver.dll
-F:\Works\SharePoint\News Events Receiver\obj\Debug\News Events Receiver.pdb
-I:\Works\SharePoint\News Events Receiver\bin\Debug\News Events Receiver.dll
-I:\Works\SharePoint\News Events Receiver\bin\Debug\News Events Receiver.pdb
-I:\Works\SharePoint\News Events Receiver\obj\Debug\News Events Receiver.dll
-I:\Works\SharePoint\News Events Receiver\obj\Debug\News Events Receiver.pdb
-i:\Works\SharePoint\News Events Receiver\obj\Debug\News Events Receiver.csprojResolveAssemblyReference.cache

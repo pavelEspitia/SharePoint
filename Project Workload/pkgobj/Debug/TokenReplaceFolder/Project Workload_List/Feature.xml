@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Feature xmlns="http://schemas.microsoft.com/sharepoint/" ImageUrl="CATLG.GIF" Id="63c2e809-657f-4f19-82bb-3123e588abe2" ReceiverAssembly="Project Workload, Version=1.0.0.0, Culture=neutral, PublicKeyToken=228cecfd65aa0d42" ReceiverClass="Project_Workload.Features.List.ListEventReceiver" Scope="Web" Title="Project Workload List">
-  <ElementManifests>
-    <ElementManifest Location="Project Workload Content Type\Elements.xml" />
-    <ElementManifest Location="Project Workload List Definition\Elements.xml" />
-    <ElementFile Location="Project Workload List Definition\Schema.xml" />
-    <ElementManifest Location="Project Workload\Elements.xml" />
-  </ElementManifests>
-</Feature>

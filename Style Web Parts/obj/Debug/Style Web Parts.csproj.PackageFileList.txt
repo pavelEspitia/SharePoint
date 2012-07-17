@@ -1,1 +1,0 @@
-bin\Debug\Style_Web_Parts.wsp

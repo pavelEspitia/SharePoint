@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Feature xmlns="http://schemas.microsoft.com/sharepoint/" Id="8571fe97-a674-43d8-b223-e5375b833344" Scope="Site" Title="Workflow Feature1">
-  <ElementManifests>
-    <ElementManifest Location="SeqWorkflow\Elements.xml" />
-  </ElementManifests>
-</Feature>

@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Feature xmlns="http://schemas.microsoft.com/sharepoint/" ImageUrl="CATLG.GIF" Description="This feature will receive the Expense Report List Events, and move new item to it's destination folder." Id="b3cb768d-cbb0-41ff-beaa-a4444a0948f6" Scope="Web" Title="Expense Report Event Receiver">
-  <ElementManifests>
-    <ElementManifest Location="Expense Report List Events\Elements.xml" />
-  </ElementManifests>
-</Feature>

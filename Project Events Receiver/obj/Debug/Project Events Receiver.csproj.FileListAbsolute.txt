@@ -1,8 +1,0 @@
-I:\Works\SharePoint\Project Events Receiver\bin\Debug\Project Events Receiver.dll
-I:\Works\SharePoint\Project Events Receiver\bin\Debug\Project Events Receiver.pdb
-I:\Works\SharePoint\Project Events Receiver\obj\Debug\Project Events Receiver.dll
-I:\Works\SharePoint\Project Events Receiver\obj\Debug\Project Events Receiver.pdb
-F:\Works\SharePoint\Project Events Receiver\bin\Debug\Project Events Receiver.dll
-F:\Works\SharePoint\Project Events Receiver\bin\Debug\Project Events Receiver.pdb
-F:\Works\SharePoint\Project Events Receiver\obj\Debug\Project Events Receiver.dll
-F:\Works\SharePoint\Project Events Receiver\obj\Debug\Project Events Receiver.pdb

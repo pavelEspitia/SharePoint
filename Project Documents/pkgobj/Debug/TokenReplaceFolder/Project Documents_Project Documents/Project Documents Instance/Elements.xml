@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
-  <ListInstance Title="项目文档库"
-                OnQuickLaunch="TRUE"
-                TemplateType="10002"
-                Url="Lists/Project Documents"
-                Description="">
-  </ListInstance>
-</Elements>

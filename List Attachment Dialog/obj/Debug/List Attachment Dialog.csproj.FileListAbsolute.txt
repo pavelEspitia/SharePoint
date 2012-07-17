@@ -1,8 +1,0 @@
-I:\Works\SharePoint\List Attachment Dialog\bin\Debug\List Attachment Dialog.dll
-I:\Works\SharePoint\List Attachment Dialog\bin\Debug\List Attachment Dialog.pdb
-I:\Works\SharePoint\List Attachment Dialog\obj\Debug\List Attachment Dialog.dll
-I:\Works\SharePoint\List Attachment Dialog\obj\Debug\List Attachment Dialog.pdb
-F:\Works\SharePoint\List Attachment Dialog\bin\Debug\List Attachment Dialog.dll
-F:\Works\SharePoint\List Attachment Dialog\bin\Debug\List Attachment Dialog.pdb
-F:\Works\SharePoint\List Attachment Dialog\obj\Debug\List Attachment Dialog.dll
-F:\Works\SharePoint\List Attachment Dialog\obj\Debug\List Attachment Dialog.pdb

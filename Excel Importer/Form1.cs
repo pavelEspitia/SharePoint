@@ -25,6 +25,7 @@ namespace Excel_Importer {
 		}
 		Web site = null;
 		ClientContext clientContext = null;
+		List list = null;
 		bool is_running = false;
 		private void cmdImport_Click(object sender, EventArgs e) {
 			if (cmdImport.Text == "Import") {
@@ -38,15 +39,16 @@ namespace Excel_Importer {
 				cmdImport.Text = "Import";
 			}
 		}
-		private Folder GetFolderCI(ClientContext clientContext, string list_name, String folderName) {
+		private string GetFolderCI(ClientContext clientContext, string list_name,string site_url, String folderName) {
 			Folder existingFolder = null;
 
-			List list = site.Lists.GetByTitle(list_name);
-			clientContext.ExecuteQuery();
+			//List list = site.Lists.GetByTitle(list_name);
+			//clientContext.ExecuteQuery();
+
 
 			if (list != null) {
 				FolderCollection folders = list.RootFolder.Folders;
-				String folderUrl = String.Format("/Lists/{0}/{1}", list_name, folderName);
+				String folderUrl = String.Format("{0}/Lists/{1}/{2}", site_url, list_name, folderName);
 				IEnumerable<Folder> existingFolders = clientContext.LoadQuery(
 					folders.Include(
 					folder => folder.ServerRelativeUrl)
@@ -66,14 +68,20 @@ namespace Excel_Importer {
 					olistItem["Title"] = folderName;
 					olistItem.Update();
 					clientContext.ExecuteQuery();
+					return folderUrl;
+				}
+				else {
+					return existingFolder.ServerRelativeUrl;
 				}
 			}
-
-			return existingFolder;
+			else {
+				return null;
+			}
 		}
 		private void import(Object stateInfo) {
 			string [] list_items = stateInfo.ToString().Split(';');
-			List list = site.Lists.GetByTitle(list_items[0]);
+			clientContext.Load(site);
+			list = site.Lists.GetByTitle(list_items[0]);
 			clientContext.ExecuteQuery();
 
 			string commandStr = "select * from [" + list_items[1] + "]";
@@ -96,9 +104,10 @@ namespace Excel_Importer {
 				string newFolder = null;
 				foreach (DataGridViewRow mapping_row in dgMapping.Rows) {
 					if (mapping_row.Cells[3].Value != null) {
-						Folder folder = GetFolderCI(clientContext, list_items[0], row[mapping_row.Cells[0].Value.ToString()].ToString());
+						string folder_name = row[mapping_row.Cells[0].Value.ToString()].ToString().Replace('&','-');
+						string folder = GetFolderCI(clientContext, list_items[0], site.ServerRelativeUrl, folder_name);
 						if (folder != null) {
-							newFolder = String.Format("{0}/{1}", list_items[0], row[mapping_row.Cells[0].Value.ToString()].ToString());
+							newFolder = folder;
 							break; // TODO: support 1 folder only
 						}
 					}

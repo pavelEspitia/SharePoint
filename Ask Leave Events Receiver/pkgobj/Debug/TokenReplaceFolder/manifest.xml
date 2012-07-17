@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Solution xmlns="http://schemas.microsoft.com/sharepoint/" SolutionId="0380ba41-f5fc-4f3c-ad6a-a22b8f13228b" SharePointProductVersion="14.0">
-  <Assemblies>
-    <Assembly Location="Ask Leave Events Receiver.dll" DeploymentTarget="GlobalAssemblyCache" />
-  </Assemblies>
-  <FeatureManifests>
-    <FeatureManifest Location="Ask Leave Events Receiver_Feature1\Feature.xml" />
-  </FeatureManifests>
-</Solution>

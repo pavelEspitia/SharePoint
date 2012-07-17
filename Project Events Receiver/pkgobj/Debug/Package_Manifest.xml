@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Solution xmlns="http://schemas.microsoft.com/sharepoint/" SolutionId="c3ec0fc0-4d36-4f22-b06e-4b07f911c7c0" SharePointProductVersion="14.0">
-  <Assemblies>
-    <Assembly Location="Project Events Receiver.dll" DeploymentTarget="GlobalAssemblyCache" />
-  </Assemblies>
-  <FeatureManifests>
-    <FeatureManifest Location="Project Events Receiver_Feature1\Feature.xml" />
-  </FeatureManifests>
-</Solution>

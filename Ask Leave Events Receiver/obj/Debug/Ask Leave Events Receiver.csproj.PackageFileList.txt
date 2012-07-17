@@ -1,1 +1,0 @@
-bin\Debug\Ask_Leave_Events_Receiver.wsp

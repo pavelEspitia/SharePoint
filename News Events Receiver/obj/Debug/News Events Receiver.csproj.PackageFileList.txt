@@ -1,1 +1,0 @@
-bin\Debug\News_Events_Receiver.wsp

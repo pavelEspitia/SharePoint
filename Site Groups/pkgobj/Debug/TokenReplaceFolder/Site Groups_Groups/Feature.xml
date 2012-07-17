@@ -1,2 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Feature xmlns="http://schemas.microsoft.com/sharepoint/" ImageUrl="CATLG.GIF" Description="Create Site Groups" Id="9cf9cd1e-6628-422e-b5b5-cba783054b73" ReceiverAssembly="Site Groups, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d6359fb4794237f4" ReceiverClass="Site_Groups.Features.Groups.GroupsEventReceiver" Scope="Site" Title="Create Site Groups"></Feature>

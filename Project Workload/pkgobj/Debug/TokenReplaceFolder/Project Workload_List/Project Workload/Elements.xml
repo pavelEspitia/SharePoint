@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
-  <ListInstance Title="项目工作量"
-                OnQuickLaunch="TRUE"
-                TemplateType="10001"
-                Url="Lists/Project Workload"
-                Description="Auto generated list for Project Workload Chart. Do not modify this list manually.">
-  </ListInstance>
-</Elements>

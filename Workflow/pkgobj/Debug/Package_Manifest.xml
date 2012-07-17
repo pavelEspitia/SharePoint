@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Solution xmlns="http://schemas.microsoft.com/sharepoint/" SolutionId="ed4583d9-7f9f-4936-9489-27c37fce6276" SharePointProductVersion="14.0">
-  <Assemblies>
-    <Assembly Location="Workflow.dll" DeploymentTarget="GlobalAssemblyCache" />
-  </Assemblies>
-  <FeatureManifests>
-    <FeatureManifest Location="Workflow_Feature1\Feature.xml" />
-  </FeatureManifests>
-</Solution>
