@@ -138,7 +138,6 @@ namespace Excel_Importer {
 
 			// prepar for the loop
 			DataTable table=new DataTable();
-			Microsoft.SharePoint.Client.ListItem old_ListItem = null;
 			ListItemCreationInformation itemCreateInfo = new ListItemCreationInformation();
 
 			if (_folder_tree == null) {
@@ -160,7 +159,8 @@ namespace Excel_Importer {
 					// if the Folder Level column is not null, then, put item into this folder
 					// the folder level will depends on the sequence of the folder columns apprea in the Mapping GridView. TODO: maybe improved in the future.
 					if (mapping_row.Cells[3].Value != null) {
-						string folder_name = row[mapping_row.Cells[0].Value.ToString()].ToString().Replace('&','-').Replace('\'',' '); // SharePoint doesn't accept '&', so, replace it with '-'
+						string folder_name = row[mapping_row.Cells[0].Value.ToString()].ToString().Replace('&','-').Replace('\'',' ').Replace('.',' ').Replace('/',' ').Replace('\\',' '); // SharePoint doesn't accept '&', so, replace it with '-'
+						folder_name = folder_name.Trim();
 						new_folder = create_folder_if_not_exists(parent_folder, folder_name);
 						new_folder_relative_url += folder_name+"/";
 						parent_folder = new_folder;
@@ -207,19 +207,20 @@ namespace Excel_Importer {
 								}
 							}
 						} else {
-							if (table.Rows.Count>0) {
-								old_ListItem[table.TableName] = this.ToHtmlTable(table);
-								old_ListItem.Update();
-								table.TableName = null;
-								table.Clear();
-								table.Columns.Clear();
-							} 
-							listItem[mapping_row.Cells[1].Value.ToString()] = row[mapping_row.Cells[0].Value.ToString()].ToString();
+							string value = row[mapping_row.Cells[0].Value.ToString()].ToString();
+							if (!string.IsNullOrEmpty(value)) {
+								listItem[mapping_row.Cells[1].Value.ToString()] = value;
+							}
 						}
 					}
 				}
+				if (table.Rows.Count>0) {
+					listItem[table.TableName] = this.ToHtmlTable(table);
+					table.TableName = null;
+					table.Clear();
+					table.Columns.Clear();
+				} 
 				listItem.Update();
-				old_ListItem = listItem;
 				count++;
 				this.Invoke(
 					_update_counter,
