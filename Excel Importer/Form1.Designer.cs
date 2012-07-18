@@ -46,6 +46,7 @@
 			this.cmdMap = new System.Windows.Forms.Button();
 			this.lbCounter = new System.Windows.Forms.Label();
 			this.lbMessage = new System.Windows.Forms.Label();
+			this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
 			this.ExcelColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ListColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
 			this.TableName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -71,6 +72,7 @@
 			this.cmdSelectFile.TabIndex = 1;
 			this.cmdSelectFile.Text = "Select ...";
 			this.cmdSelectFile.UseVisualStyleBackColor = true;
+			this.cmdSelectFile.Click += new System.EventHandler(this.cmdSelectFile_Click);
 			// 
 			// cmdImport
 			// 
@@ -128,7 +130,6 @@
 			this.cmbSheets.Name = "cmbSheets";
 			this.cmbSheets.Size = new System.Drawing.Size(236, 20);
 			this.cmbSheets.TabIndex = 4;
-			this.cmbSheets.SelectedIndexChanged += new System.EventHandler(this.cmbSheets_SelectedIndexChanged);
 			// 
 			// label4
 			// 
@@ -212,7 +213,6 @@
 			this.cmbLists.Name = "cmbLists";
 			this.cmbLists.Size = new System.Drawing.Size(236, 20);
 			this.cmbLists.TabIndex = 4;
-			this.cmbLists.SelectedIndexChanged += new System.EventHandler(this.cmbLists_SelectedIndexChanged);
 			// 
 			// button1
 			// 
@@ -295,10 +295,15 @@
 			this.lbMessage.TabIndex = 9;
 			this.lbMessage.Text = "Message.";
 			// 
+			// openFileDialog1
+			// 
+			this.openFileDialog1.FileName = "openFileDialog1";
+			// 
 			// ExcelColumn
 			// 
 			this.ExcelColumn.HeaderText = "Excel Column";
 			this.ExcelColumn.Name = "ExcelColumn";
+			this.ExcelColumn.ReadOnly = true;
 			this.ExcelColumn.Width = 200;
 			// 
 			// ListColumn
@@ -372,6 +377,7 @@
 		private System.Windows.Forms.Button cmdMap;
 		private System.Windows.Forms.Label lbCounter;
 		private System.Windows.Forms.Label lbMessage;
+		private System.Windows.Forms.OpenFileDialog openFileDialog1;
 		private System.Windows.Forms.DataGridViewTextBoxColumn ExcelColumn;
 		private System.Windows.Forms.DataGridViewComboBoxColumn ListColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn TableName;

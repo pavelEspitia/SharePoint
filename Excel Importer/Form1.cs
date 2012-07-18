@@ -37,6 +37,7 @@ namespace Excel_Importer {
 		private ui_call_back _update_message = null;
 		private ui_call_back _update_counter = null;
 		int count = 0;
+		char _separator = '|';
 
 		/// <summary>
 		/// Trigle the Import action.
@@ -44,17 +45,22 @@ namespace Excel_Importer {
 		/// <param name="sender"></param>
 		/// <param name="e"></param>
 		private void cmdImport_Click(object sender, EventArgs e) {
-			if (cmdImport.Text == "Import") {
-				lbCounter.Text = "0 / 0";
-				_is_running = true;
-				cmdImport.Text = "Pause";
-				string ui_selections = cmbLists.SelectedItem.ToString() + ";" + cmbSheets.SelectedItem.ToString();
-				_update_message = new ui_call_back(update_message);
-				_update_counter = new ui_call_back(update_record_count);
-				ThreadPool.QueueUserWorkItem(new WaitCallback(import_excel_to_sharepoint_list),ui_selections);
-			} else {
-				_is_running = false;
-				cmdImport.Text = "Import";
+			try {
+				if (cmdImport.Text == "Import") {
+					lbCounter.Text = "0 / 0";
+					_is_running = true;
+					cmdImport.Text = "Pause";
+					string ui_selections = cmbLists.SelectedItem.ToString().Trim() + ";" + cmbSheets.SelectedItem.ToString().Trim();
+					_update_message = new ui_call_back(update_message);
+					_update_counter = new ui_call_back(update_record_count);
+					ThreadPool.QueueUserWorkItem(new WaitCallback(import_excel_to_sharepoint_list), ui_selections);
+				} else {
+					_is_running = false;
+					cmdImport.Text = "Import";
+				}
+			}
+			catch (Exception ex) {
+				MessageBox.Show(ex.ToString());
 			}
 		}
 
@@ -77,7 +83,7 @@ namespace Excel_Importer {
 		/// <returns>The reference to the target folder. Tree object.</returns>
 		private Tree create_folder_if_not_exists(Tree parent_folder,string target_folder_name) {
 			this.Invoke( _update_message,
-				new object[]{"S: "+target_folder_name+" "+DateTime.Now.ToLongTimeString()}
+				new object[]{"Processing: "+target_folder_name+" "+DateTime.Now.ToLongTimeString()}
 			);
 			string target_folder_url = parent_folder.URL + "/" + target_folder_name;
 			foreach(Tree child_folder in parent_folder.Children){
@@ -183,7 +189,7 @@ namespace Excel_Importer {
 							}
 							DataColumn tcol = new DataColumn(mapping_row.Cells[0].Value.ToString());
 							table.Columns.Add(tcol);
-							string[] values = row[mapping_row.Cells[0].Value.ToString()].ToString().Split(',');
+							string[] values = row[mapping_row.Cells[0].Value.ToString()].ToString().Split(_separator);
 							if (table.Rows.Count == 0) {
 								for (int i = 0; i < values.Length; i++) {
 									table.Rows.Add(new object[] { values[i] });
@@ -219,25 +225,32 @@ namespace Excel_Importer {
 					_update_counter,
 					new object[]{count+" / " + data.Rows.Count}
 				);
-				//if (count % 20 == 0) {
-				//    clientContext.ExecuteQuery();
-				//}
+				if (count % 30 == 0) {
+				    _clientContext.ExecuteQuery(); // TODO: Is there any other way to improve this?
+				}
 			}
 			_clientContext.ExecuteQuery(); // for the last item
 		}
 
 		private void cmdCheckExcelFile_Click(object sender, EventArgs e) {
-			OleDbConnection conn = new OleDbConnection(get_conn_string());
-			conn.Open();
-			DataTable sheet_names = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, new object[] { null, null, null, "TABLE" });
-			cmbSheets.Items.Clear();
-			foreach (DataRow row in sheet_names.Rows) {
-				cmbSheets.Items.Add(row[2].ToString().Replace("'",""));
+			try {
+				update_message("Analyzing the Excel file. "+DateTime.Now.ToLongTimeString());
+				OleDbConnection conn = new OleDbConnection(get_conn_string());
+				conn.Open();
+				DataTable sheet_names = conn.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, new object[] { null, null, null, "TABLE" });
+				cmbSheets.Items.Clear();
+				foreach (DataRow row in sheet_names.Rows) {
+					cmbSheets.Items.Add(row[2].ToString().Replace("'", ""));
+				}
+				if (sheet_names.Rows.Count > 0) {
+					cmbSheets.SelectedIndex = 0;
+				}
+				conn.Close();
+				update_message("Excel file is ready. " + DateTime.Now.ToLongTimeString());
 			}
-			if (sheet_names.Rows.Count > 0) {
-				cmbSheets.SelectedIndex = 0;
+			catch (Exception ex) {
+				MessageBox.Show(ex.ToString());
 			}
-			conn.Close();
 		}
 		private string get_conn_string() {
 			return "Provider=Microsoft.Jet.OLEDB.4.0;Data Source="+txtExcel.Text+";Extended Properties=Excel 8.0;";
@@ -249,31 +262,31 @@ namespace Excel_Importer {
 				return txtSiteUrl.Text;
 		}
 		private void cmdValidateSharePointSite_Click(object sender, EventArgs e) {
-			_clientContext = new ClientContext(get_site_url());
-			if (chkUseClaims.Checked) {
-				_clientContext = ClaimClientContext.GetAuthenticatedContext(get_site_url());
-				//clientContext.ExecutingWebRequest +=
-				//    new EventHandler<WebRequestEventArgs>(ctx_MixedAuthRequest);
-				//clientContext.AuthenticationMode = ClientAuthenticationMode.Default;
-				//clientContext.Credentials = System.Net.CredentialCache.DefaultCredentials;
+			try {
+				update_message("Validating the SharePoint site. " + DateTime.Now.ToLongTimeString());
+				_clientContext = new ClientContext(get_site_url());
+				if (chkUseClaims.Checked) {
+					_clientContext = ClaimClientContext.GetAuthenticatedContext(get_site_url());
+				}
+				_site = _clientContext.Web;
+				ListCollection lists = _site.Lists;
+				_clientContext.Load(lists);
+				_clientContext.ExecuteQuery();
+				cmbLists.Items.Clear();
+				List<string> sorted_lists = new List<string>();
+				foreach (List list in lists) {
+					sorted_lists.Add(list.Title);
+				}
+				sorted_lists.Sort();
+				cmbLists.Items.AddRange(sorted_lists.ToArray<string>());
+				if (lists.Count > 0) {
+					cmbLists.SelectedIndex = 0;
+				}
+				update_message("SharePoint site is ready. " + DateTime.Now.ToLongTimeString());
 			}
-			_site = _clientContext.Web;
-			ListCollection lists = _site.Lists;
-			_clientContext.Load(lists);
-			_clientContext.ExecuteQuery();
-			cmbLists.Items.Clear();
-			foreach (List list in lists) {
-				cmbLists.Items.Add(list.Title);
+			catch (Exception ex) {
+				MessageBox.Show(ex.ToString());
 			}
-			if (lists.Count > 0) {
-				cmbLists.SelectedIndex = 0;
-			}
-		}
-
-		private void cmbLists_SelectedIndexChanged(object sender, EventArgs e) {
-		}
-
-		private void cmbSheets_SelectedIndexChanged(object sender, EventArgs e) {
 		}
 
 		private void cmdMap_Click(object sender, EventArgs e) {
@@ -299,6 +312,8 @@ namespace Excel_Importer {
 
 			foreach (DataGridViewRow row in dgMapping.Rows) {
 				DataGridViewComboBoxCell col = new DataGridViewComboBoxCell();
+				List<string> sorted_columns = new List<string>();
+				string field_name = row.Cells[0].ToString().ToLower();
 				for(int i=0;i<fields.Count;i++){
 					if (!fields[i].FromBaseType || 
 						fields[i].InternalName == "Title"||
@@ -308,10 +323,15 @@ namespace Excel_Importer {
 						fields[i].InternalName=="Editor"
 						) {
 						string item_string = fields[i].InternalName;
-						col.Items.Add(item_string);
-						if (fields[i].Title == row.Cells[0].ToString() ||
-							fields[i].InternalName == row.Cells[0].ToString()) {
-						}
+						sorted_columns.Add(item_string);
+					}
+				}
+				sorted_columns.Sort();
+				col.Items.AddRange(sorted_columns.ToArray<string>());
+				for (int i = 0; i < col.Items.Count; i++) {
+					if (col.Items[i].ToString().ToLower().Contains(field_name)) {
+						col.Value = col.Items[i];
+						break;
 					}
 				}
 				row.Cells[1] = col;
@@ -346,5 +366,12 @@ namespace Excel_Importer {
 
 			return sb.ToString();
 		}
+
+		private void cmdSelectFile_Click(object sender, EventArgs e) {
+			if (openFileDialog1.ShowDialog() == System.Windows.Forms.DialogResult.OK) {
+				txtExcel.Text = openFileDialog1.FileName;
+			}
+		}
+
 	}
 }
