@@ -11,6 +11,7 @@
 obj
 bin
 pkgobj
+publish
 
 # Packages #
 ############
