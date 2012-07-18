@@ -225,7 +225,7 @@ namespace Excel_Importer {
 					_update_counter,
 					new object[]{count+" / " + data.Rows.Count}
 				);
-				if (count % 30 == 0) {
+				if (count % 20 == 0) {
 				    _clientContext.ExecuteQuery(); // TODO: Is there any other way to improve this?
 				}
 			}
@@ -311,9 +311,10 @@ namespace Excel_Importer {
 			_clientContext.ExecuteQuery();
 
 			foreach (DataGridViewRow row in dgMapping.Rows) {
+				if (row.Cells[0].Value == null) continue; //TODO: How can that happen?
 				DataGridViewComboBoxCell col = new DataGridViewComboBoxCell();
 				List<string> sorted_columns = new List<string>();
-				string field_name = row.Cells[0].ToString().ToLower();
+				string field_name = row.Cells[0].Value.ToString().ToLower();
 				for(int i=0;i<fields.Count;i++){
 					if (!fields[i].FromBaseType || 
 						fields[i].InternalName == "Title"||
@@ -329,7 +330,7 @@ namespace Excel_Importer {
 				sorted_columns.Sort();
 				col.Items.AddRange(sorted_columns.ToArray<string>());
 				for (int i = 0; i < col.Items.Count; i++) {
-					if (col.Items[i].ToString().ToLower().Contains(field_name)) {
+					if (field_name.Contains(col.Items[i].ToString().Replace("_x0020_"," ").Replace("_x002f_","/").Replace("_x002e_","#").ToLower())) {
 						col.Value = col.Items[i];
 						break;
 					}
