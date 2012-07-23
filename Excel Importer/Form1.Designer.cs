@@ -43,17 +43,20 @@
 			this.txtSiteUrl = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
 			this.dgMapping = new System.Windows.Forms.DataGridView();
-			this.cmdMap = new System.Windows.Forms.Button();
-			this.lbCounter = new System.Windows.Forms.Label();
-			this.lbMessage = new System.Windows.Forms.Label();
-			this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
 			this.ExcelColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.ListColumn = new System.Windows.Forms.DataGridViewComboBoxColumn();
 			this.TableName = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.FolderLevel = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.cmdMap = new System.Windows.Forms.Button();
+			this.lbCounter = new System.Windows.Forms.Label();
+			this.lbMessage = new System.Windows.Forms.Label();
+			this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+			this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+			this.label8 = new System.Windows.Forms.Label();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgMapping)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// txtExcel
@@ -266,39 +269,6 @@
 			this.dgMapping.Size = new System.Drawing.Size(744, 216);
 			this.dgMapping.TabIndex = 6;
 			// 
-			// cmdMap
-			// 
-			this.cmdMap.Location = new System.Drawing.Point(654, 210);
-			this.cmdMap.Name = "cmdMap";
-			this.cmdMap.Size = new System.Drawing.Size(79, 23);
-			this.cmdMap.TabIndex = 7;
-			this.cmdMap.Text = "Re-Map";
-			this.cmdMap.UseVisualStyleBackColor = true;
-			this.cmdMap.Click += new System.EventHandler(this.cmdMap_Click);
-			// 
-			// lbCounter
-			// 
-			this.lbCounter.AutoSize = true;
-			this.lbCounter.Location = new System.Drawing.Point(545, 474);
-			this.lbCounter.Name = "lbCounter";
-			this.lbCounter.Size = new System.Drawing.Size(35, 12);
-			this.lbCounter.TabIndex = 8;
-			this.lbCounter.Text = "0 / 0";
-			this.lbCounter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-			// 
-			// lbMessage
-			// 
-			this.lbMessage.AutoSize = true;
-			this.lbMessage.Location = new System.Drawing.Point(12, 469);
-			this.lbMessage.Name = "lbMessage";
-			this.lbMessage.Size = new System.Drawing.Size(53, 12);
-			this.lbMessage.TabIndex = 9;
-			this.lbMessage.Text = "Message.";
-			// 
-			// openFileDialog1
-			// 
-			this.openFileDialog1.FileName = "openFileDialog1";
-			// 
 			// ExcelColumn
 			// 
 			this.ExcelColumn.HeaderText = "Excel Column";
@@ -326,11 +296,67 @@
 			this.FolderLevel.Name = "FolderLevel";
 			this.FolderLevel.Width = 110;
 			// 
+			// cmdMap
+			// 
+			this.cmdMap.Location = new System.Drawing.Point(654, 210);
+			this.cmdMap.Name = "cmdMap";
+			this.cmdMap.Size = new System.Drawing.Size(79, 23);
+			this.cmdMap.TabIndex = 7;
+			this.cmdMap.Text = "Mapping";
+			this.cmdMap.UseVisualStyleBackColor = true;
+			this.cmdMap.Click += new System.EventHandler(this.cmdMap_Click);
+			// 
+			// lbCounter
+			// 
+			this.lbCounter.AutoSize = true;
+			this.lbCounter.Location = new System.Drawing.Point(572, 474);
+			this.lbCounter.Name = "lbCounter";
+			this.lbCounter.Size = new System.Drawing.Size(35, 12);
+			this.lbCounter.TabIndex = 8;
+			this.lbCounter.Text = "0 / 0";
+			this.lbCounter.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+			// 
+			// lbMessage
+			// 
+			this.lbMessage.AutoSize = true;
+			this.lbMessage.Location = new System.Drawing.Point(12, 469);
+			this.lbMessage.Name = "lbMessage";
+			this.lbMessage.Size = new System.Drawing.Size(53, 12);
+			this.lbMessage.TabIndex = 9;
+			this.lbMessage.Text = "Message.";
+			// 
+			// openFileDialog1
+			// 
+			this.openFileDialog1.FileName = "openFileDialog1";
+			// 
+			// numericUpDown1
+			// 
+			this.numericUpDown1.Location = new System.Drawing.Point(438, 467);
+			this.numericUpDown1.Maximum = new decimal(new int[] {
+            10000000,
+            0,
+            0,
+            0});
+			this.numericUpDown1.Name = "numericUpDown1";
+			this.numericUpDown1.Size = new System.Drawing.Size(69, 21);
+			this.numericUpDown1.TabIndex = 10;
+			// 
+			// label8
+			// 
+			this.label8.AutoSize = true;
+			this.label8.Location = new System.Drawing.Point(361, 469);
+			this.label8.Name = "label8";
+			this.label8.Size = new System.Drawing.Size(71, 12);
+			this.label8.TabIndex = 11;
+			this.label8.Text = "Start from:";
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(768, 504);
+			this.Controls.Add(this.label8);
+			this.Controls.Add(this.numericUpDown1);
 			this.Controls.Add(this.lbMessage);
 			this.Controls.Add(this.lbCounter);
 			this.Controls.Add(this.cmdMap);
@@ -347,6 +373,7 @@
 			this.groupBox2.ResumeLayout(false);
 			this.groupBox2.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgMapping)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -382,6 +409,8 @@
 		private System.Windows.Forms.DataGridViewComboBoxColumn ListColumn;
 		private System.Windows.Forms.DataGridViewTextBoxColumn TableName;
 		private System.Windows.Forms.DataGridViewTextBoxColumn FolderLevel;
+		private System.Windows.Forms.NumericUpDown numericUpDown1;
+		private System.Windows.Forms.Label label8;
 	}
 }
 

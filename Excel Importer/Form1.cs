@@ -13,6 +13,7 @@ using System.Threading;
 using System.Web.UI.WebControls;
 using System.IO;
 using System.Web.UI;
+using System.Text.RegularExpressions;
 
 namespace Excel_Importer {
 	public partial class Form1 : System.Windows.Forms.Form {
@@ -36,7 +37,7 @@ namespace Excel_Importer {
 		bool _is_running = false;
 		private ui_call_back _update_message = null;
 		private ui_call_back _update_counter = null;
-		int count = 0;
+		int _count = 0;
 		char _separator = '|';
 
 		/// <summary>
@@ -57,6 +58,7 @@ namespace Excel_Importer {
 				} else {
 					_is_running = false;
 					cmdImport.Text = "Import";
+					numericUpDown1.Value = _count;
 				}
 			}
 			catch (Exception ex) {
@@ -121,116 +123,129 @@ namespace Excel_Importer {
 		}
 
 		private void import_excel_to_sharepoint_list(Object stateInfo) {
-			string [] ui_selections = stateInfo.ToString().Split(';');
+			try {
+				string[] ui_selections = stateInfo.ToString().Split(';');
 
-			_clientContext.Load(_site);
-			_list = _site.Lists.GetByTitle(ui_selections[0]);
-			_clientContext.ExecuteQuery();
+				_clientContext.Load(_site);
+				_list = _site.Lists.GetByTitle(ui_selections[0]);
+				_clientContext.ExecuteQuery();
 
-			string commandStr = "select * from [" + ui_selections[1] + "]";
-			OleDbDataAdapter command = new OleDbDataAdapter(commandStr, get_conn_string());
-			DataTable data = new DataTable();
-			command.Fill(data);
-			this.Invoke(
-				_update_counter,
-				new object[]{count+ " / " + data.Rows.Count}
-			);
+				string commandStr = "select * from [" + ui_selections[1] + "]";
+				OleDbDataAdapter command = new OleDbDataAdapter(commandStr, get_conn_string());
+				DataTable data = new DataTable();
+				command.Fill(data);
+				this.Invoke(
+					_update_counter,
+					new object[] { _count + " / " + data.Rows.Count }
+				);
 
-			// prepar for the loop
-			DataTable table=new DataTable();
-			ListItemCreationInformation itemCreateInfo = new ListItemCreationInformation();
+				// prepar for the loop
+				DataTable table = new DataTable();
+				ListItemCreationInformation itemCreateInfo = new ListItemCreationInformation();
 
-			if (_folder_tree == null) {
-				_folder_tree = new Tree();
-				_folder_tree.URL = String.Format("{0}/Lists/{1}", _site.ServerRelativeUrl=="/"?"":_site.ServerRelativeUrl,ui_selections[0]);
-				_folder_tree.Name = "ROOT";
-				_folder_tree.Children = new List<Tree>();
-			}
-			int record_number = 0;
-			foreach (DataRow row in data.Rows) {
-				if (!_is_running) return;
-				record_number++;
-				if (record_number <= count) continue;
-				// check if need to created Folders for imported items
-				string new_folder_relative_url = "";
-				Tree new_folder=null;
-				Tree parent_folder = _folder_tree;
-				foreach (DataGridViewRow mapping_row in dgMapping.Rows) {
-					// if the Folder Level column is not null, then, put item into this folder
-					// the folder level will depends on the sequence of the folder columns apprea in the Mapping GridView. TODO: maybe improved in the future.
-					if (mapping_row.Cells[3].Value != null) {
-						string folder_name = row[mapping_row.Cells[0].Value.ToString()].ToString().Replace('&','-').Replace('\'',' ').Replace('.',' ').Replace('/',' ').Replace('\\',' '); // SharePoint doesn't accept '&', so, replace it with '-'
-						folder_name = folder_name.Trim();
-						new_folder = create_folder_if_not_exists(parent_folder, folder_name);
-						new_folder_relative_url += folder_name+"/";
-						parent_folder = new_folder;
-					}
+				if (_folder_tree == null) {
+					_folder_tree = new Tree();
+					_folder_tree.URL = String.Format("{0}/Lists/{1}", _site.ServerRelativeUrl == "/" ? "" : _site.ServerRelativeUrl, ui_selections[0]);
+					_folder_tree.Name = "ROOT";
+					_folder_tree.Children = new List<Tree>();
 				}
-				if (new_folder!=null) {
-					itemCreateInfo.FolderUrl = new_folder.URL;
-				} 
+				int record_number = 0;
+				_count = int.Parse(numericUpDown1.Value.ToString());
+				foreach (DataRow row in data.Rows) {
+					if (!_is_running) return;
+					record_number++;
+					if (record_number <= _count) continue;
+					// check if need to created Folders for imported items
+					string new_folder_relative_url = "";
+					Tree new_folder = null;
+					Tree parent_folder = _folder_tree;
+					foreach (DataGridViewRow mapping_row in dgMapping.Rows) {
+						// if the Folder Level column is not null, then, put item into this folder
+						// the folder level will depends on the sequence of the folder columns apprea in the Mapping GridView. TODO: maybe improved in the future.
+						if (mapping_row.Cells[3].Value != null) {
+							string folder_name = format_folder_name(row[mapping_row.Cells[0].Value.ToString()].ToString());
+							new_folder = create_folder_if_not_exists(parent_folder, folder_name);
+							new_folder_relative_url += folder_name + "/";
+							parent_folder = new_folder;
+						}
+					}
+					if (new_folder != null) {
+						itemCreateInfo.FolderUrl = new_folder.URL;
+					}
 
-				Microsoft.SharePoint.Client.ListItem listItem = _list.AddItem(itemCreateInfo);
-				// Item Value
-				foreach (DataGridViewRow mapping_row in dgMapping.Rows) {
-					if (mapping_row.Cells[1].Value!=null) {
-						if (mapping_row.Cells[2].Value != null) {
-							if (string.IsNullOrEmpty(table.TableName)) {
-								table.TableName = mapping_row.Cells[2].Value.ToString();
-							}
-							else {
-								if (table.TableName != mapping_row.Cells[2].Value.ToString()) {
-									listItem[table.TableName] = this.ToHtmlTable(table);
-									table.TableName = null;
-									table.Clear();
-									table.Columns.Clear();
+					Microsoft.SharePoint.Client.ListItem listItem = _list.AddItem(itemCreateInfo);
+					// Item Value
+					foreach (DataGridViewRow mapping_row in dgMapping.Rows) {
+						if (mapping_row.Cells[1].Value != null) {
+							if (mapping_row.Cells[2].Value != null) {
+								if (string.IsNullOrEmpty(table.TableName)) {
 									table.TableName = mapping_row.Cells[2].Value.ToString();
-								}
-							}
-							DataColumn tcol = new DataColumn(mapping_row.Cells[0].Value.ToString());
-							table.Columns.Add(tcol);
-							string[] values = row[mapping_row.Cells[0].Value.ToString()].ToString().Split(_separator);
-							if (table.Rows.Count == 0) {
-								for (int i = 0; i < values.Length; i++) {
-									table.Rows.Add(new object[] { values[i] });
-								}
-							} else {
-								int i = 0;
-								for(i=0;i<Math.Min(values.Length,table.Rows.Count);i++){
-									table.Rows[i][tcol] = values[i];
-								}
-								if (values.Length > table.Rows.Count) {
-									for(int j=i;j<values.Length;j++){
-										DataRow new_row = table.Rows.Add();
-										new_row[tcol] = values[j];
+								} else {
+									if (table.TableName != mapping_row.Cells[2].Value.ToString()) {
+										listItem[table.TableName] = this.ToHtmlTable(table);
+										table.TableName = null;
+										table.Clear();
+										table.Columns.Clear();
+										table.TableName = mapping_row.Cells[2].Value.ToString();
 									}
 								}
-							}
-						} else {
-							string value = row[mapping_row.Cells[0].Value.ToString()].ToString();
-							if (!string.IsNullOrEmpty(value)) {
-								listItem[mapping_row.Cells[1].Value.ToString()] = value;
+								DataColumn tcol = new DataColumn(mapping_row.Cells[0].Value.ToString());
+								table.Columns.Add(tcol);
+								if (row[mapping_row.Cells[0].Value.ToString()] != null) {	// The column must have value, or, it will be ignored.
+									if (!string.IsNullOrEmpty(row[mapping_row.Cells[0].Value.ToString()].ToString())) {
+										string[] col_values = row[mapping_row.Cells[0].Value.ToString()].ToString().Split(_separator);
+										if (table.Rows.Count == 0) {
+											for (int i = 0; i < col_values.Length; i++) {
+												table.Rows.Add(new object[] { col_values[i] });
+											}
+										} else {
+											int i = 0;
+											for (i = 0; i < Math.Min(col_values.Length, table.Rows.Count); i++) {
+												table.Rows[i][tcol] = col_values[i];
+											}
+											if (col_values.Length > table.Rows.Count) {
+												for (int j = i; j < col_values.Length; j++) {
+													DataRow new_row = table.Rows.Add();
+													new_row[tcol] = col_values[j];
+												}
+											}
+										}
+									}
+								}
+							} else {
+								string value = row[mapping_row.Cells[0].Value.ToString()].ToString();
+								if (!string.IsNullOrEmpty(value)) {
+									// Check the Date-Time format, for some date column will have time in it, we must remove the time first before we can put it into SharePoint.
+									Regex reg = new Regex(@" [0-9]+:[0-9]+[AP]M$", RegexOptions.Multiline | RegexOptions.IgnoreCase);
+									if (reg.IsMatch(value)) {
+										value = reg.Replace(value, "");
+									}
+									listItem[mapping_row.Cells[1].Value.ToString()] = value;
+								}
 							}
 						}
 					}
+					if (table.Columns.Count > 0) {
+						listItem[table.TableName] = this.ToHtmlTable(table);
+						table.TableName = null;
+						table.Clear();
+						table.Columns.Clear();
+					}
+					listItem.Update();
+					_count++;
+					this.Invoke(
+						_update_counter,
+						new object[] { _count + " / " + data.Rows.Count }
+					);
+					if (_count % 20 == 0) {
+						_clientContext.ExecuteQuery(); // TODO: Is there any other way to improve this?
+					}
 				}
-				if (table.Rows.Count>0) {
-					listItem[table.TableName] = this.ToHtmlTable(table);
-					table.TableName = null;
-					table.Clear();
-					table.Columns.Clear();
-				} 
-				listItem.Update();
-				count++;
-				this.Invoke(
-					_update_counter,
-					new object[]{count+" / " + data.Rows.Count}
-				);
-				if (count % 20 == 0) {
-				    _clientContext.ExecuteQuery(); // TODO: Is there any other way to improve this?
-				}
+				_clientContext.ExecuteQuery(); // for the last item
 			}
-			_clientContext.ExecuteQuery(); // for the last item
+			catch (Exception ex) {
+				MessageBox.Show(ex.ToString());
+			}
 		}
 
 		private void cmdCheckExcelFile_Click(object sender, EventArgs e) {
@@ -375,5 +390,10 @@ namespace Excel_Importer {
 			}
 		}
 
+		private string format_folder_name(string name) {
+			string folder_name = name.Replace("&", " N ").Replace('\'', ' ').Replace('.', '_').Replace('/', ' ').Replace('\\', ' '); // SharePoint doesn't accept '&', so, replace it with '-'
+			folder_name = folder_name.Trim();
+			return folder_name;
+		}
 	}
 }
