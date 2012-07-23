@@ -39,6 +39,7 @@ namespace Excel_Importer {
 		private ui_call_back _update_counter = null;
 		int _count = 0;
 		char _separator = '|';
+		string _message = "";
 
 		/// <summary>
 		/// Trigle the Import action.
@@ -99,12 +100,14 @@ namespace Excel_Importer {
 				ListItemCreationInformation itemCreateInfo = new ListItemCreationInformation();
 				itemCreateInfo.UnderlyingObjectType = FileSystemObjectType.Folder;
 				itemCreateInfo.FolderUrl = parent_folder.URL;
+				_message += "\n  create folder:" + parent_folder.URL + "/" + target_folder_name;
 				Microsoft.SharePoint.Client.ListItem olistItem = _list.AddItem(itemCreateInfo);
 				olistItem["Title"] = target_folder_name;
 				olistItem.Update();
 				_clientContext.ExecuteQuery();
 			}
 			catch (Exception ex) {
+				//MessageBox.Show(_message+"\n"+ex.ToString());
 				if(ex.Message.Contains("exist")){
 					//nothing to do with it.
 				}else{
@@ -129,6 +132,10 @@ namespace Excel_Importer {
 				_clientContext.Load(_site);
 				_list = _site.Lists.GetByTitle(ui_selections[0]);
 				_clientContext.ExecuteQuery();
+				Folder root_folder = _list.RootFolder;
+				_clientContext.Load(root_folder);
+				_clientContext.ExecuteQuery();
+				string root_folder_url = root_folder.ServerRelativeUrl;
 
 				string commandStr = "select * from [" + ui_selections[1] + "]";
 				OleDbDataAdapter command = new OleDbDataAdapter(commandStr, get_conn_string());
@@ -145,7 +152,7 @@ namespace Excel_Importer {
 
 				if (_folder_tree == null) {
 					_folder_tree = new Tree();
-					_folder_tree.URL = String.Format("{0}/Lists/{1}", _site.ServerRelativeUrl == "/" ? "" : _site.ServerRelativeUrl, ui_selections[0]);
+					_folder_tree.URL = String.Format("{0}",root_folder_url);
 					_folder_tree.Name = "ROOT";
 					_folder_tree.Children = new List<Tree>();
 				}
@@ -159,11 +166,13 @@ namespace Excel_Importer {
 					string new_folder_relative_url = "";
 					Tree new_folder = null;
 					Tree parent_folder = _folder_tree;
+					_message = _folder_tree.URL;
 					foreach (DataGridViewRow mapping_row in dgMapping.Rows) {
 						// if the Folder Level column is not null, then, put item into this folder
 						// the folder level will depends on the sequence of the folder columns apprea in the Mapping GridView. TODO: maybe improved in the future.
 						if (mapping_row.Cells[3].Value != null) {
 							string folder_name = format_folder_name(row[mapping_row.Cells[0].Value.ToString()].ToString());
+							_message += "\n  folder:" + folder_name;
 							new_folder = create_folder_if_not_exists(parent_folder, folder_name);
 							new_folder_relative_url += folder_name + "/";
 							parent_folder = new_folder;
@@ -171,6 +180,7 @@ namespace Excel_Importer {
 					}
 					if (new_folder != null) {
 						itemCreateInfo.FolderUrl = new_folder.URL;
+						_message += "\nnew_folder: " + new_folder.URL;
 					}
 
 					Microsoft.SharePoint.Client.ListItem listItem = _list.AddItem(itemCreateInfo);
@@ -244,7 +254,7 @@ namespace Excel_Importer {
 				_clientContext.ExecuteQuery(); // for the last item
 			}
 			catch (Exception ex) {
-				MessageBox.Show(ex.ToString());
+				MessageBox.Show(_message+"\n"+ex.ToString()+"\n"+ex.Source+"\n"+ex.StackTrace);
 			}
 		}
 
