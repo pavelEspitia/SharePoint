@@ -1,0 +1,103 @@
+﻿body #pageStatusBar{height:0px; font-size:0px; padding:0px; border-style:none;}
+body #s4-leftpanel {
+	display:none;
+}
+.s4-ca {
+	margin-left:0px;
+}
+
+.ms-WPHeaderTdMenu {
+	BORDER-BOTTOM: silver 1px solid; BACKGROUND: white
+}
+.ms-WPHeaderTd {
+	BORDER-BOTTOM: silver 1px solid; BACKGROUND: white
+}
+.ms-WPTitle {
+	FONT-SIZE: 11pt !important; FONT-WEIGHT: bold
+}
+.ms-WPHeaderTd {
+	BORDER-BOTTOM: silver 2px solid
+}
+.ms-WPHeader TD {
+	BORDER-BOTTOM: silver 2px solid
+}
+#customwidth{
+	width:1100px;
+}
+#WebPartWPQ3 img {
+	width:73px;
+	margin:1px;
+}
+#WebPartWPQ3 .image-area-left {
+	width:75px;
+	height:44px;
+	overflow:hidden;
+}
+#WebPartWPQ3 .link-item a{
+	font-weight:bold;
+}
+#WebPartWPQ3{
+	background-color:white;
+	padding-bottom:2px;
+}
+#WebPartWPQ3 li.dfwp-item {
+	border-bottom:1px solid silver;
+}
+#WebPartWPQ2 {
+	background-color:white;
+}
+
+.unselected_item {
+	height:44px;
+	margin-bottom:3px;
+	filter:alpha(Opacity=80);
+	padding:0;
+	background-image:url(https://gmweb.gm.com/communications/GMIO/WEC/cwc/PublishingImages/itemBackground.jpg);	
+	cursor:pointer;
+}
+.selected_item{
+	height:44px;
+	margin-bottom:3px;
+	filter:alpha(Opacity=80);
+	padding:0;
+	background-image:none;
+}
+
+#WebPartWPQ2 div.link-item {
+	float:left;
+	position:absolute;
+	width:493px;
+	height:75px;
+	line-height:1.5em;
+	background-color:black;
+	padding:3px;
+	margin-top:250px;
+	filter:alpha(Opacity=80);
+}
+#WebPartWPQ2 div.link-item a{
+	color:white !important;
+	font-size:14pt;
+}
+#WebPartWPQ2 div.link-item div{
+	color:white !important;
+}
+/*#WebPartWPQ2 div.image-area-left {
+	width:500px;
+	height:330px;
+	overflow:auto;
+}*/
+#WebPartWPQ2 div.image-area-left img{
+	width:500px;
+	height:330px;
+}
+
+.ms-rte-wpbox {
+	float:left;
+}
+
+#divMore {
+	padding:5px;
+	font-weight:bold;
+	font-size:10pt;
+	float:right;
+}

@@ -1,0 +1,33 @@
+﻿.ms-WPHeaderTdMenu {
+	BORDER-BOTTOM: silver 1px solid; BACKGROUND: white
+}
+.ms-WPHeaderTd {
+	BORDER-BOTTOM: silver 1px solid; BACKGROUND: white
+}
+.ms-WPTitle {
+	FONT-SIZE: 11pt !important; FONT-WEIGHT: bold
+}
+.ms-WPHeaderTd {
+	BORDER-BOTTOM: silver 2px solid
+}
+.ms-WPHeader TD {
+	BORDER-BOTTOM: silver 2px solid
+}
+
+div.image-area-left img{
+	width:75px;
+	height:45px;
+}
+div.link-item {
+	width:700px;
+	line-height:1.5em;
+}
+div.link-item a:link,div.link-item a:visited{
+	font-size:10pt !important;
+	font-weight:bold;
+	color:#0072bc;
+}
+.groupheader{
+	margin-top:20px;
+	font-size:12pt;
+}
