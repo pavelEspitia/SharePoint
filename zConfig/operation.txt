@@ -1,0 +1,27 @@
+1.Create VM
+2.Install OS
+3.Connect Internet with LAN and activate the os
+4.Change OS computer name
+5.Install Language pack
+6.Install sp1
+
+
+1.Install OS
+2.Update OS to the latest
+3.Export OS
+4.Copy OS into a new folder with the name of your new VM
+5.Change new VM's name
+
+
+Network configure
+1. Add Internal Network Adapter
+2. Set Virtual Internal Netward Adapter's IP
+3. Attach VINA to VM
+4. Configure Static Routing to connect two VINA
+
+corp.jony.com
+117.105.174.10
+
+sfda.share.com
+117.105.165.10
+
